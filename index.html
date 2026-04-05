@@ -2182,17 +2182,34 @@ body {
 <button class="secondary" onclick="shareReferralEmail()">Share via email</button>
 </div>
 </div>
+<div class="card" style="margin-top:16px;background:linear-gradient(135deg,#f6fbf1,#eef6e6);border:1px solid rgba(120,184,74,.28);box-shadow:0 8px 18px rgba(35,40,79,.05);">
+<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">
+<div>
+<div class="section-pill" style="background:#edf5e7;color:#4f8f2e;">Connected sync</div>
+<h3 style="margin:0 0 6px;">Keep important information in step</h3>
+<p style="margin:0;color:var(--muted);font-size:14px;line-height:1.55;">Review-led inbox integration helps sAiFe surface likely renewals, bills and household records before anything is saved.</p>
+</div>
+<div class="tag greentag">New</div>
+</div>
+<div class="trust-strip" style="margin-top:14px;">
+<div class="trust-chip tappable" onclick="openSheet('Gmail connected','Last checked 08:42 GMT','Your connected Gmail feed is being reviewed for household records, renewals and attached documents. Nothing is filed without confirmation.')"><b>Gmail</b><span>Connected<br/>08:42 GMT</span></div>
+<div class="trust-chip tappable" onclick="openSheet('Outlook available','Ready to connect','Outlook / Microsoft 365 can be linked next so sAiFe can help keep household records aligned across both inboxes.')"><b>Outlook</b><span>Available<br/>Connect next</span></div>
+<div class="trust-chip tappable" onclick="show('synchub')"><b>3 updates</b><span>Review suggested<br/>changes</span></div>
+</div>
+<button class="primary" onclick="show('synchub')" style="width:100%;margin-top:14px;">Open connected sync</button>
+<div class="support-note" style="max-width:none;text-align:left;margin-top:10px;">Prototype view: this demonstrates the synchronized integration experience and approval flow.</div>
+</div>
 <div class="card explore-card" style="margin-top:16px; background:linear-gradient(135deg,#F3EFE6,#ECE6DA); border:1px solid rgba(35,40,79,.08); box-shadow:inset 0 1px 0 rgba(255,255,255,.5);">
 <div class="section-pill">Explore further</div>
 <div class="explore-title">See how MySaiFe works</div>
 <p class="explore-copy">Start with your dashboard, then move through the key views that show how everything connects across your household.</p>
 <p class="explore-agent">Your <strong>sAiFe Agent</strong> helps organise, guide and keep everything aligned.</p>
 <div class="explore-pills explore-grid">
-<button class="route-pill route-pill-lg">Open dashboard</button>
-<button class="route-pill route-pill-lg">View life map</button>
-<button class="route-pill route-pill-lg">Explore finances</button>
-<button class="route-pill route-pill-lg">Trusted access</button>
-<button class="route-pill route-pill-wide">Start guided tour</button>
+<button class="route-pill route-pill-lg" onclick="show('dashboard')">Open dashboard</button>
+<button class="route-pill route-pill-lg" onclick="show('featuremap')">View life map</button>
+<button class="route-pill route-pill-lg" onclick="show('financial')">Explore finances</button>
+<button class="route-pill route-pill-lg" onclick="show('emergency')">Trusted access</button>
+<button class="route-pill route-pill-wide" onclick="show('synchub')">Start guided tour</button>
 </div>
 </div><div class="benefit-grid" style="margin-top:12px;">
 <div class="benefit-card">
@@ -2229,10 +2246,10 @@ body {
 </div><div class="footer-note">© 2026 sAiFe Technologies Ltd</div>
 </section><div class="tabbar">
 <button class="tab active" onclick="show('home')"><span class="tab-icon">🏠</span>Home</button>
-<button class="tab" onclick="show('property')"><span class="tab-icon">🏡</span>Property</button>
+<button class="tab" onclick="show('dashboard')"><span class="tab-icon">📊</span>Dash</button>
 <button class="tab" onclick="show('financial')"><span class="tab-icon">💳</span>Finance</button>
-<button class="tab" onclick="show('vehicles')"><span class="tab-icon">🚗</span>Vehicles</button>
-<button class="tab" onclick="show('lifestyle')"><span class="tab-icon">📋</span>Lifestyle</button>
+<button class="tab" onclick="show('synchub')"><span class="tab-icon">🔄</span>Sync</button>
+<button class="tab" onclick="show('featuremap')"><span class="tab-icon">🧭</span>Roadmap</button>
 <button class="tab" onclick="show('emergency')"><span class="tab-icon">🆘</span>Family</button>
 <button class="tab" onclick="show('partners')"><span class="tab-icon">💰</span>Savings</button>
 <button class="tab" onclick="show('settings')"><span class="tab-icon">⚙️</span>Prefs</button>
@@ -2444,6 +2461,30 @@ body {
 <div class="kpis">
 <div class="kpi"><b>3</b><span>Items need attention</span></div>
 <div class="kpi"><b>2</b><span>Records nearly complete</span></div>
+</div>
+<div class="card" style="margin-top:16px;background:linear-gradient(180deg,#fffdf8 0%,#f3f8ee 100%);border:1px solid rgba(120,184,74,.22);">
+<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:14px;">
+<div>
+<div class="pill" style="margin-bottom:10px;">Connected sync</div>
+<h3 style="margin:0 0 6px;">Keep important records in step</h3>
+<p style="margin:0;color:var(--muted);font-size:14px;line-height:1.5;">A guided beta view of how sAiFe can review connected inboxes, surface likely household records and suggest updates before anything is saved.</p>
+</div>
+<div class="tag greentag">Beta view</div>
+</div>
+<div class="trust-strip" style="margin-top:14px;">
+<div class="trust-chip tappable" onclick="openSheet('Gmail connected','Last checked 08:42 GMT','Your connected Gmail feed is being reviewed for household records, renewals and attached documents. Nothing is filed without confirmation.')"><b>Gmail</b><span>Connected<br/>Last checked 08:42</span></div>
+<div class="trust-chip tappable" onclick="openSheet('Outlook available','Ready to connect','Outlook / Microsoft 365 can be linked next so sAiFe can help keep family and household records aligned across both inboxes.')"><b>Outlook</b><span>Available<br/>Connect next</span></div>
+<div class="trust-chip tappable" onclick="show('synchub')"><b>3 updates</b><span>Review suggested<br/>record changes</span></div>
+</div>
+<div class="record-line" style="margin-top:8px;">
+<div>
+<div class="label">Latest sync summary</div>
+<div style="font-size:12px;color:var(--muted);line-height:1.45;">New home insurance renewal, one utility bill update and a passport reminder were identified for review.</div>
+</div>
+<div class="value" style="color:var(--green2);">Awaiting review</div>
+</div>
+<button class="secondary" onclick="show('synchub')" style="width:100%;margin-top:12px;padding:13px;">Open connected sync</button>
+<div class="support-note" style="max-width:none;text-align:left;margin-top:10px;">Prototype view only: this demonstrates the experience and language for synchronized integration without claiming live background sync in the current demo.</div>
 </div>
 <!-- Household members -->
 <div class="card" style="margin-top:16px;">
@@ -3087,6 +3128,23 @@ body {
 <label class="toggle"><input onchange="toast('Agent insights '+( this.checked?'on':'off'))" type="checkbox"/><div class="toggle-track"></div></label>
 </div>
 </div>
+<h2 style="margin:18px 0 8px;">Connected Accounts</h2>
+<div class="card" style="margin-bottom:10px;">
+<div class="record-line">
+<div><div class="label">Gmail</div><div style="font-size:12px;color:var(--muted);">Connected for review-led household sync</div></div>
+<div class="value" style="color:var(--green2);">Last checked 08:42</div>
+</div>
+<div class="record-line">
+<div><div class="label">Outlook / Microsoft 365</div><div style="font-size:12px;color:var(--muted);">Ready to connect next</div></div>
+<div class="value">Available</div>
+</div>
+<div class="record-line">
+<div><div class="label">Suggested updates inbox</div><div style="font-size:12px;color:var(--muted);">Nothing is filed without review in this beta concept</div></div>
+<div class="value">3 waiting</div>
+</div>
+</div>
+<button class="secondary" onclick="show('synchub')" style="width:100%;margin-top:4px;padding:13px;">Open connected sync</button>
+<button class="secondary" onclick="toast('Connect Gmail flow shown in demo')" style="width:100%;margin-top:10px;padding:13px;">Connect another account</button>
 <h2 style="margin:18px 0 8px;">Subscription</h2>
 <div class="card" style="margin-bottom:10px;">
 <div class="record-line"><div class="label">Plan</div><div class="value" style="color:var(--green2);">Family · £15.99/mo</div></div>
@@ -3104,6 +3162,90 @@ body {
 <button class="tab" onclick="show('emergency')"><span class="tab-icon">🆘</span>Family</button>
 <button class="tab" onclick="show('partners')"><span class="tab-icon">💰</span>Savings</button>
 <button class="tab active" onclick="show('settings')"><span class="tab-icon">⚙️</span>Prefs</button>
+</div>
+</section><section class="screen bg-settings" id="synchub">
+<div class="status">
+<div class="localtime">09:41 Local Time</div>
+<div class="status-right">
+<button class="global-chip" onclick="toggleGlobalMenu()">UK · EN</button>
+<div class="dots"><span></span><span></span><span></span></div>
+</div>
+</div>
+<div class="topbar"><button class="soft" onclick="show('settings')" style="opacity:0.85;">← Settings</button><div class="pill">Connected sync</div></div>
+<h2>Connected sync</h2>
+<p class="sub">A calm review layer for synchronized integration — helping sAiFe identify likely household records, suggest updates and keep important information aligned over time.</p>
+<div class="card" style="margin-bottom:10px;background:linear-gradient(180deg,#fffdf8 0%,#f3f8ee 100%);border:1px solid rgba(120,184,74,.22);">
+<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">
+<div>
+<div class="pill" style="margin-bottom:10px;">How this works</div>
+<h3 style="margin:0 0 6px;">Review-led household sync</h3>
+<p style="margin:0;color:var(--muted);font-size:14px;line-height:1.5;">Connected sources are checked for likely records, renewals and important attachments. sAiFe surfaces suggestions first, then lets you confirm what should update the household record.</p>
+</div>
+<div class="tag greentag">Beta</div>
+</div>
+</div>
+<div class="card" style="margin-bottom:10px;">
+<div class="record-line"><div><div class="label">Gmail</div><div style="font-size:12px;color:var(--muted);">Connected and reviewing selected household categories</div></div><div class="value" style="color:var(--green2);">Live concept</div></div>
+<div class="record-line"><div><div class="label">Last review</div><div style="font-size:12px;color:var(--muted);">Important attachments and notices checked</div></div><div class="value">08:42 GMT</div></div>
+<div class="record-line"><div><div class="label">Next source</div><div style="font-size:12px;color:var(--muted);">Outlook / Microsoft 365</div></div><div class="value">Ready</div></div>
+<div class="record-line"><div><div class="label">Current focus</div><div style="font-size:12px;color:var(--muted);">Insurance, utilities, IDs and family essentials</div></div><div class="value">4 categories</div></div>
+</div>
+<h2 style="margin:18px 0 8px;">Suggested updates</h2>
+<div class="card" style="margin-bottom:10px;">
+<div class="record-line">
+<div><div class="label">Home insurance renewal found</div><div style="font-size:12px;color:var(--muted);">Likely Property & Insurance update from connected Gmail</div></div>
+<div class="value">Churchill · 14 May</div>
+</div>
+<div style="display:flex;gap:10px;margin-top:12px;">
+<button class="primary" onclick="openSheet('Home insurance renewal found','Suggested update from Gmail','sAiFe identified what looks like your latest home insurance renewal. Review premium, start date and policy reference before replacing the previous record.',[{ label:'Review update', primary:true, fn:function(){ closeSheet(); toast('Prototype review opened'); }},{ label:'Keep for later', fn:function(){ closeSheet(); toast('Saved to suggested updates'); }}])" style="padding:12px 14px;">Review</button>
+<button class="secondary" onclick="toast('Held for later review')" style="padding:12px 14px;">Later</button>
+</div>
+</div>
+<div class="card" style="margin-bottom:10px;">
+<div class="record-line">
+<div><div class="label">Utility bill updated</div><div style="font-size:12px;color:var(--muted);">BT Full Fibre bill appears newer than the saved copy</div></div>
+<div class="value">Replace record?</div>
+</div>
+<div style="display:flex;gap:10px;margin-top:12px;">
+<button class="primary" onclick="toast('Utility update reviewed in prototype')" style="padding:12px 14px;">Review</button>
+<button class="secondary" onclick="toast('Ignored for now')" style="padding:12px 14px;">Ignore</button>
+</div>
+</div>
+<div class="card" style="margin-bottom:10px;">
+<div class="record-line">
+<div><div class="label">Passport reminder identified</div><div style="font-size:12px;color:var(--muted);">Family travel document may expire before summer plans</div></div>
+<div class="value">Jess · 3 months</div>
+</div>
+<div style="display:flex;gap:10px;margin-top:12px;">
+<button class="primary" onclick="toast('Passport reminder added to family review queue')" style="padding:12px 14px;">Add reminder</button>
+<button class="secondary" onclick="toast('Dismissed in prototype')" style="padding:12px 14px;">Dismiss</button>
+</div>
+</div>
+<div class="card" style="margin-bottom:10px;">
+<h3 style="margin-bottom:8px;">Sync controls</h3>
+<div class="record-line">
+<div><div class="label">Only review chosen categories</div><div style="font-size:12px;color:var(--muted);">Insurance, utilities, IDs and family essentials only</div></div>
+<label class="toggle"><input checked type="checkbox" onchange="toast('Focused review '+( this.checked?'enabled':'disabled'))"/><div class="toggle-track"></div></label>
+</div>
+<div class="record-line">
+<div><div class="label">Require confirmation before saving</div><div style="font-size:12px;color:var(--muted);">Keeps sync trustworthy and deliberate</div></div>
+<label class="toggle"><input checked type="checkbox" onchange="toast('Confirmation step '+( this.checked?'on':'off'))"/><div class="toggle-track"></div></label>
+</div>
+<div class="record-line">
+<div><div class="label">Weekly sync summary</div><div style="font-size:12px;color:var(--muted);">A calm household update from MySaiFe Agent™</div></div>
+<label class="toggle"><input checked type="checkbox" onchange="toast('Weekly sync summary '+( this.checked?'on':'off'))"/><div class="toggle-track"></div></label>
+</div>
+</div>
+<div class="support-note" style="max-width:none;text-align:left;margin-top:6px;">This prototype screen demonstrates the synchronized integration experience and approval flow. Live account connection, background sync and data ingestion would be delivered in the build phase.</div>
+<div class="tabbar">
+<button class="tab" onclick="show('home')"><span class="tab-icon">🏠</span>Home</button>
+<button class="tab" onclick="show('dashboard')"><span class="tab-icon">📊</span>Dash</button>
+<button class="tab" onclick="show('financial')"><span class="tab-icon">💳</span>Finance</button>
+<button class="tab active" onclick="show('synchub')"><span class="tab-icon">🔄</span>Sync</button>
+<button class="tab" onclick="show('featuremap')"><span class="tab-icon">🧭</span>Roadmap</button>
+<button class="tab" onclick="show('settings')"><span class="tab-icon">⚙️</span>Prefs</button>
+<button class="tab" onclick="show('partners')"><span class="tab-icon">💰</span>Savings</button>
+<button class="tab" onclick="show('emergency')"><span class="tab-icon">🆘</span>Family</button>
 </div>
 </section><div class="sheet" id="sheet">
 <div class="sheet-handle"></div>
