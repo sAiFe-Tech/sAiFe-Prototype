@@ -1115,6 +1115,132 @@ button:focus, a:focus, input:focus, select:focus, textarea:focus, [role="button"
 .referral-card p{margin:0;color:var(--muted);font-size:14px;line-height:1.5;}
 .referral-actions{display:flex;gap:10px;margin-top:12px;}
 .referral-actions button{flex:1 1 0;}
+.get2it-bridge{
+  margin-top:14px;
+  background:linear-gradient(145deg, rgba(22,28,74,.98), rgba(43,30,92,.94) 56%, rgba(120,42,123,.92));
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:22px;
+  padding:16px;
+  box-shadow:0 14px 28px rgba(35,40,79,.14);
+  color:#fff;
+}
+.get2it-bridge h3{margin:0 0 8px;font-size:19px;color:#fff;}
+.get2it-bridge p{margin:0;color:rgba(255,255,255,.90);font-size:14px;line-height:1.5;}
+.get2it-mini-pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+.get2it-mini-pills span{
+  display:inline-block;
+  padding:7px 10px;
+  border-radius:999px;
+  background:rgba(255,255,255,.11);
+  border:1px solid rgba(255,255,255,.12);
+  color:#fff;
+  font-size:11px;
+  font-weight:800;
+}
+.get2it-bridge .primary{
+  background:linear-gradient(90deg,#9EF13E,#B7F847);
+  color:#1f2750;
+}
+.get2it-bridge .secondary{
+  background:rgba(255,255,255,.10);
+  color:#fff;
+  border:1px solid rgba(255,255,255,.14);
+}
+.sheet-copy{display:grid;gap:14px;}
+.get2it-phone{
+  border-radius:28px;
+  padding:12px;
+  background:linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,.06));
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 22px 42px rgba(15,18,42,.24);
+}
+.get2it-screen{
+  border-radius:22px;
+  padding:14px;
+  color:#fff;
+  background:
+    radial-gradient(circle at 18% 14%, rgba(0,212,255,.16), transparent 24%),
+    radial-gradient(circle at 82% 10%, rgba(255,53,150,.18), transparent 22%),
+    linear-gradient(165deg, #141D67, #1D1355 58%, #2B0F46 100%);
+  min-height:360px;
+}
+.get2it-topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+.get2it-brand strong{
+  display:block;
+  font-size:22px;
+  line-height:1;
+  color:#fff;
+  font-weight:800;
+  letter-spacing:-.02em;
+}
+.get2it-brand span,.get2it-time{
+  font-size:11px;
+  color:rgba(255,255,255,.72);
+  font-weight:700;
+}
+.get2it-hero-chip,.get2it-mission,.get2it-summary{
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.08);
+  box-shadow:0 10px 22px rgba(0,0,0,.12);
+}
+.get2it-hero-chip{padding:14px;margin-bottom:12px;}
+.get2it-hero-chip h4,.get2it-summary h4{
+  margin:0 0 6px;
+  font-size:22px;
+  line-height:1.06;
+  font-weight:800;
+  color:#fff;
+}
+.get2it-hero-chip p,.get2it-summary p,.get2it-mission p{
+  margin:0;
+  font-size:13px;
+  line-height:1.45;
+  color:rgba(255,255,255,.84);
+}
+.get2it-xp{
+  display:inline-block;
+  margin-top:10px;
+  border-radius:999px;
+  padding:7px 11px;
+  font-size:11px;
+  font-weight:800;
+  color:#B7F847;
+  border:1px solid rgba(183,248,71,.34);
+  background:rgba(183,248,71,.08);
+}
+.get2it-mission{padding:14px;margin-bottom:12px;}
+.get2it-mission-top{
+  display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:6px;
+}
+.get2it-mission-top strong{font-size:14px;color:#fff;}
+.get2it-tag{
+  border-radius:999px;
+  padding:6px 9px;
+  font-size:10px;
+  font-weight:800;
+  color:#7CE8FF;
+  border:1px solid rgba(124,232,255,.28);
+  background:rgba(124,232,255,.08);
+  white-space:nowrap;
+}
+.get2it-summary{padding:14px;}
+.get2it-list{display:grid;gap:8px;margin-top:10px;}
+.get2it-row{
+  display:flex;justify-content:space-between;gap:10px;align-items:flex-start;
+  border-top:1px solid rgba(255,255,255,.08);padding-top:8px;
+}
+.get2it-row:first-child{border-top:0;padding-top:0;}
+.get2it-row strong{display:block;font-size:12px;color:#fff;}
+.get2it-row span{font-size:11px;color:rgba(255,255,255,.72);}
+.get2it-pill{
+  border-radius:999px;
+  padding:5px 9px;
+  font-size:10px;
+  font-weight:800;
+  color:#fff;
+  background:rgba(255,255,255,.10);
+}
 .footer-note{margin:16px 0 12px;text-align:center;color:#7f8ba0;font-size:12px;font-weight:700;}
 @media (min-width:380px){.trust-row{grid-template-columns:1fr;}.benefit-grid{grid-template-columns:repeat(3,1fr);} .hero h1{font-size:31px;}}
 
@@ -2255,6 +2381,20 @@ body {
 </div>
 <button class="secondary" onclick="show('synchub')" style="width:100%;margin-top:12px;">Open sync view</button>
 </div>
+<div class="get2it-bridge">
+<div class="section-pill" style="background:rgba(255,255,255,.12);color:#fff;">GET2IT counterpart</div>
+<h3>Bring younger family into the same network</h3>
+<p>MySaiFe now has a matching outward handoff: invite a younger family member into GET2IT for a lighter, mission-led start, while keeping the wider household context anchored here.</p>
+<div class="get2it-mini-pills">
+<span>Two-sided narrative</span>
+<span>Family handoff</span>
+<span>Mission-led entry</span>
+</div>
+<div class="referral-actions">
+<button class="primary" onclick="openGet2ItBridge()">Preview GET2IT side</button>
+<button class="secondary" onclick="copyGet2ItInvite()">Copy GET2IT invite</button>
+</div>
+</div>
 <div class="card explore-card" style="margin-top:14px; background:linear-gradient(135deg,#F3EFE6,#ECE6DA); border:1px solid rgba(35,40,79,.08); box-shadow:inset 0 1px 0 rgba(255,255,255,.5);">
 <div class="section-pill">See more</div>
 <div class="explore-title">Explore the key views</div>
@@ -2554,7 +2694,7 @@ body {
 <div class="avatar-circle" style="background:linear-gradient(135deg,#8b6fbf,#b39ad9);">👩</div>
 <div class="avatar-name">Jess</div>
 </div>
-<div class="member-avatar" onclick="toast('Invite a family member to sAiFe')">
+<div class="member-avatar" onclick="openGet2ItBridge()">
 <div class="avatar-circle avatar-invite">+</div>
 <div class="avatar-name">Invite</div>
 </div>
@@ -3502,6 +3642,98 @@ function shareReferralEmail(){
   window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
 }
 
+function copyGet2ItInvite(){
+  var link = 'https://get2it.app/invite/mysaife-network';
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(link).then(function(){ toast('GET2IT invite copied'); }).catch(function(){ toast(link); });
+  } else {
+    toast(link);
+  }
+}
+
+function shareGet2ItInvite(){
+  var subject = encodeURIComponent('Join our family network on GET2IT');
+  var body = encodeURIComponent('Start in GET2IT for quick setup and visible momentum, then let the right essentials flow back into MySaiFe. Prototype invite: https://get2it.app/invite/mysaife-network');
+  window.location.href = 'mailto:?subject=' + subject + '&body=' + body;
+}
+
+function openGet2ItBridge(){
+  var title = document.getElementById('sheetTitle');
+  var sub = document.getElementById('sheetSub');
+  var body = document.getElementById('sheetBody');
+  var actEl = document.getElementById('sheetActions');
+
+  title.textContent = 'GET2IT counterpart';
+  sub.textContent = 'The other side of the family handoff';
+  body.innerHTML = `
+    <div class="sheet-copy">
+      <p>MySaiFe stays as the household anchor. GET2IT becomes the lighter front door for a younger family member — then shared essentials, trusted contacts and access rules can ladder back into the wider family view.</p>
+      <div class="get2it-phone">
+        <div class="get2it-screen">
+          <div class="get2it-topbar">
+            <div class="get2it-brand">
+              <strong>GET2IT</strong>
+              <span>mission-led setup</span>
+            </div>
+            <div class="get2it-time">invited from MySaiFe</div>
+          </div>
+          <div class="get2it-hero-chip">
+            <h4>Your family has invited you in</h4>
+            <p>Start with quick wins: documents, emergency contact and shared access — without being dropped into the full household system on day one.</p>
+            <span class="get2it-xp">+50 XP for connecting</span>
+          </div>
+          <div class="get2it-mission">
+            <div class="get2it-mission-top">
+              <strong>Mission 1 — Add one key document</strong>
+              <span class="get2it-tag">Quick win</span>
+            </div>
+            <p>Upload something important and let GET2IT move the visible basics into the family network once you approve them.</p>
+          </div>
+          <div class="get2it-summary">
+            <h4>What flows back to MySaiFe</h4>
+            <div class="get2it-list">
+              <div class="get2it-row">
+                <div>
+                  <strong>Shared essentials only</strong>
+                  <span>Emergency contact, readiness status and agreed access rules</span>
+                </div>
+                <span class="get2it-pill">Linked</span>
+              </div>
+              <div class="get2it-row">
+                <div>
+                  <strong>Private detail stays inside GET2IT</strong>
+                  <span>Nothing broader appears in MySaiFe until explicitly shared</span>
+                </div>
+                <span class="get2it-pill">Protected</span>
+              </div>
+              <div class="get2it-row">
+                <div>
+                  <strong>Family narrative completed</strong>
+                  <span>MySaiFe anchors the household, GET2IT draws in the next generation</span>
+                </div>
+                <span class="get2it-pill">Two-way</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  actEl.innerHTML = '';
+  [
+    {label:'Copy GET2IT invite', primary:true, fn:function(){ copyGet2ItInvite(); }},
+    {label:'Share via email', primary:false, fn:function(){ shareGet2ItInvite(); }},
+    {label:'Open Family view', primary:false, fn:function(){ closeSheet(); show('emergency'); }}
+  ].forEach(function(a){
+    var btn = document.createElement('button');
+    btn.className = a.primary ? 'primary' : 'secondary';
+    btn.style.cssText = 'display:block;width:100%;margin-top:10px;padding:13px;font-size:15px;font-weight:800;';
+    btn.textContent = a.label;
+    btn.onclick = a.fn;
+    actEl.appendChild(btn);
+  });
+  document.getElementById('sheetOverlay').classList.add('open');
+  document.getElementById('sheet').classList.add('open');
+}
 
 function openMeetingTour(){
   openSheet('Quick demo route','A simple meeting flow','Start at Home, move to Dashboard for everyday value, then Family for emotional relevance, and finish on the Roadmap for growth potential.',[
