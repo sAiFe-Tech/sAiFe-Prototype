@@ -5,6 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>MySaiFe App Prototype</title>
+<style>@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&display=swap");</style>
 <style>
 :root {
   --navy:#23284f;
@@ -21,6 +22,7 @@
   --red:#d86e62;
   --amber:#dfa33a;
   --ok:#6fb44a;
+  --display-font:"Playfair Display", Georgia, "Times New Roman", serif;
 }
 * { box-sizing:border-box; }
 html,body {
@@ -346,6 +348,15 @@ button {
   color:var(--muted);
   font-size:13px;
   line-height:1.45;
+}
+
+.h2, h2, .card h3, .onboard-title, .unlock-card b, .unlock-celebration b {
+  font-family:var(--display-font);
+  letter-spacing:-0.03em;
+}
+
+.hero h1, .stripe, .live-stamp, .tab, .pill {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 }
 .h2, h2 {
   font-size:26px;
@@ -3543,6 +3554,16 @@ document.addEventListener('click', function(e){
 <div class="alert-item-date">🛂  September 2026</div>
 </div>
 </div>
+<div style="padding:16px 16px 4px;font-size:11px;font-weight:800;color:var(--muted);letter-spacing:.08em;">FAMILY NETWORK</div>
+<div class="alert-item tappable" onclick="closeAlertCentre();openSheet('GET2IT member connected','Essentials now shared','Matthew joined via GET2IT. Emergency contact, readiness status and agreed access rules are now visible in your MySaiFe family network. Private detail stays inside GET2IT unless explicitly shared.',[{label:'Open Family view', primary:true, fn:function(){ closeSheet(); show('emergency'); }},{label:'Close', primary:false, fn:function(){ closeSheet(); }}])">
+<div class="alert-dot green"></div>
+<div class="alert-item-body">
+<div class="alert-item-title">Matthew joined via GET2IT — essentials now shared</div>
+<div class="alert-item-desc">A younger family member has accepted the invite. Shared essentials are now visible in MySaiFe.</div>
+<div class="alert-item-date">💚  Tap to open family view</div>
+</div>
+</div>
+
 <div style="padding:16px 16px 4px;font-size:11px;font-weight:800;color:var(--muted);letter-spacing:.08em;">SAVINGS SPOTTED</div>
 <div class="alert-item tappable" onclick="closeAlertCentre();openSheet('Savings opportunity','Save £27/month on subscriptions','You appear to have both Spotify and Apple Music active this month. Cancelling one would save £10.99/month. Your Agent also found a duplicate Amazon subscription.')">
 <div class="alert-dot green"></div>
