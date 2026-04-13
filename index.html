@@ -2468,6 +2468,14 @@ body {
 </div>
 <p>For shared household visibility, continuity planning and broader family access.</p>
 </div>
+<div class="price-card" style="background:linear-gradient(180deg,#fffdf8 0%,#f3f8ee 100%);border:1px solid rgba(120,184,74,.22);">
+<div class="price-top">
+<div class="price-name">MySaiFe Vault</div>
+<div class="price-tag">Premium+</div>
+</div>
+<p>Secure your family’s future access. Your information is encrypted and stored securely. With MySaiFe Vault, access for your chosen beneficiaries is verified independently by a legal professional — not just by us.</p>
+<div style="margin-top:8px;font-size:12px;color:var(--muted);font-weight:700;">Included in premium trust plans</div>
+</div>
 </div>
 <div class="trial-note">14-day free trial · no card required</div>
 </div>
@@ -3341,6 +3349,7 @@ body {
 <label class="toggle"><input onchange="toast('2FA '+( this.checked?'enabled':'disabled'))" type="checkbox"/><div class="toggle-track"></div></label>
 </div>
 </div>
+<button class="secondary" onclick="show('vaulttrust')" style="width:100%;margin-top:4px;padding:13px;">How your data is protected</button>
 <h2 style="margin:18px 0 8px;">Notifications</h2>
 <div class="card" style="margin-bottom:10px;">
 <div class="record-line">
@@ -3378,9 +3387,49 @@ body {
 <div class="record-line"><div class="label">Plan</div><div class="value" style="color:var(--green2);">Family · £15.99/mo</div></div>
 <div class="record-line"><div class="label">Next billing</div><div class="value">15 May 2026</div></div>
 <div class="record-line"><div class="label">Members</div><div class="value">3 of 6 used</div></div>
+<div class="record-line"><div class="label">Vault status</div><div class="value">Available</div></div>
 </div>
 <button class="secondary" onclick="toast('Managing subscription…')" style="width:100%;margin-top:4px;padding:13px;">Manage subscription</button>
 <button class="secondary" onclick="show('featuremap')" style="width:100%;margin-top:10px;padding:13px;">View future feature map</button>
+<div class="tabbar">
+<button class="tab" onclick="show('home')"><span class="tab-icon">🏠</span>Home</button>
+<button class="tab" onclick="show('property')"><span class="tab-icon">🏡</span>Property</button>
+<button class="tab" onclick="show('financial')"><span class="tab-icon">💳</span>Finance</button>
+<button class="tab" onclick="show('vehicles')"><span class="tab-icon">🚗</span>Vehicles</button>
+<button class="tab" onclick="show('lifestyle')"><span class="tab-icon">📋</span>Lifestyle</button>
+<button class="tab" onclick="show('emergency')"><span class="tab-icon">🆘</span>Family</button>
+<button class="tab" onclick="show('partners')"><span class="tab-icon">💰</span>Savings</button>
+<button class="tab active" onclick="show('settings')"><span class="tab-icon">⚙️</span>Prefs</button>
+</div>
+</section><section class="screen bg-settings" id="vaulttrust">
+<div class="status">
+<div class="localtime">09:41 Local Time</div>
+<div class="status-right">
+<button class="global-chip" onclick="toggleGlobalMenu()">UK · EN</button>
+<div class="dots"><span></span><span></span><span></span></div>
+</div>
+</div>
+<div class="topbar"><button class="soft" onclick="show('settings')" style="opacity:0.85;">← Settings</button><div class="pill">Trust layer</div></div>
+<h2>How your data is protected</h2>
+<p class="sub">A visible architecture of trust — designed to reassure the household that access is protected, controlled and not dependent on one company alone.</p>
+<div class="card" style="margin-bottom:10px;background:linear-gradient(180deg,#fffdf8 0%,#f3f8ee 100%);border:1px solid rgba(120,184,74,.22);">
+<div class="section-pill">MySaiFe Vault</div>
+<p style="margin:0;color:var(--navy);font-size:15px;line-height:1.6;font-weight:700;">Your MySaiFe data is encrypted and stored securely.</p>
+<p style="margin:12px 0 0;color:var(--text);font-size:14px;line-height:1.6;">With MySaiFe Vault, release to your named beneficiaries is verified independently by a legal professional — not just by us.</p>
+<p style="margin:12px 0 0;color:var(--text);font-size:14px;line-height:1.6;">That means your family’s access is supported by a legal process, not dependent on our continued existence as a company.</p>
+</div>
+<div class="card" style="margin-bottom:10px;">
+<div class="record-line"><div class="label">End-to-end encrypted storage</div><div class="value" style="color:var(--green2);">Enabled</div></div>
+<div class="record-line"><div class="label">Access only granted to people you nominate</div><div class="value">Controlled</div></div>
+<div class="record-line"><div class="label">Independent legal verification</div><div class="value">Required</div></div>
+<div class="record-line"><div class="label">Unauthorised release</div><div class="value" style="color:#b64e44;">Blocked</div></div>
+</div>
+<div class="card" style="margin-bottom:10px;">
+<div class="section-pill">Independent verification partner</div>
+<h3 style="margin-bottom:6px;">Smith &amp; Co. Solicitors</h3>
+<p style="margin:0;color:var(--muted);font-size:13px;line-height:1.5;">Illustrative partner shown for prototype purposes. Final legal verification partner to be confirmed.</p>
+</div>
+<button class="secondary" onclick="toast('Vault release conditions shown in demo')" style="width:100%;margin-top:4px;padding:13px;">View legal release conditions</button>
 <div class="tabbar">
 <button class="tab" onclick="show('home')"><span class="tab-icon">🏠</span>Home</button>
 <button class="tab" onclick="show('property')"><span class="tab-icon">🏡</span>Property</button>
