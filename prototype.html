@@ -1132,7 +1132,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <body>
 <div class="app">
 
-<section id="home" class="screen active bg-family">
+<section id="home" class="screen bg-family">
   <div class="status">
   <div class="localtime">09:41 Local Time</div>
   <div class="status-right">
@@ -1355,7 +1355,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </section>
 
 
-<section id="dashboard" class="screen bg-family">
+<section id="dashboard" class="screen active bg-family">
   <div class="status">
   <div class="localtime">09:41 Local Time</div>
   <div class="status-right">
@@ -1557,7 +1557,7 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
 
   <div class="tabbar">
-    <button class="tab" onclick="show('home')"><span class="tab-icon">🏠</span>Home</button>
+    <button class="tab active" onclick="show(\'dashboard\')"><span class="tab-icon">🏠</span>Home</button>
     <button class="tab" onclick="show('property')"><span class="tab-icon">🏡</span>Property</button>
     <button class="tab" onclick="show('financial')"><span class="tab-icon">💳</span>Finance</button>
     <button class="tab" onclick="show('vehicles')"><span class="tab-icon">🚗</span>Vehicles</button>
@@ -1624,7 +1624,7 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
   <button class="secondary" style="display:block;width:100%;padding:12px;font-size:15px;font-weight:800;text-align:center;margin-top:4px;" onclick="openSheet('Add a property','Holiday home, rental or second property','You can store any property — each gets its own mortgage, insurance, deeds and utility section. Your sAiFe Agent will track renewals automatically.',[{label:'Add property',primary:true,fn:function(){closeSheet();toast('Opening property setup…');}}])">+ Add a property</button>
   <div class="tabbar">
-    <button class="tab" onclick="show('home')"><span class="tab-icon">🏠</span>Home</button>
+    <button class="tab" onclick="show('dashboard')"><span class="tab-icon">🏠</span>Home</button>
     <button class="tab active" onclick="show('property')"><span class="tab-icon">🏡</span>Property</button>
     <button class="tab" onclick="show('financial')"><span class="tab-icon">💳</span>Finance</button>
     <button class="tab" onclick="show('vehicles')"><span class="tab-icon">🚗</span>Vehicles</button>
@@ -1712,7 +1712,7 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
   <button class="primary" style="display:block;width:100%;padding:13px;font-size:15px;font-weight:800;text-align:center;margin-top:12px;" onclick="openAddDoc()">Add a financial document</button>
   <div class="tabbar">
-    <button class="tab" onclick="show('home')"><span class="tab-icon">🏠</span>Home</button>
+    <button class="tab" onclick="show('dashboard')"><span class="tab-icon">🏠</span>Home</button>
     <button class="tab" onclick="show('property')"><span class="tab-icon">🏡</span>Property</button>
     <button class="tab active" onclick="show('financial')"><span class="tab-icon">💳</span>Finance</button>
     <button class="tab" onclick="show('vehicles')"><span class="tab-icon">🚗</span>Vehicles</button>
@@ -1766,7 +1766,7 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
   <button class="secondary" style="display:block;width:100%;padding:12px;font-size:15px;font-weight:800;text-align:center;margin-top:4px;" onclick="openSheet('Add a vehicle','Car, van, motorbike or boat','Each vehicle gets its own MOT, insurance, finance and ownership section. Your Agent will track renewal dates automatically.',[{label:'Add vehicle',primary:true,fn:function(){closeSheet();toast('Adding vehicle…');}}])">+ Add a vehicle</button>
   <div class="tabbar">
-    <button class="tab" onclick="show('home')"><span class="tab-icon">🏠</span>Home</button>
+    <button class="tab" onclick="show('dashboard')"><span class="tab-icon">🏠</span>Home</button>
     <button class="tab" onclick="show('property')"><span class="tab-icon">🏡</span>Property</button>
     <button class="tab" onclick="show('financial')"><span class="tab-icon">💳</span>Finance</button>
     <button class="tab active" onclick="show('vehicles')"><span class="tab-icon">🚗</span>Vehicles</button>
@@ -1834,7 +1834,7 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
   <button class="primary" style="display:block;width:100%;padding:14px;font-size:15px;font-weight:800;text-align:center;margin-top:12px;" onclick="openAddDoc()">Add a health record <svg style="display:inline-block;width:10px;height:9px;vertical-align:super;margin-left:1px;opacity:.8;" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="5" r="3" fill="none" stroke="currentColor" stroke-width="1.4"/><ellipse cx="8" cy="11" rx="5" ry="4" fill="none" stroke="currentColor" stroke-width="1.4"/><line x1="13" y1="4.5" x2="15" y2="4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M3,9 Q1,7 2,5" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="9.2" cy="4.2" r=".55" fill="currentColor"/><line x1="7" y1="15" x2="6.5" y2="16" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/><line x1="9" y1="15" x2="9.5" y2="16" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg></button>
   <div class="tabbar">
-    <button class="tab" onclick="show('home')"><span class="tab-icon">🏠</span>Home</button>
+    <button class="tab" onclick="show('dashboard')"><span class="tab-icon">🏠</span>Home</button>
     <button class="tab" onclick="show('property')"><span class="tab-icon">🏡</span>Property</button>
     <button class="tab" onclick="show('financial')"><span class="tab-icon">💳</span>Finance</button>
     <button class="tab" onclick="show('vehicles')"><span class="tab-icon">🚗</span>Vehicles</button>
@@ -1898,7 +1898,7 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
 
   <div class="tabbar">
-    <button class="tab" onclick="show('home')"><span class="tab-icon">🏠</span>Home</button>
+    <button class="tab" onclick="show('dashboard')"><span class="tab-icon">🏠</span>Home</button>
     <button class="tab" onclick="show('property')"><span class="tab-icon">🏡</span>Property</button>
     <button class="tab" onclick="show('financial')"><span class="tab-icon">💳</span>Finance</button>
     <button class="tab" onclick="show('vehicles')"><span class="tab-icon">🚗</span>Vehicles</button>
@@ -1983,7 +1983,7 @@ document.addEventListener('DOMContentLoaded', function () {
   <div style="text-align:center;margin-top:12px;font-size:12px;color:var(--muted);">Sign up free · Cancel anytime · <span style="text-decoration:underline;cursor:pointer;" onclick="show('settings')">Terms apply</span></div>
 
   <div class="tabbar">
-    <button class="tab" onclick="show('home')"><span class="tab-icon">🏠</span>Home</button>
+    <button class="tab" onclick="show('dashboard')"><span class="tab-icon">🏠</span>Home</button>
     <button class="tab" onclick="show('property')"><span class="tab-icon">🏡</span>Property</button>
     <button class="tab" onclick="show('financial')"><span class="tab-icon">💳</span>Finance</button>
     <button class="tab" onclick="show('vehicles')"><span class="tab-icon">🚗</span>Vehicles</button>
@@ -2087,7 +2087,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   <div style="height:2px;"></div>
   <div class="tabbar">
-    <button class="tab" onclick="show('home')"><span class="tab-icon">🏠</span>Home</button>
+    <button class="tab" onclick="show('dashboard')"><span class="tab-icon">🏠</span>Home</button>
     <button class="tab" onclick="show('property')"><span class="tab-icon">🏡</span>Property</button>
     <button class="tab" onclick="show('financial')"><span class="tab-icon">💳</span>Finance</button>
     <button class="tab" onclick="show('vehicles')"><span class="tab-icon">🚗</span>Vehicles</button>
@@ -2172,7 +2172,7 @@ document.addEventListener('DOMContentLoaded', function () {
   <div style="text-align:center;padding:4px 0 8px;font-size:11px;color:var(--muted);">Version 1.0 (prototype) · MySaiFe <svg style="display:inline-block;width:10px;height:9px;vertical-align:super;margin-left:1px;opacity:.8;" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="5" r="3" fill="none" stroke="currentColor" stroke-width="1.4"/><ellipse cx="8" cy="11" rx="5" ry="4" fill="none" stroke="currentColor" stroke-width="1.4"/><line x1="13" y1="4.5" x2="15" y2="4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M3,9 Q1,7 2,5" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="9.2" cy="4.2" r=".55" fill="currentColor"/><line x1="7" y1="15" x2="6.5" y2="16" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/><line x1="9" y1="15" x2="9.5" y2="16" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg> · © 2026 MySaiFe Limited</div>
 
   <div class="tabbar">
-    <button class="tab" onclick="show('home')"><span class="tab-icon">🏠</span>Home</button>
+    <button class="tab" onclick="show('dashboard')"><span class="tab-icon">🏠</span>Home</button>
     <button class="tab" onclick="show('property')"><span class="tab-icon">🏡</span>Property</button>
     <button class="tab" onclick="show('financial')"><span class="tab-icon">💳</span>Finance</button>
     <button class="tab" onclick="show('vehicles')"><span class="tab-icon">🚗</span>Vehicles</button>
