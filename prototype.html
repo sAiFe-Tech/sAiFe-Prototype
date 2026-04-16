@@ -2161,7 +2161,7 @@ body {
 </style></head>
 <body><div class="soft-bg"></div>
 <div class="app">
-<section class="screen bg-family" id="home">
+<section class="screen active bg-family" id="home">
 <div class="status">
 <div class="localtime">09:41 Local Time</div>
 <div class="status-right">
@@ -2488,7 +2488,7 @@ body {
 </div>
 <button class="primary" onclick="show('dashboard')">View MySaiFe dashboard</button>
 <button class="secondary" onclick="show('onboarding2')" style="margin-top:10px;">Continue building</button>
-</section><section class="screen active bg-family" id="dashboard">
+</section><section class="screen bg-family" id="dashboard">
 <div class="status">
 <div class="localtime">09:41 Local Time</div>
 <div class="status-right">
@@ -3565,5 +3565,19 @@ document.addEventListener('DOMContentLoaded', function(){
   if (dot) dot.style.display = 'inline-block';
 });
 </script>
+
+<script>
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+window.addEventListener('load', function () {
+  if (typeof show === 'function') {
+    show('home');
+  } else {
+    window.scrollTo(0, 0);
+  }
+});
+</script>
+
 </body>
 </html>
