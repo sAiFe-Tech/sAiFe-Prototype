@@ -2784,14 +2784,66 @@ body {
 <div class="topbar"><button class="soft" onclick="show('dashboard')" style="opacity:0.85;">← Dashboard</button><div class="pill">Vehicles &amp; Transport</div></div>
 <h2>Vehicles</h2>
 <p class="sub">All transport-related records clearly structured and accessible.</p>
+
 <div class="progress-list">
-<div class="progress-item"><div><strong style="display:block;color:var(--navy);">Audi S3</strong><span class="label">Insurance and ownership added</span></div><div style="display:flex;align-items:center;gap:10px;"><span class="tag ambertag">68%</span><div class="gauge amber" style="--p:68;width:54px;height:54px;"><span>68%</span></div></div></div>
-<div class="progress-item"><div><strong style="display:block;color:var(--navy);">Mercedes Vito</strong><span class="label">Business records partly uploaded</span></div><div style="display:flex;align-items:center;gap:10px;"><span class="tag redtag">42%</span><div class="gauge red" style="--p:42;width:54px;height:54px;"><span>42%</span></div></div></div>
+  <div class="progress-item">
+    <div>
+      <strong style="display:block;color:var(--navy);">Audi S3 · KX21 HBF</strong>
+      <span class="label">68% · V5C &amp; insurance stored · service missing</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span class="tag ambertag">68%</span>
+      <div class="gauge amber" style="--p:68;width:54px;height:54px;"><span>68%</span></div>
+    </div>
+  </div>
+  <div class="progress-item">
+    <div>
+      <strong style="display:block;color:var(--navy);">Mercedes Vito · YH19 KMT</strong>
+      <span class="label">42% · V5C &amp; service records missing</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span class="tag redtag">42%</span>
+      <div class="gauge red" style="--p:42;width:54px;height:54px;"><span>42%</span></div>
+    </div>
+  </div>
 </div>
+
 <div class="stack">
-<div class="card"><h3>Audi S3</h3><p>Insurance, finance and ownership details.</p></div>
-<div class="card"><h3>Mercedes Vito</h3><p>Business vehicle records and documents.</p></div>
+  <div class="card" style="padding:0;overflow:hidden;">
+    <div style="padding:16px 16px 14px;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">
+        <div>
+          <h3 style="margin:0 0 4px;">Audi S3</h3>
+          <p style="margin:0;color:var(--muted);">KX21 HBF · 2021 · Quantum Grey</p>
+        </div>
+        <div style="color:#9ba6ba;font-weight:800;font-size:18px;line-height:1;">›</div>
+      </div>
+      <div class="record-line"><div class="label">Registration</div><div class="value">KX21 HBF</div></div>
+      <div class="record-line"><div class="label">MOT</div><div class="value" style="color:var(--ok);">Dec 2026 ✓</div></div>
+      <div class="record-line"><div class="label">Insurance</div><div class="value" style="color:var(--ok);">Direct Line ✓</div></div>
+      <div class="record-line"><div class="label">Service</div><div class="value" style="color:var(--red);">Overdue ⚠</div></div>
+    </div>
+  </div>
+
+  <div class="card" style="padding:0;overflow:hidden;">
+    <div style="padding:16px 16px 14px;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">
+        <div>
+          <h3 style="margin:0 0 4px;">Mercedes Vito</h3>
+          <p style="margin:0;color:var(--muted);">YH19 KMT · 2019 · Business</p>
+        </div>
+        <div style="color:#9ba6ba;font-weight:800;font-size:18px;line-height:1;">›</div>
+      </div>
+      <div class="record-line"><div class="label">Registration</div><div class="value">YH19 KMT</div></div>
+      <div class="record-line"><div class="label">MOT</div><div class="value" style="color:var(--amber);">Sep 2025 ⚠</div></div>
+      <div class="record-line"><div class="label">Insurance</div><div class="value" style="color:var(--ok);">Aviva ✓</div></div>
+      <div class="record-line"><div class="label">V5C</div><div class="value" style="color:var(--red);">Missing ⚠</div></div>
+    </div>
+  </div>
+
+  <button class="secondary" style="background:rgba(255,253,248,0.94);font-weight:800;">+ Add a vehicle</button>
 </div>
+
 <div class="tabbar">
 <button class="tab" onclick="show('home')"><span class="tab-icon">🏠</span>Home</button>
 <button class="tab" onclick="show('property')"><span class="tab-icon">🏡</span>Property</button>
