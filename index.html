@@ -48,7 +48,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;}
 .nav-wm:hover{opacity:.82;}
 .nav-tag{font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;border-left:1px solid var(--line);padding-left:12px;}
 .nav-acts{display:flex;gap:10px;align-items:center;}
-@media(max-width:760px){.nav{height:auto;padding:14px 18px;flex-direction:column;align-items:flex-start;gap:12px;}.nav-acts{width:100%;}.nav-acts>*{flex:1;text-align:center;}.nav-tag{display:none;}}
+@media(max-width:760px){.nav{height:auto;padding:12px 18px;flex-direction:column;align-items:flex-start;gap:8px;}.nav-acts{width:100%;}.nav-acts>*{flex:1;text-align:center;}.nav-tag{display:none;}}
 
 /* Buttons */
 .btn-gold,.btn-ghost,.btn-navy{border:none;border-radius:16px;padding:13px 24px;font-size:14px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;transition:transform .18s var(--ease),filter .18s,box-shadow .18s,background .18s;}
@@ -59,6 +59,9 @@ h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;}
 .btn-ghost:hover{transform:translateY(-2px);background:#fff;box-shadow:var(--shadow);}
 .btn-navy{background:var(--navy);color:#fff;}
 .btn-navy:hover{transform:translateY(-2px);background:var(--navy2);box-shadow:0 10px 24px rgba(35,40,79,.2);}
+.btn-green{background:linear-gradient(90deg,#4f9a28,#78b84a);color:#fff;letter-spacing:.01em;box-shadow:0 10px 24px rgba(95,156,53,.28);border-radius:16px;border:none;padding:13px 24px;font-size:14px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;transition:transform .18s var(--ease),filter .18s,box-shadow .18s,background .18s;}
+.btn-green:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(95,156,53,.38);filter:brightness(1.06);}
+.btn-green:active{transform:translateY(0);}
 
 /* Hero */
 .hero{padding:56px 0 48px;}
@@ -233,7 +236,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;}
 .pop-consent{display:flex;align-items:flex-start;gap:10px;padding:12px;background:rgba(95,156,53,.07);border-radius:12px;border:1px solid rgba(95,156,53,.15);}
 .pop-consent input{width:16px;height:16px;flex-shrink:0;margin-top:2px;accent-color:var(--green2);}
 .pop-consent label{font-size:11px;color:var(--muted);line-height:1.45;cursor:pointer;}
-.pop-submit,.sh-nx,.r-ln{width:100%;background:linear-gradient(90deg,var(--gold2),var(--gold));color:var(--navy);border:none;border-radius:14px;padding:15px;font-size:15px;font-weight:800;box-shadow:0 10px 24px rgba(184,150,58,.22);transition:filter .18s,transform .18s,box-shadow .18s;}
+.pop-submit,.sh-nx,.r-ln{width:100%;background:linear-gradient(90deg,var(--gold2),var(--gold));color:var(--navy);border:none;border-radius:16px;padding:15px;font-size:15px;font-weight:800;box-shadow:0 10px 24px rgba(184,150,58,.22);transition:filter .18s,transform .18s,box-shadow .18s;}
 .pop-submit:hover,.sh-nx:hover,.r-ln:hover{filter:brightness(1.05);transform:translateY(-2px);box-shadow:0 14px 28px rgba(184,150,58,.30);}
 .pop-privacy{text-align:center;font-size:11px;color:var(--muted);margin-top:8px;line-height:1.4;}
 .pop-success{display:none;text-align:center;padding:16px 0;}
@@ -249,10 +252,10 @@ h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;}
 .sh-bk{background:rgba(35,40,79,.07);border:none;border-radius:13px;padding:13px 18px;font-size:14px;font-weight:700;color:var(--navy);transition:background .18s;}
 .sh-bk:hover{background:rgba(35,40,79,.13);}
 .r-fs{display:grid;gap:9px;margin:18px 0;text-align:left;}
-.rf{display:flex;align-items:center;gap:10px;padding:11px 13px;background:rgba(95,156,53,.07);border-radius:12px;font-size:13px;color:var(--navy);font-weight:600;}
+.rf{display:flex;align-items:center;gap:10px;padding:11px 13px;background:rgba(95,156,53,.07);border-radius:12px;font-size:13px;color:var(--navy);font-weight:500;}
 .rf-ck{color:var(--green2);}
 .r-fr{font-size:13px;color:var(--green2);font-weight:700;margin-bottom:14px;text-align:center;}
-.r-reg{display:block;text-align:center;background:rgba(35,40,79,.07);color:var(--navy);border-radius:14px;padding:13px 20px;font-size:14px;font-weight:700;margin-top:8px;cursor:pointer;border:none;width:100%;transition:background .18s;}
+.r-reg{display:block;text-align:center;background:rgba(35,40,79,.07);color:var(--navy);border-radius:16px;padding:13px 20px;font-size:14px;font-weight:700;margin-top:8px;cursor:pointer;border:none;width:100%;transition:background .18s;}
 .r-reg:hover{background:rgba(35,40,79,.13);}
 </style>
 </head>
@@ -263,7 +266,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;}
     <span class="nav-tag">Life's Essential Information</span>
   </div>
   <div class="nav-acts">
-    <button type="button" class="btn-ghost" onclick="openPopup()">Register interest</button>
+    <button type="button" class="btn-green" onclick="openPopup()">Register your interest — it's free</button>
     <button type="button" class="btn-navy" onclick="openPrototype()">Open prototype →</button>
   </div>
 </nav>
@@ -285,7 +288,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;}
       </div>
       <div class="hero-acts">
         <button type="button" class="btn-gold" onclick="openSheet()">Answer 4 questions</button>
-        <button type="button" class="btn-ghost" onclick="openPopup()">Register your interest</button>
+        <button type="button" class="btn-green" onclick="openPopup()">Register your interest — it's free</button>
       </div>
       <div class="mini-proof">
         <div class="item"><b>Made for households</b><br/>Property, finances, family and emergency information in one place.</div>
@@ -362,7 +365,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;}
         <div class="checklist">
           <div class="check"><span class="dot">✓</span><span>Encrypted and privacy conscious</span></div>
           <div class="check"><span class="dot">✓</span><span>Clearer continuity for household members</span></div>
-          <div class="check"><span class="dot">✓</span><span>Vault positioned as the premium assurance layer</span></div>
+          <div class="check"><span class="dot">✓</span><span>Premium Vault layer for those who want added reassurance</span></div>
         </div>
       </div>
     </div>
@@ -420,7 +423,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;}
         <div><h4>Guided onboarding</h4><p>For households that would like help getting everything properly in place.</p></div>
         <div class="price">Optional</div>
       </div>
-      <div class="hero-acts" style="margin-top:8px"><button type="button" class="btn-gold" onclick="openPopup()" style="width:100%">Register interest in MyS<span class="saife-a">A</span>iFe</button></div>
+      <div class="hero-acts" style="margin-top:8px"><button type="button" class="btn-green" onclick="openPopup()" style="width:100%;">Register your interest — it's free</button></div>
     </div>
   </div>
 </section>
@@ -432,7 +435,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;}
       <p>See how MyS<span class="saife-a">A</span>iFe could help, answer four quick questions, explore the trust layer and register your interest through a popup linked directly to hello@mysaife.co.uk.</p>
       <div class="hero-acts" style="justify-content:center">
         <button type="button" class="btn-gold" onclick="openSheet()">Answer 4 questions</button>
-        <button type="button" class="btn-ghost" onclick="openPopup()">Register your interest</button>
+        <button type="button" class="btn-green" onclick="openPopup()">Register your interest — it's free</button>
       </div>
     </div>
   </div>
@@ -509,7 +512,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;}
       <div class="sh-nav"><button type="button" class="sh-bk" onclick="go(0)">← Back</button><button type="button" class="sh-nx" onclick="go(2)">Continue →</button></div>
     </div>
     <div class="stp" id="s2">
-      <div class="sh-ic">💭</div><div class="sh-q">What worries you most?</div><div class="sh-sb">No wrong answers — this tells the prototype where to focus first.</div>
+      <div class="sh-ic">💭</div><div class="sh-q">What worries you most?</div><div class="sh-sb">No wrong answers — this helps MySAiFe understand what matters most to you.</div>
       <div class="opts">
         <button type="button" class="opt" onclick="pick(this,2,'chaos')"><span class="oi">🌀</span>Things feel too scattered</button>
         <button type="button" class="opt" onclick="pick(this,2,'burden')"><span class="oi">🤍</span>Burden on loved ones</button>
@@ -532,10 +535,10 @@ h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;}
       <div class="r-w">
         <div class="r-ic" id="rIcon">✨</div>
         <div class="r-hd" id="rHead">MyS<span class="saife-a">A</span>iFe looks relevant</div>
-        <div class="r-sb" id="rSub">A tighter page, the same core promise, and a clearer starting point for you.</div>
+        <div class="r-sb" id="rSub"></div>
         <div class="r-fs" id="rFs"></div>
-        <div class="r-fr">Best next step: register your interest and get early access.</div>
-        <button type="button" class="r-ln" onclick="closeSheet();openPopup();">Register via popup</button>
+        <div class="r-fr">Your best next step is to register your interest and get early access.</div>
+        <button type="button" class="r-ln" onclick="closeSheet();openPopup();">Register your interest — it's free</button>
         <button type="button" class="r-reg" onclick="closeSheet()">Close</button>
       </div>
     </div>
@@ -590,18 +593,81 @@ function show(n){document.querySelectorAll('.stp').forEach((s,i)=>s.classList.to
 function pick(btn,step,val){btn.closest('.opts').querySelectorAll('.opt').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');A[step]=val;}
 function go(n){show(n);}
 function result(){
-  const who=A[0]||'your household';
+  const who=A[0]||'just me';
   const focus=A[1]||'documents';
   const worry=A[2]||'chaos';
   const ready=A[3]||'scattered';
-  const iconMap={'just me':'🙋','me and my partner':'👫','my family':'👨‍👩‍👧‍👦','helping my parents':'👴'};
+
+  const iconMap={
+    'just me':'🙋',
+    'me and my partner':'👫',
+    'my family':'👨‍👩‍👧‍👦',
+    'helping my parents':'👴'
+  };
+
+  const headMap={
+    'just me':'MySAiFe was built for you',
+    'me and my partner':'MySAiFe works beautifully for couples',
+    'my family':'MySAiFe is exactly what families need',
+    'helping my parents':'MySAiFe makes this so much easier'
+  };
+
+  const subMap={
+    'just me':{
+      'property':'Your home and everything tied to it — mortgages, insurance, keys — deserves to live somewhere you can always find it. MySAiFe keeps it quietly organised, so it\'s there when you need it.',
+      'documents':'The documents that matter most have a habit of being hardest to find. MySAiFe changes that — everything filed automatically, always up to date, always yours.',
+      'emergency':'Knowing that the right people can access the right information in a crisis is a profound kind of peace of mind. MySAiFe is built around that promise.',
+      'finances':'Pensions, accounts, policies — the full picture of your financial life, visible at a glance. No more piecing it together from memory.'
+    },
+    'me and my partner':{
+      'property':'Between you, there\'s a lot to keep track of. MySAiFe gives you both a shared, always-current view of what you own, what you owe, and what matters.',
+      'documents':'Two lives, one clear picture. MySAiFe quietly brings everything together so neither of you is ever searching for something the other one filed.',
+      'emergency':'If something happened to either of you, would the other know where everything is? MySAiFe makes sure the answer is always yes.',
+      'finances':'Shared finances are complicated. MySAiFe gives you both clarity — without the spreadsheets, the conversations you keep forgetting to have, or the paperwork you can\'t find.'
+    },
+    'my family':{
+      'property':'Homes, mortgages, insurance, contents — the things your family depends on. MySAiFe keeps them organised so the people you love are never left searching.',
+      'documents':'Birth certificates, wills, policies, passports — the documents your family would need most are the hardest to find in a hurry. Not anymore.',
+      'emergency':'In a crisis, your family needs clarity, not chaos. MySAiFe ensures the right information reaches the right people, calmly and securely.',
+      'finances':'Pensions, savings, protection policies — your family\'s financial life, laid out clearly. MySAiFe holds it all so nothing gets missed and nothing gets lost.'
+    },
+    'helping my parents':{
+      'property':'Helping a parent keep track of their home, their insurance, their affairs — it\'s an act of love. MySAiFe makes it practical too.',
+      'documents':'The documents that matter most to your parents should never depend on memory to be found. MySAiFe keeps everything in one place, ready when it\'s needed.',
+      'emergency':'Knowing you could step in and find everything your parents need, calmly and quickly — that\'s what MySAiFe is built for.',
+      'finances':'Helping an older parent understand and organise their financial affairs is one of the most important things you can do. MySAiFe makes it possible without the overwhelm.'
+    }
+  };
+
+  const readyLineMap={
+    'sorted':'You\'re already ahead of most people. MySAiFe will keep you there — quietly, in the background, without any effort from you.',
+    'some gaps':'You\'re closer than you think. MySAiFe will gently close those gaps and make sure they stay closed.',
+    'messy':'You\'re not alone — most people are in the same place. MySAiFe is designed to bring calm to the chaos, one step at a time.',
+    'scattered':'This is exactly what MySAiFe was built for. A clear starting point, a gentle pace, and a promise that things will feel different very soon.'
+  };
+
+  const focusLineMap={
+    'property':'Getting your property and home information organised first gives you a solid foundation to build everything else on.',
+    'documents':'Starting with your most important documents means the things that matter most are secured before anything else.',
+    'emergency':'Having your emergency information in order is the kindest thing you can do for the people you love.',
+    'finances':'A clear view of your finances — pensions, accounts, protection — is where real peace of mind begins.'
+  };
+
   document.getElementById('rIcon').textContent=iconMap[who]||'✨';
-  document.getElementById('rHead').textContent='MySAiFe looks well suited to '+who;
-  document.getElementById('rSub').textContent='Because '+focus+' matters most, '+worry+' is the strongest concern, and things feel '+ready+' today, the clearest next step is to start with the essentials and trusted access.';
+  document.getElementById('rHead').textContent=headMap[who]||'MySAiFe was made for this';
+
+  const subText=(subMap[who]&&subMap[who][focus])
+    ? subMap[who][focus]
+    : 'MySAiFe quietly brings everything together — documents, finances, wishes — so the people who matter most always have what they need.';
+  document.getElementById('rSub').textContent=subText;
+
+  const readyLine=readyLineMap[ready]||'MySAiFe meets you where you are and helps you move forward, gently.';
+  const focusLine=focusLineMap[focus]||'The most important information, always where you need it.';
+
   document.getElementById('rFs').innerHTML=''
-    +'<div class="rf"><span class="rf-ck">✓</span><span>Start with '+focus+' so the most important information is visible first.</span></div>'
-    +'<div class="rf"><span class="rf-ck">✓</span><span>Use the qualifier logic to show where gaps are likely to be.</span></div>'
-    +'<div class="rf"><span class="rf-ck">✓</span><span>Register interest so the MySAiFe team can follow up personally.</span></div>';
+    +'<div class="rf"><span class="rf-ck">✓</span><span>'+focusLine+'</span></div>'
+    +'<div class="rf"><span class="rf-ck">✓</span><span>'+readyLine+'</span></div>'
+    +'<div class="rf"><span class="rf-ck">✓</span><span>Register your interest and someone from the MySAiFe team will follow up with you personally.</span></div>';
   show(4);
 }
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePopup();closeSheet();}});
