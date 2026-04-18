@@ -571,22 +571,22 @@ h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;}
     <div class="stp on" id="s0">
       <div class="sh-ic">👋</div><div class="sh-q">Who is this for?</div><div class="sh-sb">MyS<span class="saife-a">A</span>iFe works for individuals and whole households. Tell us about your situation.</div>
       <div class="opts">
-        <button type="button" class="opt" onclick="pick(this,0,'just me')"><span class="oi">🙋</span>Just me</button>
+        <button type="button" class="opt" onclick="pick(this,0,'just me')"><span class="oi">🙋</span>Just Me</button>
         <button type="button" class="opt" onclick="pick(this,0,'me and my partner')"><span class="oi">👫</span>Me &amp; my partner</button>
         <button type="button" class="opt" onclick="pick(this,0,'my family')"><span class="oi">👨‍👩‍👧‍👦</span>My family</button>
         <button type="button" class="opt" onclick="pick(this,0,'helping my parents')"><span class="oi">👴</span>Helping my parents</button>
       </div>
-      <div class="sh-nav"><button type="button" class="sh-nx" onclick="go(1)">Continue →</button></div>
+      
     </div>
     <div class="stp" id="s1">
       <div class="sh-ic">🤔</div><div class="sh-q">What matters most right now?</div><div class="sh-sb">This helps MyS<span class="saife-a">A</span>iFe show the most relevant starting point.</div>
       <div class="opts">
-        <button type="button" class="opt" onclick="pick(this,1,'property')"><span class="oi">🏡</span>Property and home</button>
-        <button type="button" class="opt" onclick="pick(this,1,'documents')"><span class="oi">📄</span>Important documents</button>
-        <button type="button" class="opt" onclick="pick(this,1,'emergency')"><span class="oi">🆘</span>Emergency planning</button>
-        <button type="button" class="opt" onclick="pick(this,1,'finances')"><span class="oi">💳</span>Finances and pensions</button>
+        <button type="button" class="opt" onclick="pick(this,1,'property')"><span class="oi">🏡</span>Property &amp; Home</button>
+        <button type="button" class="opt" onclick="pick(this,1,'documents')"><span class="oi">📄</span>Important Documents</button>
+        <button type="button" class="opt" onclick="pick(this,1,'emergency')"><span class="oi">🆘</span>Emergency Planning</button>
+        <button type="button" class="opt" onclick="pick(this,1,'finances')"><span class="oi">💳</span>Finances &amp; Pensions</button>
       </div>
-      <div class="sh-nav"><button type="button" class="sh-bk" onclick="go(0)">← Back</button><button type="button" class="sh-nx" onclick="go(2)">Continue →</button></div>
+      <div class="sh-nav"><button type="button" class="sh-bk" onclick="go(0)">← Back</button></div>
     </div>
     <div class="stp" id="s2">
       <div class="sh-ic">💭</div><div class="sh-q">What worries you most?</div><div class="sh-sb">No wrong answers — this helps MySAiFe understand what matters most to you.</div>
@@ -596,7 +596,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;}
         <button type="button" class="opt" onclick="pick(this,2,'missing')"><span class="oi">🔎</span>Missing key information</button>
         <button type="button" class="opt" onclick="pick(this,2,'access')"><span class="oi">🔐</span>Trusted access if something happens</button>
       </div>
-      <div class="sh-nav"><button type="button" class="sh-bk" onclick="go(1)">← Back</button><button type="button" class="sh-nx" onclick="go(3)">Continue →</button></div>
+      <div class="sh-nav"><button type="button" class="sh-bk" onclick="go(1)">← Back</button></div>
     </div>
     <div class="stp" id="s3">
       <div class="sh-ic">📊</div><div class="sh-q">How organised does it feel today?</div><div class="sh-sb">This helps frame whether MyS<span class="saife-a">A</span>iFe should feel like reassurance or rescue.</div>
@@ -606,7 +606,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;}
         <button type="button" class="opt" onclick="pick(this,3,'messy')"><span class="oi">🟠</span>A bit messy</button>
         <button type="button" class="opt" onclick="pick(this,3,'scattered')"><span class="oi">🔴</span>Very scattered</button>
       </div>
-      <div class="sh-nav"><button type="button" class="sh-bk" onclick="go(2)">← Back</button><button type="button" class="sh-nx" onclick="result()">See result →</button></div>
+      <div class="sh-nav"><button type="button" class="sh-bk" onclick="go(2)">← Back</button></div>
     </div>
     <div class="stp" id="s4">
       <div class="r-w">
@@ -667,7 +667,7 @@ function openSheet(){show(0);document.getElementById('qOverlay').classList.add('
 function closeSheet(){document.getElementById('qOverlay').classList.remove('open');document.body.style.overflow='';}
 function qBc(e){if(e.target.id==='qOverlay')closeSheet();}
 function show(n){document.querySelectorAll('.stp').forEach((s,i)=>s.classList.toggle('on',i===n));document.querySelectorAll('.pd').forEach((d,i)=>{d.classList.toggle('done',i<n);d.classList.toggle('cur',i===n);});}
-function pick(btn,step,val){btn.closest('.opts').querySelectorAll('.opt').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');A[step]=val;}
+function pick(btn,step,val){btn.closest('.opts').querySelectorAll('.opt').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');A[step]=val;if(step<3){show(step+1);}else{result();}}
 function go(n){show(n);}
 function result(){
   const who=A[0]||'just me';
@@ -724,7 +724,7 @@ function result(){
   };
 
   const focusLineMap={
-    'property':'Getting your property and home information organised first gives you a solid foundation to build everything else on.',
+    'property':'Getting your Property & Home information organised first gives you a solid foundation to build everything else on.',
     'documents':'Starting with your most important documents means the things that matter most are secured before anything else.',
     'emergency':'Having your emergency information in order is the kindest thing you can do for the people you love.',
     'finances':'A clear view of your finances — pensions, accounts, protection — is where real peace of mind begins.'
