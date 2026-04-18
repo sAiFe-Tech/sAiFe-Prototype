@@ -266,22 +266,6 @@ h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;}
 .popup-bird .icon-bird{height:44px;width:auto;animation:birdBob 3s ease-in-out infinite;}
 .popup-bird .icon-bird svg{height:100%;width:auto;}
 
-
-/* Trust questions */
-.trust-section{padding:18px 0 8px;}
-.trust-wrap{max-width:860px;margin:0 auto;background:rgba(255,251,245,.82);border:1px solid rgba(35,40,79,.06);border-radius:28px;padding:34px 28px;box-shadow:var(--panel);}
-.trust-head{text-align:center;margin-bottom:28px;}
-.trust-kicker{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--green2);margin-bottom:10px;}
-.trust-title{font-size:clamp(28px,4vw,42px);line-height:1.08;letter-spacing:-.03em;color:var(--navy);margin-bottom:10px;}
-.trust-sub{font-size:18px;color:var(--muted);margin-bottom:18px;}
-.trust-intro{font-size:15px;color:var(--muted);max-width:640px;margin:0 auto;line-height:1.6;}
-.trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px;}
-.trust-item{background:#fff;border:1px solid rgba(35,40,79,.06);border-radius:18px;padding:18px 18px 16px;box-shadow:0 6px 18px rgba(35,40,79,.04);}
-.trust-item h3{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-size:16px;line-height:1.3;color:var(--navy);margin-bottom:8px;}
-.trust-item p{font-size:14px;line-height:1.6;color:var(--muted);}
-.brand-lock{white-space:nowrap;display:inline-block;}
-@media(max-width:820px){.trust-grid{grid-template-columns:1fr;}.trust-wrap{padding:28px 20px;}}
-
 </style>
 </head>
 <body>
@@ -358,46 +342,6 @@ h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;}
           </div>
         </div>
         <div class="ph-badge"><span>✓</span><div><b>Register interest</b><small>Opens a quick email to hello@mysaife.co.uk</small></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section class="section trust-section">
-  <div class="wrap">
-    <div class="trust-wrap fade">
-      <div class="trust-head">
-        <div class="trust-kicker">Trust, privacy and clarity</div>
-        <h2 class="trust-title">A safe protects documents. <span class="brand-lock">MyS<span class="saife-a">A</span>iFe</span> prepares the situation.</h2>
-        <p class="trust-sub">Quietly ready, every day — when it matters most.</p>
-        <p class="trust-intro">Everything important, secured and ready — without the confusion or uncertainty.</p>
-      </div>
-      <div class="trust-grid">
-        <div class="trust-item">
-          <h3>Will my information be safe?</h3>
-          <p>Your data is encrypted and securely stored. With <span class="brand-lock">MyS<span class="saife-a">A</span>iFe Vault</span>, access can be independently verified by a legal professional — not just by us.</p>
-        </div>
-        <div class="trust-item">
-          <h3>Who can see my information?</h3>
-          <p>Only the people you choose. You stay in full control at all times. <span class="brand-lock">No one at MyS<span class="saife-a">A</span>iFe</span> can access your private files.</p>
-        </div>
-        <div class="trust-item">
-          <h3>What happens if something happens to me?</h3>
-          <p>Your information is released to your chosen people in a structured, verified way — so nothing is left unclear.</p>
-        </div>
-        <div class="trust-item">
-          <h3>Who do I speak to if I need help?</h3>
-          <p>We’re here when you need us — and for key decisions, you can connect with trusted professionals.</p>
-        </div>
-        <div class="trust-item">
-          <h3>What if I don’t finish setting it up?</h3>
-          <p>Even partial information makes a difference. <span class="brand-lock">MyS<span class="saife-a">A</span>iFe</span> shows you what’s missing and helps you close the gaps quickly.</p>
-        </div>
-        <div class="trust-item">
-          <h3>Why not just keep this myself?</h3>
-          <p>Because when it matters most, people don’t have time to search, guess, or piece things together. <span class="brand-lock">MyS<span class="saife-a">A</span>iFe</span> makes everything clear — instantly.</p>
-        </div>
       </div>
     </div>
   </div>
@@ -557,7 +501,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;}
     </div>
     <div class="pop-success" id="popSuccess">
       <div class="r-ic">✓</div>
-      <h3 class="r-hd">Email draft opened</h3>
+      <h3 class="r-hd">You’re in</h3>
       <p class="r-sb">Your mail app should now be ready with a prefilled message to the MySAiFe team.</p>
       <div class="success-pill">hello@mysaife.co.uk</div>
     </div>
@@ -571,22 +515,22 @@ h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;}
     <div class="stp on" id="s0">
       <div class="sh-ic">👋</div><div class="sh-q">Who is this for?</div><div class="sh-sb">MyS<span class="saife-a">A</span>iFe works for individuals and whole households. Tell us about your situation.</div>
       <div class="opts">
-        <button type="button" class="opt" onclick="pick(this,0,'just me')"><span class="oi">🙋</span>Just Me</button>
+        <button type="button" class="opt" onclick="pick(this,0,'just me')"><span class="oi">🙋</span>Just me</button>
         <button type="button" class="opt" onclick="pick(this,0,'me and my partner')"><span class="oi">👫</span>Me &amp; my partner</button>
         <button type="button" class="opt" onclick="pick(this,0,'my family')"><span class="oi">👨‍👩‍👧‍👦</span>My family</button>
         <button type="button" class="opt" onclick="pick(this,0,'helping my parents')"><span class="oi">👴</span>Helping my parents</button>
       </div>
-      
+      <div class="sh-nav"><button type="button" class="sh-nx" onclick="go(1)">Continue →</button></div>
     </div>
     <div class="stp" id="s1">
       <div class="sh-ic">🤔</div><div class="sh-q">What matters most right now?</div><div class="sh-sb">This helps MyS<span class="saife-a">A</span>iFe show the most relevant starting point.</div>
       <div class="opts">
-        <button type="button" class="opt" onclick="pick(this,1,'property')"><span class="oi">🏡</span>Property &amp; Home</button>
-        <button type="button" class="opt" onclick="pick(this,1,'documents')"><span class="oi">📄</span>Important Documents</button>
-        <button type="button" class="opt" onclick="pick(this,1,'emergency')"><span class="oi">🆘</span>Emergency Planning</button>
-        <button type="button" class="opt" onclick="pick(this,1,'finances')"><span class="oi">💳</span>Finances &amp; Pensions</button>
+        <button type="button" class="opt" onclick="pick(this,1,'property')"><span class="oi">🏡</span>Property and home</button>
+        <button type="button" class="opt" onclick="pick(this,1,'documents')"><span class="oi">📄</span>Important documents</button>
+        <button type="button" class="opt" onclick="pick(this,1,'emergency')"><span class="oi">🆘</span>Emergency planning</button>
+        <button type="button" class="opt" onclick="pick(this,1,'finances')"><span class="oi">💳</span>Finances and pensions</button>
       </div>
-      <div class="sh-nav"><button type="button" class="sh-bk" onclick="go(0)">← Back</button></div>
+      <div class="sh-nav"><button type="button" class="sh-bk" onclick="go(0)">← Back</button><button type="button" class="sh-nx" onclick="go(2)">Continue →</button></div>
     </div>
     <div class="stp" id="s2">
       <div class="sh-ic">💭</div><div class="sh-q">What worries you most?</div><div class="sh-sb">No wrong answers — this helps MySAiFe understand what matters most to you.</div>
@@ -596,7 +540,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;}
         <button type="button" class="opt" onclick="pick(this,2,'missing')"><span class="oi">🔎</span>Missing key information</button>
         <button type="button" class="opt" onclick="pick(this,2,'access')"><span class="oi">🔐</span>Trusted access if something happens</button>
       </div>
-      <div class="sh-nav"><button type="button" class="sh-bk" onclick="go(1)">← Back</button></div>
+      <div class="sh-nav"><button type="button" class="sh-bk" onclick="go(1)">← Back</button><button type="button" class="sh-nx" onclick="go(3)">Continue →</button></div>
     </div>
     <div class="stp" id="s3">
       <div class="sh-ic">📊</div><div class="sh-q">How organised does it feel today?</div><div class="sh-sb">This helps frame whether MyS<span class="saife-a">A</span>iFe should feel like reassurance or rescue.</div>
@@ -606,7 +550,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;}
         <button type="button" class="opt" onclick="pick(this,3,'messy')"><span class="oi">🟠</span>A bit messy</button>
         <button type="button" class="opt" onclick="pick(this,3,'scattered')"><span class="oi">🔴</span>Very scattered</button>
       </div>
-      <div class="sh-nav"><button type="button" class="sh-bk" onclick="go(2)">← Back</button></div>
+      <div class="sh-nav"><button type="button" class="sh-bk" onclick="go(2)">← Back</button><button type="button" class="sh-nx" onclick="result()">See result →</button></div>
     </div>
     <div class="stp" id="s4">
       <div class="r-w">
@@ -652,8 +596,7 @@ function submitPopup(){
     'Email:    ' + email + '\n' +
     'Interest: ' + selectedInterest + '\n\n' +
     'Consent given: Yes\n' +
-    'Source: Slim MySAiFe rebuild\n' +
-    'Requested follow-up: Early access / conversation\n\n' +
+    'Requested follow-up: ' + selectedInterest + '\n\n' +
     'Please reply personally with next steps.'
   );
   window.location.href='mailto:hello@mysaife.co.uk?subject='+subject+'&body='+body;
@@ -667,7 +610,7 @@ function openSheet(){show(0);document.getElementById('qOverlay').classList.add('
 function closeSheet(){document.getElementById('qOverlay').classList.remove('open');document.body.style.overflow='';}
 function qBc(e){if(e.target.id==='qOverlay')closeSheet();}
 function show(n){document.querySelectorAll('.stp').forEach((s,i)=>s.classList.toggle('on',i===n));document.querySelectorAll('.pd').forEach((d,i)=>{d.classList.toggle('done',i<n);d.classList.toggle('cur',i===n);});}
-function pick(btn,step,val){btn.closest('.opts').querySelectorAll('.opt').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');A[step]=val;if(step<3){show(step+1);}else{result();}}
+function pick(btn,step,val){btn.closest('.opts').querySelectorAll('.opt').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');A[step]=val;}
 function go(n){show(n);}
 function result(){
   const who=A[0]||'just me';
@@ -724,7 +667,7 @@ function result(){
   };
 
   const focusLineMap={
-    'property':'Getting your Property & Home information organised first gives you a solid foundation to build everything else on.',
+    'property':'Getting your property and home information organised first gives you a solid foundation to build everything else on.',
     'documents':'Starting with your most important documents means the things that matter most are secured before anything else.',
     'emergency':'Having your emergency information in order is the kindest thing you can do for the people you love.',
     'finances':'A clear view of your finances — pensions, accounts, protection — is where real peace of mind begins.'
