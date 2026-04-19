@@ -2074,6 +2074,32 @@ svg{
 
 
 
+
+/* trust card salvage */
+.trust-match-card{justify-content:flex-start !important;padding-top:16px !important;}
+.trust-match-card .section-pill{display:inline-block !important;width:auto !important;min-width:92px !important;padding:8px 16px !important;margin-bottom:12px !important;}
+.trust-match-card h3{margin:0 0 8px !important;font-size:18px !important;line-height:1.12 !important;font-weight:800 !important;color:var(--navy) !important;max-width:250px;}
+.trust-match-card .trust-balance-copy{margin:0 !important;font-size:13px !important;line-height:1.5 !important;font-weight:400 !important;color:var(--navy) !important;max-width:250px;}
+
+/* front page balance refinement */
+
+/* trust card salvage */
+.trust-match-card{justify-content:flex-start !important;padding-top:16px !important;}
+.trust-match-card .section-pill{display:inline-block !important;width:auto !important;min-width:92px !important;padding:8px 16px !important;margin-bottom:12px !important;}
+.trust-match-card .trust-balance-copy{font-size:13px !important;line-height:1.5 !important;max-width:250px;}
+
+.front-balance-grid{gap:14px !important;margin-top:16px !important;}
+.front-balance-grid .breadth-card{padding:16px 16px 17px !important;min-height:0;}
+.front-balance-grid .breadth-card h3{margin:0 0 6px !important;font-size:18px !important;line-height:1.12 !important;}
+.front-balance-grid .breadth-card p{font-size:13px !important;line-height:1.5 !important;}
+.front-balance-full{grid-column:1 / -1;}
+.trust-balance-card{display:flex;flex-direction:column;justify-content:center;}
+.trust-balance-copy{margin:0 !important;color:var(--navy) !important;font-size:14px !important;line-height:1.52 !important;font-weight:400 !important;}
+.trust-balance-copy strong{font-weight:800;}
+@media (max-width:390px){
+  .front-balance-full{grid-column:auto;}
+}
+
 /* layered reset additions */
 .breadth-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px;}
 .breadth-card{background:rgba(255,253,248,0.94);border-radius:22px;padding:16px;border:1px solid rgba(35,40,79,0.06);box-shadow:0 6px 16px rgba(35,40,79,.04);}
@@ -2255,15 +2281,36 @@ body {
 <h1>If something happened — would they know what to do?</h1>
 <p><strong>MySAiFe</strong> helps households organise life as it is now, prepare for what might happen, and guide the right people when it matters most.</p>
 </div>
-<div class="breadth-grid">
-  <div class="breadth-card"><div class="section-pill">Wish2Me</div><h3>What would happen?</h3><p>Capture wishes, preferences and practical guidance so your family are not left guessing in difficult moments.</p></div>
-  <div class="breadth-card"><div class="card" style="margin-top:12px;background:linear-gradient(180deg,#fffdf8 0%,#f8f1e6 100%);border:1px solid rgba(95,156,53,.18);">
-  <div class="section-pill">Trust</div>
-  <p style="margin:0;color:var(--navy);font-size:14px;line-height:1.55;font-weight:700;">Your information isn’t just stored — it’s structured so your family can act on it when it matters.</p>
-</div>
-<div class="section-pill" style="background:#fff3df;color:#a87618;"><span class="brand-inline-lockup">sAiFe Agent<span class="inline-bird-mark" aria-hidden="true"></span></span></div><h3>Prompted, not pushed</h3><p>Surface reminders, missing details and sensible next steps without filing or sharing anything automatically.</p></div>
-  <div class="breadth-card"><div class="section-pill">Vault</div><h3>Protected and ready</h3><p>Keep important records, trusted access and legacy planning together in one protected, ready layer.</p></div>
-  <div class="breadth-card"><div class="section-pill" style="background:#fdeceb;color:#b64e44;">Emergency</div><h3>Ready when life turns</h3><p>Bring together who to call, what to do first and the essentials your household may urgently need.</p></div>
+<div class="breadth-grid front-balance-grid">
+  <div class="breadth-card">
+    <div class="section-pill">Wish2Me</div>
+    <h3>What would happen?</h3>
+    <p>Capture wishes, preferences and practical guidance so your family are not left guessing in difficult moments.</p>
+  </div>
+
+  <div class="breadth-card">
+    <div class="section-pill" style="background:#fff3df;color:#a87618;"><span class="brand-inline-lockup">sAiFe Agent<span class="inline-bird-mark" aria-hidden="true"></span></span></div>
+    <h3>Prompted, not pushed</h3>
+    <p>Surface reminders, missing details and sensible next steps without filing or sharing anything automatically.</p>
+  </div><div class="breadth-card trust-balance-card trust-match-card">
+    <div class="section-pill">Trust</div>
+    <h3>Your information isn’t just stored —</h3>
+    <p class="trust-balance-copy">it’s structured so your family can act on it when it matters.</p>
+  </div>
+
+  
+
+  <div class="breadth-card">
+    <div class="section-pill" style="background:#fdeceb;color:#b64e44;">Emergency</div>
+    <h3>Ready when life turns</h3>
+    <p>Bring together who to call, what to do first and the essentials your household may urgently need.</p>
+  </div>
+
+  <div class="breadth-card front-balance-full">
+    <div class="section-pill">Vault</div>
+    <h3>Protected and ready</h3>
+    <p>Keep important records, trusted access and legacy planning together in one protected, ready layer.</p>
+  </div>
 </div>
 
 <div class="card" style="margin-top:14px;">
@@ -2277,19 +2324,19 @@ body {
   </div>
   <div class="member-row" style="margin-top:14px;">
     <div class="member-avatar">
-      <div class="avatar-circle" style="background:#EDF5E7;">👨</div>
+      <div class="avatar-circle" style="background:#EDF5E7;">👨‍👩‍👧🏻‍👧🏻‍👦</div>
       <div class="avatar-name">Matthew</div>
     </div>
     <div class="member-avatar">
-      <div class="avatar-circle" style="background:#F8EFE7;">👩</div>
+      <div class="avatar-circle" style="background:#F8EFE7;">👩‍👧🏻</div>
       <div class="avatar-name">Sarah</div>
     </div>
     <div class="member-avatar">
-      <div class="avatar-circle" style="background:#FDECEB;">👧</div>
+      <div class="avatar-circle" style="background:#FDECEB;">👧🏻</div>
       <div class="avatar-name">Izzy</div>
     </div>
     <div class="member-avatar">
-      <div class="avatar-circle" style="background:#EEF2FB;">👧</div>
+      <div class="avatar-circle" style="background:#EEF2FB;">👧🏻</div>
       <div class="avatar-name">Chloe</div>
     </div>
     <div class="member-avatar">
@@ -2393,10 +2440,10 @@ body {
     <div class="gauge green" style="--p:76;width:62px;height:62px;"><span>76%</span></div>
   </div>
   <div class="member-row" style="margin-top:14px;">
-    <div class="member-avatar"><div class="avatar-circle" style="background:#EDF5E7;">👨</div><div class="avatar-name">Matthew</div><div class="member-status ready">Owner</div></div>
-    <div class="member-avatar"><div class="avatar-circle" style="background:#F8EFE7;">👩</div><div class="avatar-name">Sarah</div><div class="member-status connected">Connected</div></div>
-    <div class="member-avatar"><div class="avatar-circle" style="background:#FDECEB;">👧</div><div class="avatar-name">Izzy</div><div class="member-status pending">Passport soon</div></div>
-    <div class="member-avatar"><div class="avatar-circle" style="background:#EEF2FB;">👧</div><div class="avatar-name">Chloe</div><div class="member-status ready">Linked</div></div>
+    <div class="member-avatar"><div class="avatar-circle" style="background:#EDF5E7;">👨‍👩‍👧🏻‍👧🏻‍👦</div><div class="avatar-name">Matthew</div><div class="member-status ready">Owner</div></div>
+    <div class="member-avatar"><div class="avatar-circle" style="background:#F8EFE7;">👩‍👧🏻</div><div class="avatar-name">Sarah</div><div class="member-status connected">Connected</div></div>
+    <div class="member-avatar"><div class="avatar-circle" style="background:#FDECEB;">👧🏻</div><div class="avatar-name">Izzy</div><div class="member-status pending">Passport soon</div></div>
+    <div class="member-avatar"><div class="avatar-circle" style="background:#EEF2FB;">👧🏻</div><div class="avatar-name">Chloe</div><div class="member-status ready">Linked</div></div>
   </div>
 </div>
 <div class="card" style="margin-top:12px;background:linear-gradient(180deg,#fffdf8 0%,#f8f1e6 100%);border:1px solid rgba(184,150,58,.22);">
@@ -2471,19 +2518,19 @@ body {
   <div class="g-row"><div><div class="section-pill">Household network</div><h3 style="margin:0 0 6px;">People layer taking shape</h3><p style="margin:0;color:var(--muted);font-size:14px;line-height:1.5;">Family members, emergency contacts, solicitor details and continuity notes can all sit together here.</p></div><div class="gauge amber" style="--p:66;"><span>66%</span></div></div>
   <div class="member-row" style="margin-top:14px;">
     <div class="member-avatar">
-      <div class="avatar-circle" style="background:#EDF5E7;">👨</div>
+      <div class="avatar-circle" style="background:#EDF5E7;">👨‍👩‍👧🏻‍👧🏻‍👦</div>
       <div class="avatar-name">Matthew</div>
     </div>
     <div class="member-avatar">
-      <div class="avatar-circle" style="background:#F8EFE7;">👩</div>
+      <div class="avatar-circle" style="background:#F8EFE7;">👩‍👧🏻</div>
       <div class="avatar-name">Sarah</div>
     </div>
     <div class="member-avatar">
-      <div class="avatar-circle" style="background:#FDECEB;">👧</div>
+      <div class="avatar-circle" style="background:#FDECEB;">👧🏻</div>
       <div class="avatar-name">Izzy</div>
     </div>
     <div class="member-avatar">
-      <div class="avatar-circle" style="background:#EEF2FB;">👧</div>
+      <div class="avatar-circle" style="background:#EEF2FB;">👧🏻</div>
       <div class="avatar-name">Chloe</div>
     </div>
     <div class="member-avatar">
