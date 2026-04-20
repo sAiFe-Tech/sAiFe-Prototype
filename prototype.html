@@ -1299,6 +1299,11 @@ h2,.h2{
   color:#7e8591;
   font-size:11px;
 }
+.legal-note{margin:14px 0 12px;padding:14px 15px;border-radius:18px;background:linear-gradient(180deg,#fffdf8 0%,#f8f1e7 100%);border:1px solid rgba(35,40,79,.08);box-shadow:0 6px 16px rgba(35,40,79,.04);color:var(--muted);font-size:12px;line-height:1.5;}
+.legal-note strong{color:var(--navy);}
+.legal-links{display:flex;flex-wrap:wrap;gap:8px 12px;margin-top:8px;}
+.legal-links a{color:var(--navy);font-weight:800;text-decoration:none;}
+.legal-links a:hover{text-decoration:underline;}
 @media (max-width:420px){
   .hero h1{font-size:30px;}
   .logo-wrap img{max-width:94%;}
@@ -2378,6 +2383,15 @@ body {
 <div class="price-card"><div class="price-top"><div class="price-name">For your household</div><div class="price-tag">£15.99/mo</div></div><p><strong>Up to 5 people</strong><br>Shared visibility, continuity planning and broader family access.</p><div class="pricing-note">or £159/year</div></div>
 </div>
 <div class="trial-note">Free to start — upgrade as your household grows</div>
+</div>
+<div class="legal-note">
+<strong>Legal and privacy</strong>
+<div>Using MySAiFe is subject to our Terms of Service and Privacy Policy. Please review the current legal documents before registering or sharing personal information.</div>
+<div class="legal-links">
+<a href="legal.html#terms" target="_blank" rel="noopener">Terms of Service</a>
+<a href="legal.html#privacy" target="_blank" rel="noopener">Privacy Policy</a>
+<a href="legal.html#dataprotection" target="_blank" rel="noopener">Data Protection</a>
+</div>
 </div>
 <div class="tabbar">
 <button class="tab active" onclick="show('home')"><span class="tab-icon">🏠</span>Home</button>
@@ -3518,6 +3532,7 @@ body {
 </div>
 </div>
 <div class="support-note" style="max-width:none;text-align:left;margin-top:6px;">This screen demonstrates the connected sync experience and approval flow. Live account connection and background sync would be delivered in the build phase.</div>
+<div class="legal-note"><strong>Terms, privacy and data protection</strong><div>For prototype review and early access, please refer users to the current MySAiFe legal documents.</div><div class="legal-links"><a href="legal.html#terms" target="_blank" rel="noopener">Terms of Service</a><a href="legal.html#privacy" target="_blank" rel="noopener">Privacy Policy</a><a href="legal.html#dataprotection" target="_blank" rel="noopener">Data Protection</a></div></div>
 <div class="tabbar">
 <button class="tab" onclick="show('home')"><span class="tab-icon">🏠</span>Home</button>
 <button class="tab" onclick="show('dashboard')"><span class="tab-icon">📊</span>Dash</button>
