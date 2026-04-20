@@ -206,6 +206,10 @@ h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;}
 @media(max-width:700px){.footer-in{flex-direction:column;text-align:center;}}
 .note-link{font-weight:800;color:var(--green2);transition:color .18s;}
 .note-link:hover{color:var(--green);}
+.footer-links{display:flex;flex-wrap:wrap;gap:10px 14px;justify-content:flex-end;align-items:center;}
+.footer-links a{color:rgba(255,255,255,.82);font-weight:700;font-size:12px;}
+.footer-links a:hover{color:#fff;text-decoration:underline;}
+@media(max-width:700px){.footer-links{justify-content:center;}}
 
 /* Popup + Sheet */
 .popup-overlay,.q-overlay{position:fixed;inset:0;z-index:5000;background:rgba(35,40,79,.68);backdrop-filter:blur(9px);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s;}
@@ -497,7 +501,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;}
         <label for="popConsent">I consent to MyS<span class="saife-a">A</span>iFe using these details to contact me about early access, product updates and next steps.</label>
       </div>
       <button type="button" class="pop-submit" onclick="submitPopup()">Create email to hello@mysaife.co.uk</button>
-      <div class="pop-privacy">This popup prepares an email in your default mail app so your interest can be sent directly.</div>
+      <div class="pop-privacy">By registering your interest, you agree to our <a href="legal.html#terms" class="note-link" target="_blank" rel="noopener">Terms of Service</a> and <a href="legal.html#privacy" class="note-link" target="_blank" rel="noopener">Privacy Policy</a>. This popup prepares an email in your default mail app so your interest can be sent directly.</div>
     </div>
     <div class="pop-success" id="popSuccess">
       <div class="r-ic">✓</div>
