@@ -277,21 +277,6 @@ h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;}
 .popup-bird .icon-bird{height:44px;width:auto;animation:birdBob 3s ease-in-out infinite;}
 .popup-bird .icon-bird svg{height:100%;width:auto;}
 
-/* Keyboard focus — visible without disturbing mouse users */
-button:focus{outline:none;}
-a:focus-visible,button:focus-visible,.btn-gold:focus-visible,.btn-ghost:focus-visible,.btn-navy:focus-visible,.btn-green:focus-visible,.pop-submit:focus-visible,.sh-nx:focus-visible,.r-ln:focus-visible,.r-reg:focus-visible,.sh-bk:focus-visible,.int-btn:focus-visible,.opt:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(95,156,53,.32),0 0 0 5px rgba(35,40,79,.08);}
-.int-btn.sel:focus-visible,.opt.sel:focus-visible{box-shadow:0 0 0 3px rgba(95,156,53,.32),0 0 0 5px rgba(95,156,53,.14);}
-.pop-consent input:focus-visible{outline:2px solid var(--green2);outline-offset:2px;}
-
-/* Disabled submit — clearer non-interactive state */
-.pop-submit:disabled,.pop-submit[disabled]{opacity:.7;cursor:progress;transform:none;filter:none;}
-
-/* Reduced motion — honour user preference across all transitions */
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important;}
-  .fade{opacity:1;transform:none;}
-}
-
 </style>
 </head>
 <body>
@@ -590,7 +575,7 @@ a:focus-visible,button:focus-visible,.btn-gold:focus-visible,.btn-ghost:focus-vi
       <div class="sh-nav"><button type="button" class="sh-bk" onclick="go(0)">← Back</button><button type="button" class="sh-nx" onclick="go(2)">Continue →</button></div>
     </div>
     <div class="stp" id="s2">
-      <div class="sh-ic">💭</div><div class="sh-q">What worries you most?</div><div class="sh-sb">No wrong answers — this helps MySAiFe understand what matters most to you.</div>
+      <div class="sh-ic">💭</div><div class="sh-q">What worries you most?</div><div class="sh-sb">No wrong answers — this helps MySAiFe understand what matters most to you. Select any that apply (up to 3).</div>
       <div class="opts">
         <button type="button" class="opt" onclick="pick(this,2,'chaos')"><span class="oi">🌀</span>Things feel too scattered</button>
         <button type="button" class="opt" onclick="pick(this,2,'burden')"><span class="oi">🤍</span>Burden on loved ones</button>
@@ -600,7 +585,7 @@ a:focus-visible,button:focus-visible,.btn-gold:focus-visible,.btn-ghost:focus-vi
       <div class="sh-nav"><button type="button" class="sh-bk" onclick="go(1)">← Back</button><button type="button" class="sh-nx" onclick="go(3)">Continue →</button></div>
     </div>
     <div class="stp" id="s3">
-      <div class="sh-ic">📊</div><div class="sh-q">How organised does it feel today?</div><div class="sh-sb">This helps frame whether MyS<span class="saife-a">A</span>iFe should feel like reassurance or rescue.</div>
+      <div class="sh-ic">📊</div><div class="sh-q">How organised does it feel today?</div><div class="sh-sb">This helps frame whether MyS<span class="saife-a">A</span>iFe should feel like reassurance or rescue. Select any that apply (up to 3).</div>
       <div class="opts">
         <button type="button" class="opt" onclick="pick(this,3,'sorted')"><span class="oi">✅</span>Mostly sorted</button>
         <button type="button" class="opt" onclick="pick(this,3,'some gaps')"><span class="oi">🟡</span>Some gaps</button>
@@ -647,11 +632,10 @@ function openLegal(){document.getElementById('legalOverlay').classList.add('open
 function closeLegal(){document.getElementById('legalOverlay').classList.remove('open');document.body.style.overflow='';}
 function legalBc(e){if(e.target.id==='legalOverlay')closeLegal();}
 async function submitPopup(){
-  const submitBtn=document.getElementById('popSubmitBtn');
-  if(submitBtn && submitBtn.disabled) return;
   const first=document.getElementById('popFirst').value.trim();
   const email=document.getElementById('popEmail').value.trim();
   const consent=document.getElementById('popConsent').checked;
+  const submitBtn=document.getElementById('popSubmitBtn');
   if(!first){alert('Please enter your first name.');return;}
   if(!email||!email.includes('@')){alert('Please enter a valid email address.');return;}
   if(!selectedInterest){alert('Please select what you are interested in.');return;}
@@ -713,17 +697,33 @@ Please reply personally with next steps.`);
   }
 }
 const A={};
+const MAX_QUIZ_SELECTIONS = 3;
 function openSheet(){show(0);document.getElementById('qOverlay').classList.add('open');document.body.style.overflow='hidden';}
 function closeSheet(){document.getElementById('qOverlay').classList.remove('open');document.body.style.overflow='';}
 function qBc(e){if(e.target.id==='qOverlay')closeSheet();}
 function show(n){document.querySelectorAll('.stp').forEach((s,i)=>s.classList.toggle('on',i===n));document.querySelectorAll('.pd').forEach((d,i)=>{d.classList.toggle('done',i<n);d.classList.toggle('cur',i===n);});}
-function pick(btn,step,val){btn.closest('.opts').querySelectorAll('.opt').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');A[step]=val;}
+function pick(btn,step,val){
+  const group=btn.closest('.opts');
+  if(!group) return;
+  const current=Array.isArray(A[step]) ? A[step].slice() : [];
+  const idx=current.indexOf(val);
+  if(idx>=0){
+    current.splice(idx,1);
+    btn.classList.remove('sel');
+    A[step]=current;
+    return;
+  }
+  if(current.length>=MAX_QUIZ_SELECTIONS) return;
+  current.push(val);
+  btn.classList.add('sel');
+  A[step]=current;
+}
 function go(n){show(n);}
 function result(){
-  const who=A[0]||'just me';
-  const focus=A[1]||'documents';
-  const worry=A[2]||'chaos';
-  const ready=A[3]||'scattered';
+  const who=(A[0]&&A[0][0])||'just me';
+  const focus=(A[1]&&A[1][0])||'documents';
+  const worry=(A[2]&&A[2][0])||'chaos';
+  const ready=(A[3]&&A[3][0])||'scattered';
 
   const iconMap={
     'just me':'🙋',
@@ -814,6 +814,5 @@ window.addEventListener('scroll', function(){
   document.querySelector('.nav') && document.querySelector('.nav').classList.toggle('scrolled', window.scrollY > 8);
 });
 </script>
-<input type="hidden" name="_next" value="https://yourusername.github.io/your-repo-name/thank-you.html">
 </body>
 </html>
