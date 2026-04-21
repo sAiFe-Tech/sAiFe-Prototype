@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Thank You — MySAiFe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#23284f;--navy2:#1a1f3c;
+  --green:#78b84a;--green2:#5f9c35;
+  --cream:#faf6ee;--cream2:#f1eadc;
+  --line:#dde4ee;--text:#243149;--muted:#68758d;
+  --gold:#d4af37;--gold2:#c9a43a;
+  --shadow:0 20px 42px rgba(35,40,79,.13);
+  --ease:cubic-bezier(.32,1,.23,1);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:linear-gradient(180deg,#fbf8f1 0%,#f4eee2 42%,#ece4d6 100%);color:var(--text);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.025;pointer-events:none;}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 18% 8%,rgba(255,255,255,.7),transparent 22%),radial-gradient(circle at 82% 14%,rgba(120,184,74,.09),transparent 20%);}
+main{position:relative;z-index:1;width:min(100%,980px);}
+.card{background:rgba(255,255,255,.88);backdrop-filter:blur(10px);border:1px solid rgba(35,40,79,.06);border-radius:32px;box-shadow:var(--shadow);overflow:hidden;display:grid;grid-template-columns:1.05fr .95fr;}
+@media(max-width:860px){.card{grid-template-columns:1fr;}}
+.panel{padding:40px 36px;}
+.hero{background:linear-gradient(145deg,rgba(35,40,79,.98),rgba(49,64,111,.92) 54%,rgba(120,184,74,.82));color:#fff;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-50px;right:-30px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.18) 0%,rgba(255,255,255,0) 68%);}
+.hero>*{position:relative;z-index:1;}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.14);border-radius:999px;padding:7px 14px;margin-bottom:18px;font-size:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:#fff;opacity:.85;}
+.logo{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+.logo-mark{width:46px;height:46px;display:grid;place-items:center;border-radius:16px;background:rgba(255,255,255,.12);}
+.logo-word{font-family:'Playfair Display',Georgia,serif;font-size:28px;font-weight:700;letter-spacing:-.03em;}
+.saife-a{font-size:.82em;position:relative;top:-.06em;display:inline-block;line-height:1;}
+.hero h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(32px,4vw,48px);line-height:1.02;letter-spacing:-.03em;max-width:10ch;margin-bottom:14px;}
+.hero p{color:rgba(255,255,255,.84);font-size:16px;max-width:42ch;margin-bottom:22px;}
+.list{display:grid;gap:12px;margin-top:18px;}
+.item{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border-radius:16px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.1);}
+.item strong{display:block;font-size:14px;}
+.item span{font-size:13px;color:rgba(255,255,255,.76);}
+.tick{width:24px;height:24px;flex-shrink:0;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.16);}
+.copy h2{font-family:'Playfair Display',Georgia,serif;color:var(--navy);font-size:clamp(28px,3.5vw,40px);line-height:1.05;letter-spacing:-.03em;margin-bottom:12px;}
+.copy p{color:var(--muted);font-size:15px;margin-bottom:18px;}
+.highlight{display:inline-flex;align-items:center;gap:8px;background:rgba(95,156,53,.10);border:1px solid rgba(95,156,53,.18);color:var(--green2);border-radius:999px;padding:8px 14px;font-size:12px;font-weight:800;margin-bottom:18px;}
+.steps{display:grid;gap:12px;margin:20px 0 24px;}
+.step{padding:15px 16px;border-radius:18px;background:rgba(250,246,238,.85);border:1px solid var(--line);}
+.step small{display:block;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--green2);margin-bottom:4px;}
+.step strong{display:block;color:var(--navy);font-size:15px;margin-bottom:4px;}
+.step p{margin:0;font-size:13px;}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px;}
+.btn{border:none;border-radius:16px;padding:13px 22px;font-size:14px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;transition:transform .18s var(--ease),box-shadow .18s,filter .18s;}
+.btn-primary{background:linear-gradient(90deg,var(--gold2),var(--gold));color:var(--navy);box-shadow:0 10px 24px rgba(184,150,58,.22);}
+.btn-secondary{background:#fff;color:var(--navy);border:1px solid var(--line);}
+.btn:hover{transform:translateY(-2px);}
+.note{font-size:12px;color:var(--muted);margin-top:16px;}
+.email-link{color:var(--green2);font-weight:800;text-decoration:none;}
+.email-link:hover{text-decoration:underline;}
+</style>
+</head>
+<body>
+<main>
+  <section class="card">
+    <div class="panel hero">
+      <div class="badge"><span class="badge-dot"></span>Registration received</div>
+      <div class="logo">
+        <div class="logo-mark" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 194 191" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#F7F4EF" d="M194 31L189 27L170 31L162 18L154 10L139 2L130 0L117 0L108 2L95 9L85 19L78 35L78 54L84 67L70 71L55 78L46 84L39 91L30 84L22 70L21 57L25 44L21 39L15 39L8 49L6 64L8 75L13 86L19 95L29 104L25 117L25 132L27 140L23 143L3 148L0 152L2 157L11 162L26 162L40 158L56 172L66 177L77 180L78 183L75 190L88 191L96 182L113 182L120 191L133 190L134 188L130 181L148 172L156 166L164 158L174 140L177 126L175 107L169 94L158 82L158 80L164 73L169 63L172 47L176 44L192 39L194 37Z"/>
+            <circle cx="117.15" cy="36.77" r="10.4" fill="#80C272"/>
+          </svg>
+        </div>
+        <div class="logo-word">MyS<span class="saife-a">A</span>iFe</div>
+      </div>
+      <h1>Thank you for registering.</h1>
+      <p id="heroMessage">Your interest has been captured and the MySAiFe team will follow up with you personally.</p>
+      <div class="list">
+        <div class="item"><div class="tick">✓</div><div><strong>Your details are secure</strong><span>We’ve captured your request using the activated FormSubmit endpoint for MySAiFe.</span></div></div>
+        <div class="item"><div class="tick">✓</div><div><strong>Someone will follow up</strong><span>We’ll review your interest and contact you with the right next step.</span></div></div>
+        <div class="item"><div class="tick">✓</div><div><strong>You can reply any time</strong><span>If you want to add anything now, just email us directly.</span></div></div>
+      </div>
+    </div>
+    <div class="panel copy">
+      <div class="highlight">✓ Registration confirmed</div>
+      <h2 id="heading">You’re on the list.</h2>
+      <p id="intro">We’ve received your interest and sent it to the MySAiFe team.</p>
+      <div class="steps">
+        <div class="step">
+          <small>Step 1</small>
+          <strong>We review your request</strong>
+          <p id="interestCopy">We’ll look at the area you’re most interested in and make sure the follow-up is relevant.</p>
+        </div>
+        <div class="step">
+          <small>Step 2</small>
+          <strong>We contact you personally</strong>
+          <p>You’ll hear from the MySAiFe team with next steps, early access information, or the best starting point for your situation.</p>
+        </div>
+        <div class="step">
+          <small>Step 3</small>
+          <strong>You keep moving forward</strong>
+          <p>In the meantime, you can return to the homepage or email us directly if there’s anything specific you want us to know.</p>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="btn btn-primary" href="index.html">Back to homepage</a>
+        <a class="btn btn-secondary" href="mailto:hello@mysaife.co.uk">Email hello@mysaife.co.uk</a>
+      </div>
+      <p class="note">MySAiFe, 584 Wellsway, Bath, Somerset, England, BA2 2UE · Privacy contact: <a class="email-link" href="mailto:privacy@mysaife.co.uk">privacy@mysaife.co.uk</a></p>
+    </div>
+  </section>
+</main>
+<script>
+(function(){
+  const params=new URLSearchParams(window.location.search);
+  const first=(params.get('first')||'').trim();
+  const interest=(params.get('interest')||'').trim();
+  const safeFirst=first.replace(/[^a-zA-Z\- '\u00C0-\u024F]/g,'');
+  const safeInterest=interest.replace(/[^a-zA-Z0-9\- '&]/g,'');
+  const heading=document.getElementById('heading');
+  const intro=document.getElementById('intro');
+  const heroMessage=document.getElementById('heroMessage');
+  const interestCopy=document.getElementById('interestCopy');
+
+  if(safeFirst){
+    heading.textContent='Thank you, '+safeFirst+'.';
+    intro.textContent='We’ve received your interest and sent it to the MySAiFe team.';
+  }
+  if(safeInterest){
+    heroMessage.textContent='Your interest in '+safeInterest+' has been captured and the MySAiFe team will follow up with you personally.';
+    interestCopy.textContent='We’ll review your interest in '+safeInterest+' and make sure the follow-up is relevant.';
+  }
+})();
+</script>
+</body>
+</html>
