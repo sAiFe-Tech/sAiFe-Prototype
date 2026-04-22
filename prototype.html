@@ -2117,6 +2117,82 @@ svg{
 .hub-hero{background:linear-gradient(135deg,#f6fbf1,#eef6e6);border:1px solid rgba(120,184,74,.22);}
 @media (max-width:379px){.showcase-band{grid-template-columns:repeat(2,1fr);} .breadth-grid,.route-grid-8{grid-template-columns:1fr;} }
 
+/* ── Progressive unlock refinements (polish-only) ───────────────── */
+/* Pulse applied to newly revealed feature cards/rows */
+@keyframes unlockReveal{
+  0%{transform:scale(.985);box-shadow:0 0 0 0 rgba(120,184,74,.35);}
+  40%{transform:scale(1.015);box-shadow:0 0 0 8px rgba(120,184,74,.14);}
+  100%{transform:scale(1);box-shadow:0 0 0 0 rgba(120,184,74,0);}
+}
+.just-unlocked{animation:unlockReveal 1.4s cubic-bezier(.22,.9,.25,1) 1;}
+
+/* Progressive reveal pill — long-press target, discreet affordance */
+.section-pill.reset-target{cursor:pointer;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;}
+
+/* Locked record-line rows — subtle padlock affordance without layout shift */
+.record-line[data-lock="true"]{opacity:.78;}
+.record-line[data-lock="true"] .label::before{
+  content:"🔒";
+  font-size:10px;
+  margin-right:6px;
+  position:relative;
+  top:-1px;
+  opacity:.75;
+}
+.record-line[data-lock="true"] .soft{
+  background:rgba(120,184,74,.10);
+  color:var(--green2);
+  border:1px solid rgba(120,184,74,.22);
+  font-weight:800;
+}
+
+/* Locked unlock-cards feel lockable, not dead */
+.unlock-card.locked{position:relative;}
+.unlock-card.locked::after{
+  content:"🔒";
+  position:absolute;
+  top:10px;
+  right:12px;
+  font-size:11px;
+  opacity:.55;
+}
+.unlock-card.unlock-tap{cursor:pointer;transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;}
+.unlock-card.unlock-tap:hover{transform:translateY(-1px);border-color:rgba(120,184,74,.35);box-shadow:0 6px 14px rgba(35,40,79,.08);}
+.unlock-card.unlock-tap:active{transform:translateY(0) scale(.985);}
+
+/* Demo pointer under each Progressive Reveal grid — points to in-product triggers */
+.reveal-hint{
+  margin-top:10px;
+  font-size:11.5px;
+  line-height:1.45;
+  color:var(--muted);
+  text-align:center;
+  padding:8px 12px;
+  background:rgba(120,184,74,.06);
+  border:1px dashed rgba(120,184,74,.28);
+  border-radius:12px;
+}
+.reveal-hint strong{color:var(--navy);font-weight:700;}
+
+/* Keyboard focus — visible only on keyboard, not mouse */
+button:focus{outline:none;}
+button:focus-visible,.tab:focus-visible,.tappable:focus-visible,.global-chip:focus-visible,.soft:focus-visible{
+  outline:none;
+  box-shadow:0 0 0 3px rgba(120,184,74,.34),0 0 0 5px rgba(35,40,79,.08);
+  border-radius:inherit;
+}
+
+/* Reduced motion — honour user preference */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+    scroll-behavior:auto !important;
+  }
+  .just-unlocked{animation:none;}
+}
+
 </style>
 <script>
 function show(id) {
@@ -2339,7 +2415,7 @@ body {
       <div class="avatar-circle" style="background:#EEF2FB;">👧🏼</div>
       <div class="avatar-name">Chloe</div>
     </div>
-    <div class="member-avatar">
+    <div class="member-avatar tappable" onclick="unlockFeature('hasChild', 'Schooling unlocked from your People layer')">
       <div class="avatar-circle avatar-invite">+</div>
       <div class="avatar-name">Add person</div>
     </div>
@@ -2424,7 +2500,7 @@ body {
     <h3>Keep in mind</h3>
     <span class="bucket-note">Nothing urgent</span>
     <div class="progress-list" style="margin:0;">
-      <div class="progress-item"><div><strong>Izzy’s passport</strong><div class="label">Expires September 2026 · start renewal now</div></div><span class="tag ambertag">4 months</span></div>
+      <div class="progress-item tappable" id="passportSeed" onclick="unlockFeature('hasPassport', 'Travel unlocked from saved passport details')"><div><strong>Izzy’s passport</strong><div class="label">Expires September 2026 · start renewal now</div></div><span class="tag ambertag">4 months</span></div>
       <div class="progress-item"><div><strong>Will &amp; estate notes</strong><div class="label">Vault references present · final review still sensible</div></div><span class="tag greentag">Protected</span></div>
       <div class="progress-item"><div><strong>Emergency continuity pack</strong><div class="label">Trusted contacts ready · instructions still worth tightening</div></div><span class="tag redtag">Important</span></div>
     </div>
@@ -2533,7 +2609,7 @@ body {
       <div class="avatar-circle" style="background:#EEF2FB;">👧🏼</div>
       <div class="avatar-name">Chloe</div>
     </div>
-    <div class="member-avatar">
+    <div class="member-avatar tappable" onclick="unlockFeature('hasChild', 'Schooling unlocked from your People layer')">
       <div class="avatar-circle avatar-invite">+</div>
       <div class="avatar-name">Add person</div>
     </div>
@@ -2547,7 +2623,8 @@ body {
 </div>
 <div class="stack">
   <div class="card" onclick="show('familyplan')"><h3>Family continuity</h3><p>Wishes, who to call first and practical continuity planning in the same calm language as the current prototype.</p></div>
-  <div class="card" onclick="openSchoolingMode()"><h3>Schooling check</h3><p>Term dates, holidays, inset days, parents’ evenings and school events gathered in one calm family view.</p></div>
+  <div class="card" id="schoolingLockedCard"><h3>Schooling check</h3><p>Add a child or dependent to unlock term dates, inset days, parents’ evenings and school planning.</p><button class="secondary" onclick="unlockFeature('hasChild', 'Schooling unlocked from family details')" style="width:100%;margin-top:12px;">Unlock from family details</button></div>
+  <div class="card" id="schoolingFeatureCard" onclick="openSchoolingMode()" style="display:none;"><h3>Schooling check</h3><p>Term dates, holidays, inset days, parents’ evenings and school events gathered in one calm family view.</p></div>
   <div class="card" onclick="show('emergency')"><h3>Emergency contacts &amp; response</h3><p>Trusted contacts, immediate actions and the right information for difficult moments.</p></div>
   <div class="card" onclick="show('featuremap')"><h3>How the People layer grows</h3><p>See how continuity, trusted access and family planning naturally unlock as the basics are completed.</p></div>
 </div>
@@ -2574,7 +2651,7 @@ body {
 <div class="progress-list">
   <div class="progress-item"><div><strong style="display:block;color:var(--navy);">GP &amp; pharmacy</strong><span class="label">Practice, lead clinician, repeat prescription route and preferred pharmacy</span></div><span class="tag greentag">Useful</span></div>
   <div class="progress-item"><div><strong style="display:block;color:var(--navy);">Medication notes</strong><span class="label">Current medicines, dosage guidance and allergy alerts</span></div><span class="tag ambertag">Build</span></div>
-  <div class="progress-item"><div><strong style="display:block;color:var(--navy);">Care context</strong><span class="label">Mobility, support needs, equipment and household notes if relevant</span></div><span class="tag ambertag">Important</span></div>
+  <div class="progress-item tappable" onclick="unlockFeature('hasCareContext')" role="button" tabindex="0"><div><strong style="display:block;color:var(--navy);">Care context</strong><span class="label">Mobility, support needs, equipment and household notes if relevant</span></div><span class="tag ambertag">Important</span></div>
 </div>
 <div class="stack">
   <div class="card" onclick="show('serviceshub')"><h3>Medical &amp; support services</h3><p>GP, dentist, pharmacy and wider service contacts can sit inside the crucial services layer already present in the prototype.</p></div>
@@ -2602,7 +2679,7 @@ body {
 </div>
 <div class="progress-list">
   <div class="progress-item"><div><strong style="display:block;color:var(--navy);">Prepared for when it matters</strong><span class="label">The calm continuity layer, ready before difficult moments arrive</span></div><span class="tag greentag">Core</span></div>
-  <div class="progress-item"><div><strong style="display:block;color:var(--navy);">Instructions ready</strong><span class="label">Wish2Me, practical wishes and handover notes visible in one protected place</span></div><span class="tag ambertag">Build</span></div>
+  <div class="progress-item tappable" onclick="unlockFeature('hasWishes')" role="button" tabindex="0"><div><strong style="display:block;color:var(--navy);">Instructions ready</strong><span class="label">Wish2Me, practical wishes and handover notes visible in one protected place</span></div><span class="tag ambertag">Build</span></div>
   <div class="progress-item"><div><strong style="display:block;color:var(--navy);">Access verified</strong><span class="label">Clarify what can be released, to whom and under what circumstances</span></div><span class="tag ambertag">Sensitive</span></div>
 </div>
 <div class="stack">
@@ -2727,22 +2804,23 @@ body {
 <h2>Property records</h2>
 <p class="sub">Everything relating to your home, clearly structured and ready to share when needed.</p>
 <div class="card onboard-focus" style="margin-bottom:12px;">
-<div class="section-pill">Progressive reveal</div>
+<div class="section-pill reset-target" title="Demo: long-press to reset unlocks">Progressive reveal</div>
 <h3 style="margin:0 0 6px;">Property grows from essentials into wider household readiness</h3>
 <p style="margin:0;color:var(--muted);font-size:14px;line-height:1.5;">Start with deeds, mortgage and utilities. Once those basics are in place, MySaiFe can reveal home maintenance planning, key trades, and property-income support where relevant.</p>
 <div class="unlock-grid">
-<div class="unlock-card"><b>Now visible</b><span>Mortgage, deeds, providers and key records</span></div>
-<div class="unlock-card"><b>Unlocked</b><span>Home maintenance and renewal planning</span></div>
-<div class="unlock-card locked"><b>Next at 70%</b><span>Trusted trades and crucial property services</span></div>
-<div class="unlock-card locked"><b>Next at 80%</b><span>Rental or property-income readiness support</span></div>
+<div class="unlock-card" id="propertyCoreCard"><b>Now visible</b><span>Mortgage, deeds, providers and key records</span></div>
+<div class="unlock-card" id="propertyMaintenanceCard"><b>Unlocked</b><span>Home maintenance and renewal planning</span></div>
+<div class="unlock-card locked" id="propertyTradesCard"><b>Next at 70%</b><span>Trusted trades and crucial property services</span></div>
+<div class="unlock-card locked" id="propertyIncomeCard"><b>Next at 80%</b><span>Rental or property-income readiness support</span></div>
 </div>
+<div class="reveal-hint">Try the <strong>Agent suggestion</strong> below, or add a <strong>Holiday Property</strong> detail, to see the next layer arrive.</div>
 <div class="agent-prompt-grid">
-<div class="agent-prompt"><b>Agent suggestion</b><span>“Your core home records are organised. Add one trusted trade or annual service next, and I can begin building your property support layer.”</span></div>
+<div class="agent-prompt tappable" onclick="unlockFeature('hasPropertyTrades')" role="button" tabindex="0"><b>Agent suggestion</b><span>“Your core home records are organised. Add one trusted trade or annual service next, and I can begin building your property support layer.”</span></div>
 </div>
 </div>
 <div class="progress-list">
-<div class="progress-item"><div><strong style="display:block;color:var(--navy);">Ivy Cottage</strong><span class="label">Mortgage, deeds and utilities</span></div><div style="display:flex;align-items:center;gap:10px;"><span class="tag greentag">84%</span><div class="gauge green" style="--p:84;width:54px;height:54px;"><span>84%</span></div></div></div>
-<div class="progress-item"><div><strong style="display:block;color:var(--navy);">Holiday Property</strong><span class="label">Insurance added, legal docs missing</span></div><div style="display:flex;align-items:center;gap:10px;"><span class="tag ambertag">61%</span><div class="gauge amber" style="--p:61;width:54px;height:54px;"><span>61%</span></div></div></div>
+<div class="progress-item"><div><strong style="display:block;color:var(--navy);">Ivy Cottage</strong><span class="label">Mortgage, deeds and utilities</span></div><div style="display:flex;align-items:center;gap:10px;"><span class="tag greentag" id="propIvyTag">84%</span><div class="gauge green" id="propIvyGauge" style="--p:84;width:54px;height:54px;"><span>84%</span></div></div></div>
+<div class="progress-item tappable" onclick="unlockFeature('hasPropertyIncome')" role="button" tabindex="0"><div><strong style="display:block;color:var(--navy);">Holiday Property</strong><span class="label">Insurance added, legal docs missing</span></div><div style="display:flex;align-items:center;gap:10px;"><span class="tag ambertag">61%</span><div class="gauge amber" style="--p:61;width:54px;height:54px;"><span>61%</span></div></div></div>
 </div>
 <div class="stack">
 <div class="card" onclick="show('mortgage')"><h3>Ivy Cottage</h3><p>Mortgage active • 6 documents • Last updated 2 weeks ago</p></div>
@@ -3008,7 +3086,13 @@ body {
     </div>
   </div>
 
-  <div class="card" style="background:linear-gradient(180deg,#fffdf8 0%,#f8f1e6 100%);border:1px solid rgba(95,156,53,.18);margin-top:2px;">
+  <div class="card" id="travelLockedCard" style="background:linear-gradient(180deg,#fffdf8 0%,#f8f1e6 100%);border:1px solid rgba(95,156,53,.12);margin-top:2px;">
+    <div class="section-pill">Travel unlock</div>
+    <h3 style="margin:0 0 6px;">Before you go</h3>
+    <p style="margin:0 0 12px;color:var(--muted);font-size:14px;line-height:1.5;">Save a passport or travel ID and this calm pre-trip check unlocks when it becomes relevant.</p>
+    <button class="secondary" onclick="unlockFeature('hasPassport', 'Travel unlocked from passport details')" style="width:100%;font-weight:800;">Unlock from passport details</button>
+  </div>
+  <div class="card" id="travelFeatureCard" style="display:none;background:linear-gradient(180deg,#fffdf8 0%,#f8f1e6 100%);border:1px solid rgba(95,156,53,.18);margin-top:2px;">
     <div class="section-pill">Travel mode</div>
     <h3 style="margin:0 0 6px;">Getting ready to travel</h3>
     <p style="margin:0 0 12px;color:var(--muted);font-size:14px;line-height:1.5;">A quick readiness check for passport, insurance, bookings, emergency contact and finance access, whether holiday or business.</p>
@@ -3042,15 +3126,16 @@ body {
 <p>Give trusted people access to the right information — at the right time.</p>
 </div>
 <div class="card onboard-focus" style="margin-top:12px;margin-bottom:12px;">
-<div class="section-pill">Progressive reveal</div>
+<div class="section-pill reset-target" title="Demo: long-press to reset unlocks">Progressive reveal</div>
 <h3 style="margin:0 0 6px;">Family support appears gently, not all at once</h3>
 <p style="margin:0;color:var(--muted);font-size:14px;line-height:1.5;">MySaiFe starts with trusted contacts and emergency essentials. Deeper planning, family continuity and more sensitive guidance only appear once the user has already taken the first easier steps.</p>
 <div class="unlock-grid">
-<div class="unlock-card"><b>Now visible</b><span>Trusted contacts and emergency essentials</span></div>
-<div class="unlock-card"><b>Unlocked</b><span>Family continuity pack</span></div>
-<div class="unlock-card locked"><b>Next at 60%</b><span>Caregiving and support notes</span></div>
-<div class="unlock-card locked"><b>Next at 75%</b><span>Bereavement and wishes guidance</span></div>
+<div class="unlock-card" id="familyCoreCard"><b>Now visible</b><span>Trusted contacts and emergency essentials</span></div>
+<div class="unlock-card" id="familyContinuityCard"><b>Unlocked</b><span>Family continuity pack</span></div>
+<div class="unlock-card locked" id="familyCareCard"><b>Next at 60%</b><span>Caregiving and support notes</span></div>
+<div class="unlock-card locked" id="familyWishesCard"><b>Next at 75%</b><span>Bereavement and wishes guidance</span></div>
 </div>
+<div class="reveal-hint">Try adding <strong>Care context</strong> or <strong>Instructions</strong> in the lists below to see the next layer arrive.</div>
 <div class="unlock-celebration"><b>Family continuity now available</b><span>Because trusted contacts and emergency essentials are already underway, MySaiFe can now gently help the household prepare for more sensitive moments without overwhelming the user too early.</span><div class="mini-actions"><button class="light" onclick="show('familyplan')">Open continuity view</button><button class="ghost" onclick="celebrateUnlock('Family continuity pack','Wishes, who to call first, key policy references and practical family guidance now sit together in one protected place.')">See unlock moment</button></div></div>
 <div class="agent-prompt-grid">
 <div class="agent-prompt"><b>Agent suggestion</b><span>“You have named trusted people. Would you like to add where the will is kept and who should be called first?”</span></div>
@@ -3133,7 +3218,7 @@ body {
 <h2>Lifestyle &amp; Services</h2>
 <p class="sub">Organise modern household accounts, subscriptions and everyday providers in one clear place.</p>
 <div class="card onboard-focus" style="margin-bottom:12px;">
-<div class="section-pill">Progressive reveal</div>
+<div class="section-pill reset-target" title="Demo: long-press to reset unlocks">Progressive reveal</div>
 <h3 style="margin:0 0 6px;">Lifestyle becomes more helpful as the basics are added</h3>
 <p style="margin:0;color:var(--muted);font-size:14px;line-height:1.5;">Begin with subscriptions and everyday providers. MySaiFe can then unlock savings prompts, crucial services and household handover details once enough has been recorded.</p>
 <div class="reveal-strip">
@@ -3418,11 +3503,19 @@ body {
 </div>
 <h2 style="margin:18px 0 8px;">Life modes</h2>
 <div class="card" style="margin-bottom:10px;">
-<div class="record-line">
+<div class="record-line" id="travelModeLockedRow" data-lock="true">
+<div><div class="label">Travel mode</div><div style="font-size:12px;color:var(--muted);">Unlocks once travel identity details are added</div></div>
+<button class="soft" onclick="unlockFeature('hasPassport', 'Travel unlocked from passport details')" style="padding:10px 14px;">Unlock</button>
+</div>
+<div class="record-line" id="travelModeFeatureRow" style="display:none;">
 <div><div class="label">Travel mode</div><div style="font-size:12px;color:var(--muted);">Passport, insurance, bookings, emergency contact and finance checks</div></div>
 <button class="soft" onclick="openTravelMode()" style="padding:10px 14px;">Open</button>
 </div>
-<div class="record-line">
+<div class="record-line" id="schoolingModeLockedRow" data-lock="true">
+<div><div class="label">Schooling mode</div><div style="font-size:12px;color:var(--muted);">Unlocks once a child or dependent is added</div></div>
+<button class="soft" onclick="unlockFeature('hasChild', 'Schooling unlocked from family details')" style="padding:10px 14px;">Unlock</button>
+</div>
+<div class="record-line" id="schoolingModeFeatureRow" style="display:none;">
 <div><div class="label">Schooling mode</div><div style="font-size:12px;color:var(--muted);">Term dates, holidays, inset days, parents’ evenings and school events</div></div>
 <button class="soft" onclick="openSchoolingMode()" style="padding:10px 14px;">Open</button>
 </div>
@@ -3786,6 +3879,241 @@ function openFamilyPlan(){
     {label:'Mark as reviewed', primary:false, fn:function(){ closeSheet(); toast('Family continuity pack marked reviewed'); }}
   ]);
 }
+
+const UNLOCK_KEYS = ['hasPassport','hasChild','hasPropertyTrades','hasPropertyIncome','hasCareContext','hasWishes'];
+const unlockState = (function(){
+  var defaults = {};
+  UNLOCK_KEYS.forEach(function(k){ defaults[k] = false; });
+  try {
+    var saved = JSON.parse(localStorage.getItem('mysaifeUnlockState') || '{}');
+    UNLOCK_KEYS.forEach(function(k){ if(saved[k]) defaults[k] = true; });
+  } catch(e){}
+  return defaults;
+})();
+function saveUnlockState(){
+  localStorage.setItem('mysaifeUnlockState', JSON.stringify(unlockState));
+}
+function setVisible(id, visible){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.style.display = visible ? '' : 'none';
+}
+
+// ── Context for each unlock: destination screen, body copy, and "what's next" ──
+const UNLOCK_CTX = {
+  hasPassport: {
+    title: 'Travel mode is ready',
+    dest:  'vehicles',
+    body:  'Passport details are saved, so your before-you-go view now appears quietly in the Vehicles & Travel area. Nothing has been shared or filed automatically — it simply surfaces when you need it.',
+    next:  'Adding a second traveller\u2019s passport will reveal joint trip planning and shared itineraries.'
+  },
+  hasChild: {
+    title: 'Schooling is ready',
+    dest:  'peoplehub',
+    body:  'A dependent has been added to your People layer, so term dates, inset days, parents\u2019 evenings and school planning will now gather in one calm family view.',
+    next:  'Adding a GP or preferred pharmacy next will open the health context layer for the child.'
+  },
+  hasPropertyTrades: {
+    title: 'Trusted trades unlocked',
+    dest:  'property',
+    body:  'With core property records in place, MySaiFe can now hold your preferred electrician, plumber, surveyor, locksmith and insurer contacts in one trusted spot — ready to share securely if needed.',
+    next:  'Adding a rental or second-property record next will reveal property-income readiness support.'
+  },
+  hasPropertyIncome: {
+    title: 'Property-income support unlocked',
+    dest:  'property',
+    body:  'Because your property records are strong, MySaiFe can now help track rental income timelines, letting agent references and the year-end details a landlord tends to chase at the last minute.',
+    next:  'Linking your finance layer next will surface tax and income prep for end-of-year.'
+  },
+  hasCareContext: {
+    title: 'Care notes unlocked',
+    dest:  'emergency',
+    body:  'Because trusted contacts and emergency essentials are underway, MySaiFe can now hold caregiving context — mobility, support needs, equipment and household notes — quietly and privately.',
+    next:  'Adding written emergency instructions next will unlock the bereavement and wishes guidance layer.'
+  },
+  hasWishes: {
+    title: 'Wishes guidance unlocked',
+    dest:  'emergency',
+    body:  'The most sensitive layer — funeral wishes, who to call first, will location and practical family guidance — now sits together in one protected place, only visible to the people you choose.',
+    next:  'Reviewing trusted-access boundaries in People next keeps this information exactly where you want it.'
+  }
+};
+
+// ── Single source of truth for domain completeness, tied to unlock state ──
+// Base values match the prototype's starting percentages; unlocks only ever
+// increase the displayed completeness, never reduce it.
+function computeDomainCompleteness(domain){
+  if(domain === 'property'){
+    var base = 84;
+    if(unlockState.hasPropertyTrades) base += 4;
+    if(unlockState.hasPropertyIncome) base += 5;
+    return Math.min(base, 95);
+  }
+  if(domain === 'family'){
+    var base = 52;
+    if(unlockState.hasChild) base += 6;
+    if(unlockState.hasCareContext) base += 10;
+    if(unlockState.hasWishes) base += 14;
+    return Math.min(base, 95);
+  }
+  if(domain === 'travel'){
+    return unlockState.hasPassport ? 72 : 28;
+  }
+  return 0;
+}
+
+function updateGauge(gaugeEl, pct, tagEl){
+  if(!gaugeEl) return;
+  gaugeEl.style.setProperty('--p', pct);
+  var span = gaugeEl.querySelector('span');
+  if(span) span.textContent = pct + '%';
+  gaugeEl.classList.remove('green','amber','red');
+  gaugeEl.classList.add(pct >= 75 ? 'green' : pct >= 50 ? 'amber' : 'red');
+  if(tagEl){
+    tagEl.textContent = pct + '%';
+    tagEl.classList.remove('greentag','ambertag','redtag');
+    tagEl.classList.add(pct >= 75 ? 'greentag' : pct >= 50 ? 'ambertag' : 'redtag');
+  }
+}
+
+function renderUnlocks(){
+  // Travel / passport
+  setVisible('travelLockedCard', !unlockState.hasPassport);
+  setVisible('travelFeatureCard', unlockState.hasPassport);
+  setVisible('travelModeLockedRow', !unlockState.hasPassport);
+  setVisible('travelModeFeatureRow', unlockState.hasPassport);
+  // Schooling / child
+  setVisible('schoolingLockedCard', !unlockState.hasChild);
+  setVisible('schoolingFeatureCard', unlockState.hasChild);
+  setVisible('schoolingModeLockedRow', !unlockState.hasChild);
+  setVisible('schoolingModeFeatureRow', unlockState.hasChild);
+
+  // Progressive reveal grids stay visually stable as explainers throughout the demo.
+  // The four property/family grid cards do NOT mutate when state changes — their
+  // purpose is to communicate the concept, not act as triggers. Triggers live
+  // on real in-product surfaces (Agent suggestion, Holiday Property row,
+  // Care context row, Instructions ready row).
+
+  // Re-compute % gauges that depend on unlock state
+  var ivy = document.getElementById('propIvyGauge');
+  var ivyTag = document.getElementById('propIvyTag');
+  if(ivy){ updateGauge(ivy, computeDomainCompleteness('property'), ivyTag); }
+}
+
+function unlockFeature(key, message){
+  // Already unlocked — silent no-op so repeated taps across screens don't re-celebrate
+  if(unlockState[key]) return;
+  unlockState[key] = true;
+  saveUnlockState();
+  renderUnlocks();
+
+  // Pulse the freshly revealed elements so the unlock feels like a moment
+  var pulseMap = {
+    hasPassport:       ['travelFeatureCard','travelModeFeatureRow'],
+    hasChild:          ['schoolingFeatureCard','schoolingModeFeatureRow'],
+    hasPropertyTrades: ['propertyTradesCard'],
+    hasPropertyIncome: ['propertyIncomeCard'],
+    hasCareContext:    ['familyCareCard'],
+    hasWishes:         ['familyWishesCard']
+  };
+  (pulseMap[key] || []).forEach(function(id){
+    var el = document.getElementById(id);
+    if(!el) return;
+    el.classList.remove('just-unlocked');
+    void el.offsetWidth; // reflow to restart the animation
+    el.classList.add('just-unlocked');
+    setTimeout(function(){ el.classList.remove('just-unlocked'); }, 1500);
+  });
+
+  // Context-aware unlock moment — destination and body tuned to the feature
+  var ctx = UNLOCK_CTX[key] || {
+    title: message || 'Newly unlocked',
+    dest:  null,
+    body:  'This area now appears gently in your app. Open it when the moment feels right \u2014 nothing automatic happens without you.',
+    next:  null
+  };
+
+  // Body + "what unlocks next" line, so each unlock feels like a waypoint
+  var bodyHtml = ctx.body;
+  if(ctx.next){
+    bodyHtml += '<div style="margin-top:12px;padding:10px 12px;border-radius:12px;background:rgba(120,184,74,.10);border:1px solid rgba(120,184,74,.22);color:var(--navy);font-size:12.5px;line-height:1.45;"><strong style="display:block;font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--green2);margin-bottom:4px;">What\u2019s next</strong>' + ctx.next + '</div>';
+  }
+
+  openSheet(ctx.title, 'Newly unlocked', bodyHtml, [
+    {label: ctx.dest ? 'Open now' : 'Done', primary:true, fn:function(){
+      closeSheet();
+      if(ctx.dest){ show(ctx.dest); }
+    }},
+    {label:'View later', primary:false, fn:function(){
+      closeSheet();
+      toast('Saved to your next-step list');
+    }}
+  ]);
+}
+document.addEventListener('DOMContentLoaded', renderUnlocks);
+
+// ── Demo helper: long-press any "Progressive reveal" pill to reset unlocks ─
+document.addEventListener('DOMContentLoaded', function(){
+  var pressTimer = null;
+  var pressedEl = null;
+  var fired = false;
+  var HOLD_MS = 900;
+
+  function clearPress(){
+    if(pressTimer){ clearTimeout(pressTimer); pressTimer = null; }
+    if(pressedEl){ pressedEl.style.transition = 'opacity .2s'; pressedEl.style.opacity = ''; pressedEl = null; }
+  }
+
+  function startPress(el){
+    fired = false;
+    pressedEl = el;
+    // Subtle visual feedback during the hold
+    el.style.transition = 'opacity .6s';
+    el.style.opacity = '.55';
+    pressTimer = setTimeout(function(){
+      fired = true;
+      clearPress();
+      openResetSheet();
+    }, HOLD_MS);
+  }
+
+  function openResetSheet(){
+    if(typeof openSheet !== 'function') return;
+    openSheet(
+      'Reset progressive unlocks?',
+      'Demo helper',
+      'This clears every saved unlock so Travel, Schooling, trusted trades, property income, care notes and wishes guidance all return to locked. Useful for re-running the demo. Nothing else is affected.',
+      [
+        {label:'Reset now', primary:true, fn:function(){
+          UNLOCK_KEYS.forEach(function(k){ unlockState[k] = false; });
+          saveUnlockState();
+          renderUnlocks();
+          closeSheet();
+          if(typeof toast === 'function') toast('Unlocks reset — demo ready');
+        }},
+        {label:'Cancel', primary:false, fn:function(){ closeSheet(); }}
+      ]
+    );
+  }
+
+  // Delegate so all three Progressive reveal pills (Family/etc.) share the behaviour
+  document.addEventListener('mousedown', function(e){
+    var el = e.target.closest && e.target.closest('.section-pill.reset-target');
+    if(el) startPress(el);
+  });
+  document.addEventListener('touchstart', function(e){
+    var el = e.target.closest && e.target.closest('.section-pill.reset-target');
+    if(el) startPress(el);
+  }, {passive:true});
+  ['mouseup','mouseleave','touchend','touchcancel','touchmove','scroll'].forEach(function(evt){
+    document.addEventListener(evt, clearPress, evt==='scroll' ? {passive:true} : false);
+  });
+  // Swallow the click that fires after a long-press so we don't accidentally trigger something else
+  document.addEventListener('click', function(e){
+    if(fired){ e.stopPropagation(); e.preventDefault(); fired = false; }
+  }, true);
+});
+
 function openTravelMode(){
   openSheet('Getting ready to travel','Travel mode','Make sure everything important is in place before you go. Passport stored, insurance status checked, bookings gathered, emergency contact confirmed and finance access ready.',[
     {label:'Open Vehicles & Travel', primary:true, fn:function(){ closeSheet(); show('vehicles'); }},
