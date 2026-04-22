@@ -1,0 +1,2123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<meta name="theme-color" content="#1a1f3c"/>
+<title>s'LiFe — Life, as it arrives</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Core palette — family DNA with MySAiFe (navy, cream) */
+  --navy:#1a1f3c;
+  --navy2:#262d56;
+  --ink:#0f1226;
+  --cream:#faf6ee;
+  --cream2:#f3ecdd;
+  --paper:#fffdf8;
+  --line:rgba(26,31,60,.09);
+  --line-strong:rgba(26,31,60,.16);
+  --text:#1a1f3c;
+  --muted:#6a7290;
+  --muted2:#9098b0;
+
+  /* s'LiFe-specific accents — Josh edition (cobalt forward) */
+  --coral:#2f6ef3;          /* "now" accent — cobalt blue (was coral) */
+  --coral-ink:#1c4cc9;
+  --coral-wash:rgba(47,110,243,.10);
+  --aqua:#3dbfc9;           /* "path" accent — teal, a touch cooler */
+  --aqua-deep:#1b8691;
+  --aqua-wash:rgba(61,191,201,.14);
+  --violet:#7d6fe8;         /* "family thread" — kept a violet sibling but cooler */
+  --violet-wash:rgba(125,111,232,.10);
+
+  /* State colours */
+  --ok:#3fa85e;
+  --warn:#d9a22d;
+  --alert:#d85a4d;
+
+  /* Shadows — softer, more modern than MySAiFe's */
+  --shadow-sm:0 1px 2px rgba(26,31,60,.04), 0 2px 6px rgba(26,31,60,.03);
+  --shadow-md:0 4px 10px rgba(26,31,60,.05), 0 10px 24px rgba(26,31,60,.06);
+  --shadow-lg:0 12px 28px rgba(26,31,60,.10), 0 24px 48px rgba(26,31,60,.08);
+  --shadow-pop:0 8px 24px rgba(47,110,243,.22);
+
+  --radius-sm:12px;
+  --radius:18px;
+  --radius-lg:24px;
+  --radius-xl:32px;
+
+  --ease:cubic-bezier(.22,.9,.28,1);
+  --ease-bounce:cubic-bezier(.34,1.42,.4,1);
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{
+  font-family:'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+  background:linear-gradient(180deg, #f7f2e8 0%, #f1e8d6 40%, #e8dfcc 100%);
+  color:var(--text);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+  overflow-x:hidden;
+  letter-spacing:-0.005em;
+}
+button{font:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+
+h1,h2,h3,.display{
+  font-family:'Fraunces', Georgia, serif;
+  font-variation-settings:"opsz" 60, "SOFT" 50;
+  letter-spacing:-0.02em;
+  color:var(--ink);
+  line-height:1.05;
+  font-weight:600;
+}
+
+.wrap{
+  max-width:430px;
+  margin:0 auto;
+  min-height:100vh;
+  position:relative;
+  background:
+    radial-gradient(ellipse 80% 40% at 70% 0%, rgba(47,110,243,.08), transparent 60%),
+    radial-gradient(ellipse 80% 40% at 20% 100%, rgba(61,191,201,.10), transparent 60%),
+    linear-gradient(180deg, #fbf7ee 0%, #f5ecd8 50%, #eee3cd 100%);
+  box-shadow: 0 0 48px rgba(26,31,60,.06);
+  overflow:hidden;
+}
+
+/* Subtle noise overlay — texture without being heavy */
+.wrap::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Screens */
+.screen{
+  display:none;
+  min-height:100vh;
+  padding:20px 20px calc(140px + env(safe-area-inset-bottom, 0px));
+  position:relative;
+  z-index:1;
+}
+.screen.active{display:block;}
+
+/* Top status bar — real-feeling, minimal */
+.statusbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 4px 20px;
+  font-size:12px;
+  font-weight:700;
+  color:var(--navy);
+  font-variant-numeric:tabular-nums;
+}
+.statusbar .brand{
+  font-family:'Fraunces', serif;
+  font-variation-settings:"opsz" 144, "SOFT" 100;
+  font-size:34px;
+  font-weight:600;
+  letter-spacing:-0.04em;
+  display:flex;
+  align-items:baseline;
+  gap:2px;
+  line-height:1;
+}
+.statusbar .brand .apos{
+  color:var(--coral);
+  font-style:italic;
+  margin:0 -2px;
+  font-size:1.05em;
+  font-weight:500;
+}
+.statusbar .brand .sub{
+  font-family:'Inter Tight', sans-serif;
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-left:10px;
+  padding-left:10px;
+  border-left:1px solid var(--line-strong);
+  line-height:1.1;
+  align-self:center;
+  max-width:88px;
+}
+.statusbar .right{display:flex;gap:8px;align-items:center;}
+.pip{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  padding:4px 9px;
+  background:rgba(255,255,255,.7);
+  border:1px solid var(--line);
+  border-radius:999px;
+  font-size:10px;
+  font-weight:700;
+  color:var(--navy);
+  letter-spacing:0.02em;
+}
+.pip.live{
+  background:var(--coral-wash);
+  border-color:rgba(47,110,243,.28);
+  color:var(--coral-ink);
+}
+.pip.live::before{
+  content:"";
+  width:6px;height:6px;border-radius:50%;
+  background:var(--coral);
+  box-shadow:0 0 0 0 rgba(47,110,243,.6);
+  animation:livePulse 1.8s ease-in-out infinite;
+}
+@keyframes livePulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(47,110,243,.6);}
+  50%{box-shadow:0 0 0 5px rgba(47,110,243,0);}
+}
+
+/* Hero greeting */
+.greeting{
+  margin:4px 0 22px;
+}
+.greeting .hello{
+  font-size:13px;
+  color:var(--muted);
+  font-weight:500;
+  margin-bottom:2px;
+}
+.greeting h1{
+  font-size:clamp(30px, 8vw, 38px);
+  line-height:1.02;
+  font-weight:500;
+  font-variation-settings:"opsz" 80, "SOFT" 60;
+}
+.greeting h1 em{
+  font-style:italic;
+  color:var(--coral);
+  font-weight:500;
+}
+.greeting .sub{
+  margin-top:8px;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.5;
+  max-width:36ch;
+}
+
+</style>
+<style>
+/* ─── The Life Path strip — the signature element ───────────────────── */
+.lifepath{
+  position:relative;
+  padding:8px 0 4px;
+  margin-bottom:24px;
+}
+.lifepath-header{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  margin-bottom:14px;
+}
+.lifepath-header h2{
+  font-size:18px;
+  font-weight:600;
+  font-variation-settings:"opsz" 40, "SOFT" 40;
+}
+.lifepath-header .years{
+  font-family:'Inter Tight', sans-serif;
+  font-size:11px;
+  font-weight:700;
+  color:var(--muted);
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+}
+
+/* The spine itself — a soft gradient line */
+.path-track{
+  position:relative;
+  padding-left:36px;
+}
+.path-track::before{
+  content:"";
+  position:absolute;
+  left:13px;
+  top:16px;
+  bottom:16px;
+  width:2px;
+  background:linear-gradient(180deg,
+    rgba(26,31,60,.22) 0%,
+    rgba(61,191,201,.5) 22%,
+    var(--coral) 44%,
+    var(--coral) 54%,
+    rgba(61,191,201,.4) 66%,
+    rgba(26,31,60,.12) 88%,
+    rgba(26,31,60,.05) 100%);
+  border-radius:2px;
+}
+
+.node{
+  position:relative;
+  padding:12px 0 18px;
+  cursor:pointer;
+  transition:transform .2s var(--ease);
+}
+.node:hover{transform:translateX(2px);}
+.node:last-child{padding-bottom:4px;}
+
+.node::before{
+  content:"";
+  position:absolute;
+  left:-29px;
+  top:16px;
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  background:var(--paper);
+  border:2px solid var(--line-strong);
+  z-index:2;
+  transition:all .25s var(--ease);
+}
+
+/* Passed nodes — already lived */
+.node.passed::before{
+  background:var(--aqua);
+  border-color:var(--aqua-deep);
+}
+.node.passed .node-label{color:var(--muted);}
+.node.passed .node-title{color:var(--text);text-decoration:none;}
+
+/* Current — where the user is standing now */
+.node.current::before{
+  background:var(--coral);
+  border-color:var(--coral);
+  width:22px;
+  height:22px;
+  left:-32px;
+  top:13px;
+  box-shadow:
+    0 0 0 4px rgba(47,110,243,.15),
+    0 6px 14px rgba(47,110,243,.32);
+  animation:currentNode 2.4s ease-in-out infinite;
+}
+@keyframes currentNode{
+  0%,100%{box-shadow:0 0 0 4px rgba(47,110,243,.15), 0 6px 14px rgba(47,110,243,.32);}
+  50%{box-shadow:0 0 0 8px rgba(47,110,243,.06), 0 6px 14px rgba(47,110,243,.32);}
+}
+.node.current .node-label{
+  color:var(--coral);
+  font-weight:800;
+  letter-spacing:0.06em;
+}
+.node.current .node-title{
+  font-size:18px;
+  font-weight:600;
+}
+
+/* Just-unlocked glow-up */
+.node.just-unlocked::before{
+  animation:unlockBurst 1.2s var(--ease-bounce) 1;
+}
+@keyframes unlockBurst{
+  0%{transform:scale(.6);}
+  50%{transform:scale(1.4);box-shadow:0 0 0 12px rgba(47,110,243,.2);}
+  100%{transform:scale(1);}
+}
+
+/* Future — arriving someday */
+.node.future::before{
+  background:var(--cream);
+  border-color:var(--line-strong);
+  border-style:dashed;
+}
+.node.future .node-label{color:var(--muted2);}
+.node.future .node-title{color:var(--muted);font-weight:500;}
+
+/* Very-future — soft, optional, aspirational */
+.node.faded{opacity:.45;}
+.node.faded::before{border-style:dashed;width:12px;height:12px;left:-27px;top:18px;}
+
+.node-label{
+  font-family:'Inter Tight', sans-serif;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--aqua-deep);
+  margin-bottom:3px;
+  display:block;
+}
+.node-title{
+  font-family:'Fraunces', serif;
+  font-variation-settings:"opsz" 36, "SOFT" 50;
+  font-size:16px;
+  font-weight:500;
+  color:var(--ink);
+  line-height:1.2;
+  display:block;
+  margin-bottom:2px;
+}
+.node-meta{
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.4;
+  margin-top:2px;
+}
+
+/* Pack cards — the Firsts moments */
+.pack-wrap{margin-top:-4px;margin-bottom:-4px;padding:10px 0;}
+.pack{
+  position:relative;
+  background:linear-gradient(135deg, #fff 0%, #f5f8ff 100%);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:14px 16px 16px;
+  box-shadow:var(--shadow-sm);
+  overflow:hidden;
+}
+.pack.active{
+  background:linear-gradient(135deg, #fff 0%, #eaf2ff 100%);
+  border-color:rgba(47,110,243,.24);
+  box-shadow:0 6px 18px rgba(47,110,243,.10);
+}
+.pack.active::before{
+  content:"";
+  position:absolute;
+  top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg, var(--coral), #5a9dfb);
+}
+.pack-head{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:8px;
+}
+.pack-title{
+  font-family:'Fraunces', serif;
+  font-size:17px;
+  font-weight:600;
+  font-variation-settings:"opsz" 40, "SOFT" 60;
+  color:var(--ink);
+  line-height:1.15;
+}
+.pack-expiry{
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:0.04em;
+  color:var(--coral-ink);
+  background:var(--coral-wash);
+  padding:4px 8px;
+  border-radius:8px;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+.pack-sub{
+  font-size:12.5px;
+  color:var(--muted);
+  line-height:1.5;
+  margin-bottom:12px;
+}
+.pack-progress{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:10px;
+}
+.pack-bar{
+  flex:1;
+  height:5px;
+  background:rgba(26,31,60,.08);
+  border-radius:3px;
+  overflow:hidden;
+  position:relative;
+}
+.pack-bar-fill{
+  position:absolute;
+  left:0;top:0;bottom:0;
+  background:linear-gradient(90deg, var(--coral), #5a9dfb);
+  border-radius:3px;
+  transition:width .5s var(--ease);
+}
+.pack-pct{
+  font-size:11px;
+  font-weight:700;
+  color:var(--coral-ink);
+  font-variant-numeric:tabular-nums;
+  min-width:32px;
+  text-align:right;
+}
+
+/* Upcoming/locked pack */
+.pack.future{
+  background:rgba(255,255,255,.55);
+  border-style:dashed;
+  border-color:var(--line-strong);
+  box-shadow:none;
+}
+.pack.future .pack-title{color:var(--muted);}
+.pack.future .pack-sub{color:var(--muted2);}
+.pack.future .pack-when{
+  font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;
+  color:var(--aqua-deep);background:var(--aqua-wash);
+  padding:4px 8px;border-radius:8px;
+}
+
+</style>
+<style>
+/* ─── Section headers ────────────────────────────────────────────── */
+.section-head{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  margin:26px 0 12px;
+}
+.section-head h2{
+  font-size:20px;
+  font-weight:600;
+  font-variation-settings:"opsz" 36, "SOFT" 50;
+  line-height:1.1;
+}
+.section-head .more{
+  font-size:12px;
+  font-weight:700;
+  color:var(--coral-ink);
+  letter-spacing:-0.005em;
+}
+.section-lead{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.5;
+  margin:-6px 0 12px;
+  max-width:40ch;
+}
+
+/* Card stack — horizontal swipable row */
+.stack-row{
+  display:flex;
+  gap:12px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  padding:4px 4px 16px;
+  margin:0 -20px;
+  padding-left:20px;
+  padding-right:20px;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.stack-row::-webkit-scrollbar{display:none;}
+.stack-card{
+  flex:0 0 72%;
+  scroll-snap-align:start;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:14px 14px 16px;
+  box-shadow:var(--shadow-sm);
+  min-height:120px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.stack-card.coral{
+  background:linear-gradient(140deg, #eef3ff, #d7e4ff);
+  border-color:rgba(47,110,243,.2);
+}
+.stack-card.aqua{
+  background:linear-gradient(140deg, #ecf8fa, #c8ebf0);
+  border-color:rgba(61,191,201,.28);
+}
+.stack-card.violet{
+  background:linear-gradient(140deg, #f1eefc, #e8e3fa);
+  border-color:rgba(125,111,232,.22);
+}
+.stack-card-eyebrow{
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:4px;
+}
+.stack-card.coral .stack-card-eyebrow{color:var(--coral-ink);}
+.stack-card.aqua .stack-card-eyebrow{color:var(--aqua-deep);}
+.stack-card.violet .stack-card-eyebrow{color:#4a3ec5;}
+
+.stack-card-title{
+  font-family:'Fraunces', serif;
+  font-size:16px;
+  font-weight:600;
+  font-variation-settings:"opsz" 36, "SOFT" 60;
+  line-height:1.15;
+  margin-bottom:4px;
+}
+.stack-card-body{
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.4;
+}
+.stack-card-cta{
+  margin-top:10px;
+  font-size:12px;
+  font-weight:700;
+  color:var(--ink);
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+}
+.stack-card.coral .stack-card-cta{color:var(--coral-ink);}
+
+/* ─── Family Thread — the bridge ────────────────────────────────── */
+.thread-card{
+  background:linear-gradient(160deg, #faf8ff 0%, #efeafd 70%, #e5dffb 100%);
+  border:1px solid rgba(125,111,232,.18);
+  border-radius:var(--radius-lg);
+  padding:16px 18px 18px;
+  margin:8px 0 20px;
+  box-shadow:0 8px 22px rgba(125,111,232,.10);
+  position:relative;
+  overflow:hidden;
+}
+.thread-card::before{
+  content:"";
+  position:absolute;
+  right:-40px; top:-40px;
+  width:140px;height:140px;
+  background:radial-gradient(circle, rgba(125,111,232,.22), transparent 70%);
+  pointer-events:none;
+}
+.thread-head{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:10px;
+}
+.thread-pip{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  padding:3px 9px;
+  background:rgba(125,111,232,.18);
+  color:#4a3ec5;
+  border-radius:999px;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:0.05em;
+  text-transform:uppercase;
+}
+.thread-pip::before{
+  content:"";
+  width:5px;height:5px;border-radius:50%;
+  background:var(--violet);
+}
+.thread-card h3{
+  font-size:20px;
+  font-weight:600;
+  font-variation-settings:"opsz" 36, "SOFT" 70;
+  line-height:1.15;
+  margin-bottom:4px;
+}
+.thread-sub{
+  font-size:12.5px;
+  color:var(--muted);
+  line-height:1.5;
+  margin-bottom:14px;
+}
+.thread-msg{
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(125,111,232,.14);
+  border-radius:var(--radius-sm);
+  padding:10px 12px;
+  font-size:12.5px;
+  line-height:1.5;
+  color:var(--text);
+  margin-bottom:8px;
+  position:relative;
+}
+.thread-msg .who{
+  font-weight:700;
+  font-size:11px;
+  color:#4a3ec5;
+  display:block;
+  margin-bottom:2px;
+}
+.thread-msg.mine{
+  background:rgba(125,111,232,.12);
+  border-color:rgba(125,111,232,.24);
+  margin-left:14%;
+}
+.thread-msg.mine .who{color:var(--coral-ink);}
+.thread-actions{
+  display:flex;
+  gap:8px;
+  margin-top:12px;
+}
+
+/* ─── Buttons ──────────────────────────────────────────────────── */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:12px 18px;
+  font-size:14px;
+  font-weight:700;
+  border-radius:14px;
+  transition:transform .15s var(--ease), box-shadow .15s var(--ease), background .15s, filter .15s;
+  letter-spacing:-0.005em;
+}
+.btn:active{transform:translateY(1px);}
+.btn.primary{
+  background:var(--ink);
+  color:var(--paper);
+  box-shadow:0 4px 14px rgba(26,31,60,.22);
+}
+.btn.primary:hover{background:var(--navy2);transform:translateY(-1px);box-shadow:0 6px 18px rgba(26,31,60,.28);}
+.btn.coral{
+  background:linear-gradient(95deg, var(--coral), #5a9dfb);
+  color:#fff;
+  box-shadow:var(--shadow-pop);
+}
+.btn.coral:hover{filter:brightness(1.05);transform:translateY(-1px);}
+.btn.ghost{
+  background:rgba(255,255,255,.7);
+  color:var(--ink);
+  border:1px solid var(--line-strong);
+}
+.btn.ghost:hover{background:#fff;}
+.btn.violet{
+  background:var(--violet);
+  color:#fff;
+}
+.btn.violet:hover{background:#6a5ce4;}
+.btn.sm{padding:8px 13px;font-size:12px;border-radius:10px;}
+.btn.full{width:100%;}
+
+/* ─── Bottom tab bar ───────────────────────────────────────────── */
+.tabbar{
+  position:fixed;
+  bottom:calc(16px + env(safe-area-inset-bottom, 0px));
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:3px;
+  background:rgba(26,31,60,.96);
+  backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);
+  border-radius:999px;
+  padding:7px;
+  box-shadow:0 16px 36px rgba(26,31,60,.28), 0 2px 8px rgba(26,31,60,.18);
+  z-index:40;
+  max-width:calc(100% - 24px);
+  touch-action:manipulation;
+}
+.tab{
+  padding:12px 18px;
+  border-radius:999px;
+  color:rgba(255,255,255,.68);
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:0.01em;
+  transition:background .2s var(--ease), color .2s, box-shadow .2s;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  white-space:nowrap;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:rgba(47,110,243,.25);
+  min-height:40px;
+  cursor:pointer;
+  user-select:none;
+  -webkit-user-select:none;
+}
+.tab:hover{color:#fff;}
+.tab:active{background:rgba(255,255,255,.08);}
+.tab.active{
+  background:var(--coral);
+  color:#fff;
+  box-shadow:0 4px 12px rgba(47,110,243,.4);
+}
+.tab-icon{font-size:14px;line-height:1;pointer-events:none;}
+.tab > *{pointer-events:none;}
+
+/* ─── Bottom sheet ─────────────────────────────────────────────── */
+.sheet-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(15,18,38,.48);
+  backdrop-filter:blur(3px);
+  z-index:50;
+  display:none;
+  animation:fadeIn .2s ease;
+}
+.sheet-overlay.open{display:block;}
+.sheet{
+  position:fixed;
+  left:50%;
+  transform:translateX(-50%) translateY(110%);
+  bottom:0;
+  width:100%;
+  max-width:430px;
+  background:var(--paper);
+  border-top-left-radius:28px;
+  border-top-right-radius:28px;
+  padding:12px 22px 26px;
+  box-shadow:0 -20px 50px rgba(26,31,60,.22);
+  z-index:51;
+  transition:transform .32s var(--ease-bounce);
+  max-height:85vh;
+  overflow-y:auto;
+}
+.sheet.open{transform:translateX(-50%) translateY(0);}
+.sheet-grab{
+  width:42px;height:4px;background:var(--line-strong);border-radius:3px;
+  margin:0 auto 16px;
+}
+.sheet-eyebrow{
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--coral-ink);
+  margin-bottom:6px;
+}
+.sheet h3{
+  font-size:24px;
+  font-weight:600;
+  font-variation-settings:"opsz" 60, "SOFT" 60;
+  line-height:1.1;
+  margin-bottom:10px;
+}
+.sheet-body{
+  font-size:14px;
+  color:var(--text);
+  line-height:1.55;
+  margin-bottom:16px;
+}
+.sheet-body .muted{color:var(--muted);}
+.sheet-next{
+  margin:14px 0 4px;
+  padding:12px 14px;
+  background:var(--aqua-wash);
+  border:1px solid rgba(61,191,201,.32);
+  border-radius:14px;
+  font-size:12.5px;
+  line-height:1.5;
+}
+.sheet-next b{
+  display:block;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--aqua-deep);
+  margin-bottom:4px;
+}
+
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+
+/* ─── Toast ────────────────────────────────────────────────────── */
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:90px;
+  transform:translateX(-50%) translateY(20px);
+  background:var(--ink);
+  color:#fff;
+  padding:11px 18px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:600;
+  box-shadow:0 12px 28px rgba(26,31,60,.3);
+  z-index:60;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .2s, transform .2s var(--ease);
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* ─── Identity vault cards ─────────────────────────────────────── */
+.vault-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.vault-card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:12px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  box-shadow:var(--shadow-sm);
+  transition:transform .15s var(--ease), box-shadow .15s;
+}
+.vault-card:hover{transform:translateY(-1px);box-shadow:var(--shadow-md);}
+.vault-icon{
+  width:36px;height:36px;
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;
+  flex-shrink:0;
+}
+.vault-icon.coral{background:var(--coral-wash);}
+.vault-icon.aqua{background:var(--aqua-wash);}
+.vault-icon.violet{background:var(--violet-wash);}
+.vault-icon.cream{background:var(--cream2);}
+.vault-card b{display:block;font-size:12.5px;font-weight:700;color:var(--ink);line-height:1.15;}
+.vault-card span{display:block;font-size:10.5px;color:var(--muted);margin-top:1px;}
+
+/* ─── Screen transitions / fade in ──────────────────────────────── */
+.screen.active > *{
+  animation:slideUp .5s var(--ease) both;
+}
+.screen.active > *:nth-child(1){animation-delay:0s;}
+.screen.active > *:nth-child(2){animation-delay:.05s;}
+.screen.active > *:nth-child(3){animation-delay:.1s;}
+.screen.active > *:nth-child(4){animation-delay:.15s;}
+.screen.active > *:nth-child(5){animation-delay:.2s;}
+.screen.active > *:nth-child(6){animation-delay:.25s;}
+.screen.active > *:nth-child(7){animation-delay:.3s;}
+@keyframes slideUp{
+  from{opacity:0;transform:translateY(10px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* ─── Accessibility: focus rings ────────────────────────────────── */
+button:focus{outline:none;}
+button:focus-visible,.node:focus-visible,.stack-card:focus-visible,.pack:focus-visible,.vault-card:focus-visible{
+  outline:none;
+  box-shadow:0 0 0 3px rgba(47,110,243,.42), 0 0 0 5px rgba(26,31,60,.08);
+}
+
+/* ─── Reduced motion ───────────────────────────────────────────── */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+  }
+}
+
+/* Small-screen polish */
+@media(max-width:380px){
+  .screen{padding:18px 16px 120px;}
+  .greeting h1{font-size:28px;}
+  .stack-card{flex-basis:76%;}
+}
+
+/* ─── Profile / now-chip row ────────────────────────────────────── */
+.now-chip-row{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding:2px 4px 10px;
+  margin:-4px -20px 18px;
+  padding-left:20px;padding-right:20px;
+  scrollbar-width:none;
+}
+.now-chip-row::-webkit-scrollbar{display:none;}
+.now-chip{
+  flex-shrink:0;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:8px 13px;
+  background:rgba(255,255,255,.7);
+  border:1px solid var(--line);
+  border-radius:999px;
+  font-size:12px;
+  font-weight:600;
+  color:var(--ink);
+  white-space:nowrap;
+}
+.now-chip.live{
+  background:var(--coral);
+  color:#fff;
+  border-color:var(--coral);
+  box-shadow:0 4px 10px rgba(47,110,243,.26);
+}
+
+/* Timeline-style list (checklist inside a pack) */
+.checklist{display:flex;flex-direction:column;gap:8px;}
+.check-item{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  padding:10px 12px;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:12px;
+  font-size:13px;
+  line-height:1.4;
+  transition:all .15s var(--ease);
+}
+.check-item:hover{border-color:var(--line-strong);}
+.check-item .tick{
+  width:20px;height:20px;
+  border-radius:6px;
+  border:1.5px solid var(--line-strong);
+  background:#fff;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:11px;
+  color:transparent;
+  transition:all .15s;
+  cursor:pointer;
+}
+.check-item.done .tick{
+  background:var(--ok);
+  border-color:var(--ok);
+  color:#fff;
+}
+.check-item.done{opacity:.65;}
+.check-item.done b{text-decoration:line-through;}
+.check-item b{font-weight:600;color:var(--ink);display:block;}
+.check-item small{display:block;color:var(--muted);font-size:11.5px;margin-top:1px;}
+
+/* The onboarding hero (landing frame) */
+.onboard{
+  padding:40px 24px 30px;
+  text-align:center;
+}
+.onboard .brand-big{
+  font-family:'Fraunces', serif;
+  font-variation-settings:"opsz" 144, "SOFT" 100;
+  font-size:62px;
+  font-weight:500;
+  line-height:.95;
+  letter-spacing:-0.035em;
+  margin-bottom:4px;
+}
+.onboard .brand-big .apos{color:var(--coral);font-style:italic;}
+.onboard .tagline{
+  font-size:14px;
+  color:var(--muted);
+  font-weight:500;
+  margin-bottom:28px;
+  letter-spacing:0.02em;
+}
+
+/* ─── Birthdays ─────────────────────────────────────────────── */
+.birthday-list{display:flex;flex-direction:column;gap:8px;margin-bottom:18px;}
+.bday{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:10px 12px 10px 10px;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:var(--shadow-sm);
+}
+.bday-date{
+  width:48px;height:52px;
+  background:linear-gradient(160deg, var(--cream), var(--cream2));
+  border-radius:10px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  line-height:1;
+  border:1px solid var(--line);
+}
+.bday-date .d{
+  font-family:'Fraunces', serif;
+  font-variation-settings:"opsz" 60;
+  font-size:22px;
+  font-weight:600;
+  color:var(--ink);
+}
+.bday-date .m{
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-top:2px;
+}
+.bday-body{flex:1;min-width:0;}
+.bday-body b{
+  display:block;
+  font-size:13.5px;
+  font-weight:700;
+  color:var(--ink);
+  line-height:1.2;
+  margin-bottom:2px;
+}
+.bday-body small{
+  display:block;
+  font-size:11.5px;
+  color:var(--muted);
+  line-height:1.4;
+}
+.bday.own{
+  background:linear-gradient(140deg, #eef3ff, #d7e4ff);
+  border-color:rgba(47,110,243,.22);
+}
+.bday.own .bday-date{
+  background:linear-gradient(160deg, var(--coral), #5a9dfb);
+  border-color:transparent;
+}
+.bday.own .bday-date .d,
+.bday.own .bday-date .m{color:#fff;}
+.bday-own-badge{
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  color:var(--coral-ink);
+  background:rgba(255,255,255,.7);
+  padding:4px 8px;
+  border-radius:8px;
+}
+
+/* ─── Daily trivia card ─────────────────────────────────────── */
+.trivia-card{
+  background:linear-gradient(140deg, #edfafc 0%, #cae9ee 100%);
+  border:1px solid rgba(61,191,201,.28);
+  border-radius:var(--radius-lg);
+  padding:16px 18px 18px;
+  margin:4px 0 18px;
+  box-shadow:0 6px 18px rgba(61,191,201,.12);
+  position:relative;
+  overflow:hidden;
+}
+.trivia-card::before{
+  content:"";
+  position:absolute;
+  left:-30px;bottom:-30px;
+  width:120px;height:120px;
+  background:radial-gradient(circle, rgba(61,191,201,.24), transparent 70%);
+  pointer-events:none;
+}
+.trivia-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+  position:relative;
+  z-index:1;
+}
+.trivia-eyebrow{
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--aqua-deep);
+  background:rgba(255,255,255,.68);
+  padding:4px 9px;
+  border-radius:999px;
+  border:1px solid rgba(61,191,201,.28);
+}
+.trivia-date{
+  font-size:11px;
+  font-weight:700;
+  color:var(--muted);
+  font-variant-numeric:tabular-nums;
+}
+.trivia-q{
+  font-family:'Fraunces', serif;
+  font-variation-settings:"opsz" 48, "SOFT" 50;
+  font-size:17px;
+  font-weight:500;
+  line-height:1.25;
+  color:var(--ink);
+  margin-bottom:12px;
+  position:relative;
+  z-index:1;
+}
+.trivia-opts{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  position:relative;
+  z-index:1;
+}
+.trivia-opt{
+  background:rgba(255,255,255,.82);
+  border:1px solid var(--line-strong);
+  border-radius:12px;
+  padding:11px 12px;
+  font-size:13px;
+  font-weight:600;
+  color:var(--ink);
+  text-align:left;
+  transition:all .15s var(--ease);
+  cursor:pointer;
+  touch-action:manipulation;
+}
+.trivia-opt:hover{background:#fff;transform:translateY(-1px);box-shadow:var(--shadow-sm);}
+.trivia-opt.correct{
+  background:var(--ok);
+  color:#fff;
+  border-color:var(--ok);
+}
+.trivia-opt.wrong{
+  background:rgba(216,90,77,.9);
+  color:#fff;
+  border-color:var(--alert);
+}
+.trivia-opt.dim{opacity:.45;}
+.trivia-foot{
+  margin-top:12px;
+  padding:10px 12px;
+  background:rgba(255,255,255,.7);
+  border-radius:10px;
+  font-size:12px;
+  line-height:1.5;
+  color:var(--text);
+  position:relative;
+  z-index:1;
+}
+.trivia-foot b{font-weight:700;color:var(--ink);}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ─── HOME ─────────────────────────────────────────────────── -->
+<section class="screen active" id="home">
+  <div class="statusbar">
+    <div class="brand">s<span class="apos">'</span>LiFe<span class="sub">By MySAiFe</span></div>
+    <div class="right">
+      <span class="pip live">Live</span>
+      <span class="pip">09:41</span>
+    </div>
+  </div>
+
+  <div class="greeting">
+    <div class="hello">Wednesday, Apr 22</div>
+    <h1>Alright <em>Josh</em> — month two of your <em>apprenticeship</em>, first houseshare, first pay packet that actually stays yours.</h1>
+    <div class="sub">Thales contract kicked in six weeks ago. s'LiFe is quietly tracking the apprentice levy, the rent split with Sam, and the MOT on the Corsa — so you can stop screenshotting everything.</div>
+  </div>
+
+  <div class="now-chip-row">
+    <button class="now-chip live">⚡ First proper payslip</button>
+    <button class="now-chip">🚗 Corsa MOT in 19 days</button>
+    <button class="now-chip">🎫 Railcard renewed</button>
+    <button class="now-chip">💬 Dad: car insurance reply</button>
+  </div>
+
+  <!-- The Life Path — the signature element -->
+  <div class="lifepath">
+    <div class="lifepath-header">
+      <h2>Your path</h2>
+      <div class="years">19 years in</div>
+    </div>
+    <div class="path-track">
+
+      <div class="node passed" onclick="openNode('sixthForm')">
+        <span class="node-label">Jun 2024</span>
+        <span class="node-title">Finished sixth form</span>
+        <div class="node-meta">Maths, Physics, DT · Reading Sixth · results saved, UCAS closed</div>
+      </div>
+
+      <div class="node passed" onclick="openNode('firstBank')">
+        <span class="node-label">Aug 2024</span>
+        <span class="node-title">First proper bank account</span>
+        <div class="node-meta">Monzo personal · Starling savings pot · direct debits mapped</div>
+      </div>
+
+      <div class="node passed" onclick="openNode('firstCar')">
+        <span class="node-label">Oct 2024</span>
+        <span class="node-title">First car — Vauxhall Corsa '18</span>
+        <div class="node-meta">£4,200 · bought with Dad · insured with Admiral · MOT 11 May</div>
+      </div>
+
+      <div class="node passed" onclick="openNode('firstTenancy')">
+        <span class="node-label">Feb 2026</span>
+        <span class="node-title">First houseshare</span>
+        <div class="node-meta">42 Tilehurst Road · split with Sam · deposit £900 protected with DPS</div>
+      </div>
+
+      <div class="node current" id="nodeCurrent" onclick="openFirstJobPack()">
+        <span class="node-label">You are here · Mar 2026</span>
+        <span class="node-title">Apprenticeship started</span>
+        <div class="node-meta">Level 4 at Thales Reading · 4 years · probation ends 1 Sep · block release at university</div>
+      </div>
+
+      <div class="node future" id="nodeHoliday" onclick="triggerLifeEvent('firstHoliday','First holiday abroad without parents')">
+        <span class="node-label">Coming soon</span>
+        <span class="node-title">First lads' holiday</span>
+        <div class="node-meta">Passport, travel insurance, EHIC, emergency contact — without asking Dad this time</div>
+      </div>
+
+      <div class="node future" id="nodePartner" onclick="triggerLifeEvent('firstPartner','First serious partner')">
+        <span class="node-label">When it's time</span>
+        <span class="node-title">First serious partner</span>
+        <div class="node-meta">Shared bills, joint tenancy, emergency access — practical, not romantic</div>
+      </div>
+
+      <div class="node faded" id="nodeProperty">
+        <span class="node-label">Someday</span>
+        <span class="node-title">First property</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- The Family Thread -->
+  <div class="thread-card" onclick="show('thread')">
+    <div class="thread-head">
+      <span class="thread-pip">Family thread</span>
+    </div>
+    <h3>Dad just sent over his car-insurance compare.</h3>
+    <div class="thread-sub">He's on MySAiFe — tapping his reply saves the renewal quotes straight into your Vault so next year you're not starting from scratch.</div>
+    <div class="thread-msg">
+      <span class="who">You · yesterday</span>
+      Admiral just sent my renewal — £1,420 again. Is that mental? Can you send me whatever you used when you switched?
+    </div>
+    <div class="thread-msg mine">
+      <span class="who">Dad · 08:47</span>
+      Mate that's steep for a Corsa. Sent you my MoneySuperMarket comparison from March + the Direct Line quote that came in at £890. Swap, don't auto-renew 🚗
+    </div>
+    <div class="thread-actions">
+      <button class="btn violet sm" onclick="event.stopPropagation();acceptFromDad();">Accept 2 items</button>
+      <button class="btn ghost sm" onclick="event.stopPropagation();show('thread');">Open thread</button>
+    </div>
+  </div>
+
+  <!-- Birthdays coming up -->
+  <div class="section-head">
+    <h2>Birthdays coming up</h2>
+    <button class="more" onclick="toast('Full birthday list opening…')">See all →</button>
+  </div>
+  <div class="section-lead">The gentle nudge before you miss one. Linked from your phone contacts, your choice what to add.</div>
+
+  <div class="birthday-list">
+    <div class="bday">
+      <div class="bday-date"><span class="d">29</span><span class="m">Apr</span></div>
+      <div class="bday-body">
+        <b>Sam (housemate) turns 20</b>
+        <small>In 7 days · you split everything else 50/50, might as well split a cake too.</small>
+      </div>
+      <button class="btn ghost sm" onclick="toast('Reminder set for 26 Apr')">Remind</button>
+    </div>
+    <div class="bday">
+      <div class="bday-date"><span class="d">14</span><span class="m">May</span></div>
+      <div class="bday-body">
+        <b>Maya (sister) turns 23</b>
+        <small>In 22 days · she remembered yours last year. Dad will mention it at least three times.</small>
+      </div>
+      <button class="btn ghost sm" onclick="toast('Reminder set for 10 May')">Remind</button>
+    </div>
+    <div class="bday">
+      <div class="bday-date"><span class="d">07</span><span class="m">Jun</span></div>
+      <div class="bday-body">
+        <b>Mum turns 56</b>
+        <small>In 46 days · last year was flowers. This year is the half-decade that reminds you to actually call.</small>
+      </div>
+      <button class="btn ghost sm" onclick="toast('Reminder set for 3 Jun')">Remind</button>
+    </div>
+    <div class="bday own">
+      <div class="bday-date"><span class="d">11</span><span class="m">Oct</span></div>
+      <div class="bday-body">
+        <b>You turn 20</b>
+        <small>In 172 days · first birthday where Dad stops asking what you want for Christmas and transfers it instead.</small>
+      </div>
+      <span class="bday-own-badge">Yours</span>
+    </div>
+  </div>
+
+  <!-- Daily trivia -->
+  <div class="trivia-card" id="triviaCard">
+    <div class="trivia-head">
+      <span class="trivia-eyebrow">Daily · age 19</span>
+      <span class="trivia-date" id="triviaDate">Wed 22 Apr</span>
+    </div>
+    <div class="trivia-q" id="triviaQ">Loading…</div>
+    <div class="trivia-opts" id="triviaOpts"></div>
+    <div class="trivia-foot" id="triviaFoot" style="display:none;"></div>
+  </div>
+
+  <!-- Active Firsts -->
+  <div class="section-head">
+    <h2>Active Firsts</h2>
+    <button class="more" onclick="show('firsts')">See all →</button>
+  </div>
+  <div class="section-lead">Time-bounded packs for life's first-times. They expire themselves when you're past it.</div>
+
+  <div class="pack-wrap">
+    <div class="pack active" onclick="openFirstJobPack()">
+      <div class="pack-head">
+        <div class="pack-title">Your apprenticeship — year 1</div>
+        <span class="pack-expiry">132 days left</span>
+      </div>
+      <div class="pack-sub">Thales contract signed, apprentice levy tracked, pension opted-in. Block release at uni starts 12 May. Probation ends 1 Sep.</div>
+      <div class="pack-progress">
+        <div class="pack-bar"><div class="pack-bar-fill" style="width:34%;"></div></div>
+        <div class="pack-pct">34%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Horizontal card stack: suggested nexts -->
+  <div class="section-head">
+    <h2>Might be coming up</h2>
+  </div>
+  <div class="stack-row">
+    <div class="stack-card coral">
+      <div>
+        <div class="stack-card-eyebrow">Due 11 May</div>
+        <div class="stack-card-title">Corsa MOT</div>
+        <div class="stack-card-body">19 days out. Halfords £54.85, Reading Car Services £45. Book or add reminder.</div>
+      </div>
+      <div class="stack-card-cta">Open pack →</div>
+    </div>
+    <div class="stack-card aqua">
+      <div>
+        <div class="stack-card-eyebrow">Block release · 12 May</div>
+        <div class="stack-card-title">Two weeks at uni</div>
+        <div class="stack-card-body">Thales has booked your accommodation. You need to sort kit, route and travel claim.</div>
+      </div>
+      <div class="stack-card-cta">Checklist →</div>
+    </div>
+    <div class="stack-card violet">
+      <div>
+        <div class="stack-card-eyebrow">From Dad · pending</div>
+        <div class="stack-card-title">Insurance compare</div>
+        <div class="stack-card-body">Direct Line quote £890 + full MoneySuperMarket compare. Accept to save to Vault.</div>
+      </div>
+      <div class="stack-card-cta">Review →</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ─── FIRSTS ──────────────────────────────────────────────── -->
+<section class="screen" id="firsts">
+  <div class="statusbar">
+    <div class="brand">s<span class="apos">'</span>LiFe<span class="sub">Firsts</span></div>
+    <div class="right">
+      <span class="pip">09:41</span>
+    </div>
+  </div>
+
+  <div class="greeting">
+    <div class="hello">Firsts</div>
+    <h1>Life's first-times, <em>gently packaged</em>.</h1>
+    <div class="sub">Each pack is time-bounded — it shows up when it's relevant and archives itself when you're past it. No "to-do list anxiety."</div>
+  </div>
+
+  <div class="section-head">
+    <h2>Active now</h2>
+  </div>
+
+  <div class="pack-wrap">
+    <div class="pack active" onclick="openFirstJobPack()">
+      <div class="pack-head">
+        <div class="pack-title">Your apprenticeship — year 1</div>
+        <span class="pack-expiry">132 days left</span>
+      </div>
+      <div class="pack-sub">Thales contract, apprentice levy, pension opt-in, block release at uni, probation review, workplace ID.</div>
+      <div class="pack-progress">
+        <div class="pack-bar"><div class="pack-bar-fill" style="width:34%;"></div></div>
+        <div class="pack-pct">34%</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-head">
+    <h2>Lived through, archived</h2>
+  </div>
+  <div class="section-lead">Still accessible, just quiet now. s'LiFe doesn't delete anything — it just stops asking.</div>
+
+  <div class="pack-wrap">
+    <div class="pack" style="opacity:.75;">
+      <div class="pack-head">
+        <div class="pack-title">Sixth form finals</div>
+        <span class="pack-expiry" style="background:var(--aqua-wash);color:var(--aqua-deep);">Archived Jun '24</span>
+      </div>
+      <div class="pack-sub">A-level results saved · Reading Sixth transcripts · UCAS record kept in case you want it later.</div>
+    </div>
+  </div>
+  <div class="pack-wrap">
+    <div class="pack" style="opacity:.75;">
+      <div class="pack-head">
+        <div class="pack-title">First proper bank account</div>
+        <span class="pack-expiry" style="background:var(--aqua-wash);color:var(--aqua-deep);">Archived Aug '24</span>
+      </div>
+      <div class="pack-sub">Monzo personal + Starling savings pot linked · direct debits mapped for Tilehurst Rd bills.</div>
+    </div>
+  </div>
+  <div class="pack-wrap">
+    <div class="pack" style="opacity:.75;">
+      <div class="pack-head">
+        <div class="pack-title">First car — Corsa</div>
+        <span class="pack-expiry" style="background:var(--aqua-wash);color:var(--aqua-deep);">Archived Oct '24</span>
+      </div>
+      <div class="pack-sub">V5C registered · Admiral policy filed · MOT tracker live until 11 May renewal.</div>
+    </div>
+  </div>
+
+  <div class="section-head">
+    <h2>Might arrive next</h2>
+  </div>
+  <div class="section-lead">We don't unlock these until a life event tells us to. Tap any to trigger the unlock moment.</div>
+
+  <div class="pack-wrap">
+    <div class="pack future" onclick="triggerLifeEvent('firstHoliday','First lads holiday')">
+      <div class="pack-head">
+        <div class="pack-title">First holiday abroad without parents</div>
+        <span class="pack-when">When it arrives</span>
+      </div>
+      <div class="pack-sub">Passport expiry, GHIC, travel insurance, emergency contact — without asking Dad this time.</div>
+    </div>
+  </div>
+  <div class="pack-wrap">
+    <div class="pack future" onclick="triggerLifeEvent('firstPartner','First serious partner')">
+      <div class="pack-head">
+        <div class="pack-title">First serious partner</div>
+        <span class="pack-when">When it's time</span>
+      </div>
+      <div class="pack-sub">Shared bills, joint tenancy paperwork, emergency access, who-knows-what. Practical, not romantic.</div>
+    </div>
+  </div>
+  <div class="pack-wrap">
+    <div class="pack future" onclick="triggerLifeEvent('firstCar','Next-car pack')">
+      <div class="pack-head">
+        <div class="pack-title">When the Corsa goes</div>
+        <span class="pack-when">When it's time</span>
+      </div>
+      <div class="pack-sub">Upgrading the car — insurance portability, V5C transfer, breakdown switchover, MOT / tax calendar without gaps.</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ─── THREAD ──────────────────────────────────────────────── -->
+<section class="screen" id="thread">
+  <div class="statusbar">
+    <div class="brand">s<span class="apos">'</span>LiFe<span class="sub">Family thread</span></div>
+    <div class="right"><span class="pip">09:41</span></div>
+  </div>
+
+  <div class="greeting">
+    <div class="hello">Family thread</div>
+    <h1>One lane for the stuff <em>only family</em> can answer.</h1>
+    <div class="sub">Ask your parents for what you don't remember, didn't know, or never got told. If they're on MySAiFe, their reply drops straight into your Vault.</div>
+  </div>
+
+  <div class="thread-card" style="padding:18px 18px 20px;">
+    <div class="thread-head">
+      <span class="thread-pip">Dad · MySAiFe linked</span>
+      <span style="margin-left:auto;font-size:11px;color:var(--muted);">Linked Aug 2024</span>
+    </div>
+
+    <div class="thread-msg" style="margin-top:6px;">
+      <span class="who">You · yesterday 22:14</span>
+      Admiral just sent my renewal — £1,420 again. Is that mental? Can you send me whatever you used when you switched?
+    </div>
+    <div class="thread-msg mine">
+      <span class="who">Dad · 08:47</span>
+      Mate that's steep for a Corsa. Sent you my MoneySuperMarket comparison from March + the Direct Line quote that came in at £890. Swap, don't auto-renew 🚗
+    </div>
+
+    <div style="background:rgba(255,255,255,.7);border:1px solid rgba(125,111,232,.2);border-radius:12px;padding:12px 14px;margin-top:10px;">
+      <div style="font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#4a3ec5;margin-bottom:6px;">2 items ready to accept</div>
+      <div style="display:flex;gap:8px;align-items:center;padding:6px 0;border-bottom:1px solid var(--line);">
+        <div class="vault-icon coral" style="width:28px;height:28px;font-size:12px;">🚗</div>
+        <div style="flex:1;">
+          <b style="font-size:12.5px;">Direct Line quote · £890</b>
+          <div style="font-size:11px;color:var(--muted);">Saves to Vault · Vehicles</div>
+        </div>
+        <button class="btn violet sm" onclick="acceptOne('quote')">Accept</button>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;padding:8px 0 2px;">
+        <div class="vault-icon aqua" style="width:28px;height:28px;font-size:12px;">📊</div>
+        <div style="flex:1;">
+          <b style="font-size:12.5px;">MoneySuperMarket comparison</b>
+          <div style="font-size:11px;color:var(--muted);">8 quotes across 3 insurers, Mar 2026</div>
+        </div>
+        <button class="btn violet sm" onclick="acceptOne('compare')">Accept</button>
+      </div>
+    </div>
+
+    <div class="thread-actions" style="margin-top:14px;">
+      <button class="btn coral" onclick="acceptFromDad()">Accept both</button>
+      <button class="btn ghost" onclick="toast('Reply sent to Dad')">Reply</button>
+    </div>
+  </div>
+
+  <div class="section-head">
+    <h2>Ask someone else</h2>
+  </div>
+  <div class="section-lead">Only people already on MySAiFe or s'LiFe can appear here, and only if they accepted the invite.</div>
+  <div class="stack-row">
+    <div class="stack-card">
+      <div>
+        <div class="stack-card-eyebrow">Mum · MySAiFe</div>
+        <div class="stack-card-title">Ask Mum</div>
+        <div class="stack-card-body">Dentist, GP details, the passport number from when you were 14.</div>
+      </div>
+      <div class="stack-card-cta">Start thread →</div>
+    </div>
+    <div class="stack-card">
+      <div>
+        <div class="stack-card-eyebrow">Sam · s'LiFe</div>
+        <div class="stack-card-title">Ask Sam (housemate)</div>
+        <div class="stack-card-body">Rent splits, Octopus bill confirmation, who's got the spare key.</div>
+      </div>
+      <div class="stack-card-cta">Start thread →</div>
+    </div>
+    <div class="stack-card">
+      <div>
+        <div class="stack-card-eyebrow">Maya · s'LiFe</div>
+        <div class="stack-card-title">Ask Maya (sister)</div>
+        <div class="stack-card-body">She's been there. Tenancy questions, first-job-tax chaos, NI mix-ups.</div>
+      </div>
+      <div class="stack-card-cta">Start thread →</div>
+    </div>
+    <div class="stack-card" style="opacity:.6;border-style:dashed;">
+      <div>
+        <div class="stack-card-eyebrow">Invite</div>
+        <div class="stack-card-title">Add someone</div>
+        <div class="stack-card-body">Parent, sibling, partner, housemate — anyone who already has MySAiFe or s'LiFe.</div>
+      </div>
+      <div class="stack-card-cta">Send invite →</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ─── VAULT ──────────────────────────────────────────────── -->
+<section class="screen" id="vault">
+  <div class="statusbar">
+    <div class="brand">s<span class="apos">'</span>LiFe<span class="sub">Vault</span></div>
+    <div class="right"><span class="pip">09:41</span></div>
+  </div>
+
+  <div class="greeting">
+    <div class="hello">Identity vault</div>
+    <h1>Everything that proves <em>you are you</em>.</h1>
+    <div class="sub">Photos, PDFs, scans and the numbers to go with them — stored encrypted on your device, biometric-locked, end-to-end when you sync. Nothing is shared until you tap share. Drag items to the Family Thread to pass them on cleanly.</div>
+  </div>
+
+  <div class="section-head">
+    <h2>Core ID</h2>
+  </div>
+  <div class="vault-grid">
+    <div class="vault-card"><div class="vault-icon coral">🛂</div><div><b>Passport</b><span>Exp Aug 2029</span></div></div>
+    <div class="vault-card"><div class="vault-icon aqua">🚗</div><div><b>Driving licence</b><span>Full · since Sep 2024</span></div></div>
+    <div class="vault-card"><div class="vault-icon violet">🆔</div><div><b>NI number</b><span>From Dad, 2024</span></div></div>
+    <div class="vault-card"><div class="vault-icon cream">🎫</div><div><b>16–25 Railcard</b><span>Renewed Mar '26</span></div></div>
+  </div>
+
+  <div class="section-head">
+    <h2>Work &amp; money</h2>
+  </div>
+  <div class="vault-grid">
+    <div class="vault-card"><div class="vault-icon coral">🔧</div><div><b>Thales Apprenticeship</b><span>Level 4 · 4 yrs</span></div></div>
+    <div class="vault-card"><div class="vault-icon aqua">🧾</div><div><b>Payslips</b><span>2 received</span></div></div>
+    <div class="vault-card"><div class="vault-icon violet">📄</div><div><b>Apprentice levy receipt</b><span>Paid, Apr '26</span></div></div>
+    <div class="vault-card"><div class="vault-icon cream">🏦</div><div><b>Pension</b><span>Thales GPP, opted in</span></div></div>
+  </div>
+
+  <div class="section-head">
+    <h2>Vehicles</h2>
+  </div>
+  <div class="vault-grid">
+    <div class="vault-card"><div class="vault-icon coral">📗</div><div><b>V5C · Corsa</b><span>Registered in your name</span></div></div>
+    <div class="vault-card"><div class="vault-icon aqua">🛡️</div><div><b>Admiral insurance</b><span>Renews 28 Sep</span></div></div>
+    <div class="vault-card"><div class="vault-icon violet">🔧</div><div><b>MOT history</b><span>Due 11 May</span></div></div>
+    <div class="vault-card"><div class="vault-icon cream">🚨</div><div><b>RAC breakdown</b><span>Via Dad's family cover</span></div></div>
+  </div>
+
+  <div class="section-head">
+    <h2>Health</h2>
+  </div>
+  <div class="vault-grid">
+    <div class="vault-card"><div class="vault-icon aqua">💉</div><div><b>Vaccinations 0–18</b><span>From Mum, 2024</span></div></div>
+    <div class="vault-card"><div class="vault-icon coral">🩺</div><div><b>GP</b><span>Tilehurst Surgery</span></div></div>
+    <div class="vault-card"><div class="vault-icon violet">🔑</div><div><b>NHS login</b><span>2FA linked</span></div></div>
+    <div class="vault-card" style="border-style:dashed;opacity:.7;"><div class="vault-icon cream">➕</div><div><b>Add more</b><span>Medications, allergies</span></div></div>
+  </div>
+
+  <div class="section-head">
+    <h2>Home &amp; share</h2>
+  </div>
+  <div class="vault-grid">
+    <div class="vault-card"><div class="vault-icon coral">🔑</div><div><b>Tenancy · Tilehurst Rd</b><span>£900 deposit (DPS)</span></div></div>
+    <div class="vault-card"><div class="vault-icon aqua">⚡</div><div><b>Octopus Energy</b><span>Split 50/50 Sam</span></div></div>
+    <div class="vault-card"><div class="vault-icon violet">📺</div><div><b>TV licence</b><span>Required — added</span></div></div>
+    <div class="vault-card"><div class="vault-icon cream">📶</div><div><b>BT broadband</b><span>Split 50/50 Sam</span></div></div>
+  </div>
+
+</section>
+
+<!-- ─── ME ──────────────────────────────────────────────────── -->
+<section class="screen" id="me">
+  <div class="statusbar">
+    <div class="brand">s<span class="apos">'</span>LiFe<span class="sub">Me</span></div>
+    <div class="right"><span class="pip">09:41</span></div>
+  </div>
+
+  <div class="greeting">
+    <div class="hello">Your setup</div>
+    <h1>Josh <em>Aspall</em>, 19</h1>
+    <div class="sub">Reading · linked to Dad's MySAiFe family plan · Sam (housemate) linked on s'LiFe · Maya (sister) linked on s'LiFe</div>
+  </div>
+
+  <div class="section-head">
+    <h2>Family plan</h2>
+  </div>
+  <div style="background:linear-gradient(140deg, #fff, var(--cream)); border:1px solid var(--line); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow-sm);">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+      <span class="pip" style="background:var(--violet-wash);color:#4a3ec5;border-color:rgba(125,111,232,.22);">MySAiFe link</span>
+      <span style="font-size:11px;color:var(--muted);margin-left:auto;">Linked Aug 2024</span>
+    </div>
+    <div style="font-family:Fraunces,serif;font-size:18px;font-weight:600;line-height:1.2;margin-bottom:4px;">Your s'LiFe is covered by Dad's MySAiFe subscription.</div>
+    <div style="font-size:12.5px;color:var(--muted);line-height:1.5;">You get the whole app free while it's active, along with your sister Maya. You own your own data — he can't read your Vault, only respond to thread questions.</div>
+  </div>
+
+  <div class="section-head">
+    <h2>Demo helpers</h2>
+  </div>
+  <div class="section-lead">Long-press any "Your path" label on the Home screen to reset unlocks, or use the buttons below.</div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;">
+    <button class="btn ghost sm" onclick="resetAll()">Reset all unlocks</button>
+    <button class="btn ghost sm" onclick="triggerLifeEvent('firstHoliday','First lads holiday')">Trigger: first holiday</button>
+    <button class="btn ghost sm" onclick="triggerLifeEvent('firstPartner','First serious partner')">Trigger: first partner</button>
+    <button class="btn ghost sm" onclick="triggerLifeEvent('firstCar','Next-car pack')">Trigger: next-car pack</button>
+  </div>
+
+</section>
+
+<!-- ─── Bottom tab bar ──────────────────────────────────────── -->
+<nav class="tabbar" aria-label="Main navigation">
+  <button type="button" class="tab active" data-screen="home"><span class="tab-icon">✶</span>Path</button>
+  <button type="button" class="tab" data-screen="firsts"><span class="tab-icon">◉</span>Firsts</button>
+  <button type="button" class="tab" data-screen="thread"><span class="tab-icon">◐</span>Thread</button>
+  <button type="button" class="tab" data-screen="vault"><span class="tab-icon">◇</span>Vault</button>
+  <button type="button" class="tab" data-screen="me"><span class="tab-icon">○</span>Me</button>
+</nav>
+
+<!-- ─── Sheet + toast ──────────────────────────────────────── -->
+<div class="sheet-overlay" id="sheetOverlay" onclick="closeSheet()"></div>
+<div class="sheet" id="sheet">
+  <div class="sheet-grab"></div>
+  <div class="sheet-eyebrow" id="sheetEyebrow">Newly unlocked</div>
+  <h3 id="sheetTitle">Title</h3>
+  <div class="sheet-body" id="sheetBody"></div>
+  <div id="sheetActions" style="display:flex;flex-direction:column;gap:10px;margin-top:6px;"></div>
+</div>
+<div class="toast" id="toast"></div>
+
+</div>
+<script>
+// ─── Screen navigation ──────────────────────────────────────────────
+function show(id){
+  closeSheet();
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  var el = document.getElementById(id);
+  if(el) el.classList.add('active');
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  var tab = document.querySelector('.tab[data-screen="'+id+'"]');
+  if(tab) tab.classList.add('active');
+  window.scrollTo(0,0);
+}
+
+// ─── Toast ─────────────────────────────────────────────────────────
+function toast(msg){
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._tm);
+  t._tm = setTimeout(() => t.classList.remove('show'), 2400);
+}
+
+// ─── Delegated tab handler — reliable on iOS Safari ────────────────
+document.addEventListener('DOMContentLoaded', function(){
+  var tabbar = document.querySelector('.tabbar');
+  if(!tabbar) return;
+  tabbar.addEventListener('click', function(e){
+    var tab = e.target.closest('.tab');
+    if(!tab) return;
+    e.preventDefault();
+    var screenId = tab.getAttribute('data-screen');
+    if(screenId) show(screenId);
+  });
+});
+
+// ─── Bottom sheet ──────────────────────────────────────────────────
+function openSheet(eyebrow, title, bodyHtml, actions){
+  document.getElementById('sheetEyebrow').textContent = eyebrow || 'Newly unlocked';
+  document.getElementById('sheetTitle').textContent = title;
+  document.getElementById('sheetBody').innerHTML = bodyHtml || '';
+  var actEl = document.getElementById('sheetActions');
+  actEl.innerHTML = '';
+  (actions || []).forEach(a => {
+    var b = document.createElement('button');
+    b.className = 'btn full ' + (a.primary ? 'coral' : 'ghost');
+    b.textContent = a.label;
+    b.onclick = a.fn;
+    actEl.appendChild(b);
+  });
+  document.getElementById('sheetOverlay').classList.add('open');
+  document.getElementById('sheet').classList.add('open');
+}
+function closeSheet(){
+  document.getElementById('sheetOverlay').classList.remove('open');
+  document.getElementById('sheet').classList.remove('open');
+}
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeSheet(); });
+
+// ─── Life event engine (the progressive unlock, reimagined) ──────────
+const LIFE_EVENTS = ['firstCar','firstPartner','firstHoliday','firstProperty'];
+const lifeState = (function(){
+  var defaults = {};
+  LIFE_EVENTS.forEach(k => { defaults[k] = false; });
+  try {
+    var saved = JSON.parse(localStorage.getItem('slifeState') || '{}');
+    LIFE_EVENTS.forEach(k => { if(saved[k]) defaults[k] = true; });
+  } catch(e){}
+  return defaults;
+})();
+function saveLifeState(){
+  localStorage.setItem('slifeState', JSON.stringify(lifeState));
+}
+
+// Each life event defines: what pack appears, what's next, what screen it lives on
+const EVENT_CTX = {
+  firstCar: {
+    eyebrow: 'A new pack just opened',
+    title: 'Next-car pack',
+    body: 'The Corsa is sorted, but this pack covers what to track when you change cars \u2014 insurance portability, V5C transfer, breakdown cover switchover, and the MOT / tax calendar without gaps.',
+    next: 'Linking your current Admiral policy next lets s\u2019LiFe nudge you 4 weeks before renewal \u2014 before the auto-renewal trap fires.',
+    destNode: null,
+    destScreen: 'firsts',
+    sublabel: 'Just arrived'
+  },
+  firstPartner: {
+    eyebrow: 'Practical partner pack',
+    title: 'Shared-life paperwork, quietly',
+    body: 'Not the romantic bit. This pack covers the practical side of a serious relationship — shared bills, joint tenancy paperwork, emergency-contact updates, and who-can-access-what if something happened. Nothing is shared with anyone until you explicitly choose to.',
+    next: 'Adding them as an emergency contact next lets them see only what you decide, when you decide.',
+    destNode: 'nodePartner',
+    destScreen: 'firsts',
+    sublabel: 'Just arrived'
+  },
+  firstHoliday: {
+    eyebrow: 'Without your parents this time',
+    title: 'First lads\u2019 holiday',
+    body: 'A 30-day pack that checks passport expiry, GHIC/EHIC status, travel insurance, and a calm emergency-contact setup \u2014 the stuff you usually asked Dad for.',
+    next: 'Adding your passport next lets s\u2019LiFe warn you six months before it expires, before airlines start refusing you.',
+    destNode: 'nodeHoliday',
+    destScreen: 'firsts',
+    sublabel: 'Just arrived'
+  },
+  firstProperty: {
+    eyebrow: 'First real property',
+    title: 'Buying somewhere of your own',
+    body: 'Help-to-Buy, Lifetime ISA reconciliation, solicitor tracking, survey reminders, mortgage offer windows — the pack walks you through the bits no one talks about.',
+    next: 'Linking your Lifetime ISA next shows exactly what you can draw towards the deposit.',
+    destNode: 'nodeProperty',
+    destScreen: 'firsts',
+    sublabel: 'Arriving'
+  }
+};
+
+function triggerLifeEvent(key, label){
+  // Already triggered — silent no-op, don't re-celebrate
+  if(lifeState[key]) { toast(label + ' — already in your path'); return; }
+
+  lifeState[key] = true;
+  saveLifeState();
+
+  var ctx = EVENT_CTX[key];
+  if(!ctx) return;
+
+  // Visually update the matching node on the Life Path (without destroying the explainer)
+  if(ctx.destNode){
+    var node = document.getElementById(ctx.destNode);
+    if(node){
+      node.classList.remove('future','faded');
+      node.classList.add('passed','just-unlocked');
+      // Update the eyebrow label to reflect "just arrived"
+      var lbl = node.querySelector('.node-label');
+      if(lbl) lbl.textContent = ctx.sublabel + ' · just now';
+      setTimeout(() => node.classList.remove('just-unlocked'), 1400);
+    }
+  }
+
+  // Build the celebration body with a "what's next" waypoint
+  var bodyHtml = '<p>' + ctx.body + '</p>';
+  if(ctx.next){
+    bodyHtml += '<div class="sheet-next"><b>What\u2019s next</b>' + ctx.next + '</div>';
+  }
+
+  openSheet(ctx.eyebrow, ctx.title, bodyHtml, [
+    {label: ctx.destScreen === 'firsts' ? 'Open the pack' : 'Take me there', primary: true, fn: () => {
+      closeSheet();
+      if(ctx.destScreen) show(ctx.destScreen);
+    }},
+    {label: 'Later — just save it', primary: false, fn: () => {
+      closeSheet();
+      toast('Saved. It\u2019ll be there when you\u2019re ready.');
+    }}
+  ]);
+}
+
+// Initial render — apply any already-triggered events to the DOM
+function renderLifeState(){
+  Object.keys(lifeState).forEach(key => {
+    if(!lifeState[key]) return;
+    var ctx = EVENT_CTX[key];
+    if(!ctx || !ctx.destNode) return;
+    var node = document.getElementById(ctx.destNode);
+    if(!node) return;
+    node.classList.remove('future','faded');
+    node.classList.add('passed');
+    var lbl = node.querySelector('.node-label');
+    if(lbl) lbl.textContent = ctx.sublabel;
+  });
+}
+document.addEventListener('DOMContentLoaded', renderLifeState);
+
+// ─── Open an already-passed node (biographical view) ─────────────────
+const PAST_NODES = {
+  sixthForm: {
+    eyebrow: 'From your timeline',
+    title: 'Finished sixth form — Jun 2024',
+    body: 'Maths, Physics and DT at Reading Sixth Form College. Final grades saved in the Vault under Education. UCAS track was closed when you chose the Thales apprenticeship route instead — that record stays in case you want to reactivate it later.'
+  },
+  firstBank: {
+    eyebrow: 'From your timeline',
+    title: 'First proper bank — Aug 2024',
+    body: 'Monzo personal account opened two months after your 18th. Starling savings pot added Dec 2024 for the car fund — it got you from £0 to £4,200 in six months. Both linked to your Vault, neither shared with anyone without your permission.'
+  },
+  firstCar: {
+    eyebrow: 'From your timeline',
+    title: 'First car — Oct 2024',
+    body: '2018 Vauxhall Corsa, bought for £4,200 with Dad alongside as co-signatory on the loan. Insured with Admiral (£1,420/yr — expect that to drop a lot at your next renewal). MOT due 11 May — s\u2019LiFe will nudge you from 30 days out.'
+  },
+  firstTenancy: {
+    eyebrow: 'From your timeline',
+    title: 'First houseshare — Feb 2026',
+    body: '42 Tilehurst Road, Reading. £900 deposit protected with DPS (check-in report filed, kitchen chipboard noted, boiler gave you grief in week 2 and is logged). Rent £575pcm, split 50/50 with Sam. Lease ends Feb 2027 so you\u2019ll get a prompt 60 days before.'
+  }
+};
+function openNode(key){
+  var n = PAST_NODES[key];
+  if(!n) return;
+  openSheet(n.eyebrow, n.title, '<p>' + n.body + '</p>', [
+    {label: 'Open in Vault', primary: true, fn: () => { closeSheet(); show('vault'); }},
+    {label: 'Close', primary: false, fn: closeSheet}
+  ]);
+}
+
+// ─── First Job pack (the current active pack) ───────────────────────
+function openFirstJobPack(){
+  var body = '<p>Your Level 4 apprenticeship at <strong>Thales Reading</strong> is the live pack right now. 132 days until probation review. Here\u2019s what s\u2019LiFe is quietly tracking:</p>' +
+    '<div class="checklist" style="margin-top:10px;">' +
+    '<div class="check-item done"><div class="tick">✓</div><div><b>Apprenticeship contract signed</b><small>4-year Level 4 · block release at uni · saved to Vault</small></div></div>' +
+    '<div class="check-item done"><div class="tick">✓</div><div><b>NI number confirmed</b><small>From Dad via Family Thread · 2024</small></div></div>' +
+    '<div class="check-item done"><div class="tick">✓</div><div><b>First two payslips read</b><small>Apprentice rate (£6.40/hr) correct · no tax oddities</small></div></div>' +
+    '<div class="check-item done"><div class="tick">✓</div><div><b>Pension opt-in · Thales GPP</b><small>Employer matches 6% — you\u2019re in. Apprentices often skip this; you didn\u2019t, nice one.</small></div></div>' +
+    '<div class="check-item"><div class="tick">✓</div><div><b>Block release at uni · 12 May</b><small>Two-week block at the campus. Accommodation booked by Thales, not you.</small></div></div>' +
+    '<div class="check-item"><div class="tick">✓</div><div><b>Probation review · 1 Sep</b><small>Confirms you move onto the standard pay curve. Pay rise typically kicks in from next pay cycle.</small></div></div>' +
+    '<div class="check-item"><div class="tick">✓</div><div><b>End-of-year 1 review · Mar 2027</b><small>Pack rolls into year 2 automatically. Nothing to do.</small></div></div>' +
+    '</div>';
+  openSheet('Active pack · 34% through', 'Your apprenticeship — year 1', body, [
+    {label: 'Open pension details', primary: true, fn: () => { closeSheet(); toast('Thales GPP view opening…'); }},
+    {label: 'Close', primary: false, fn: closeSheet}
+  ]);
+}
+
+// ─── Family Thread — accept flow ─────────────────────────────────────
+function acceptFromDad(){
+  openSheet('From Dad · MySAiFe', 'Accept both items?', 
+    '<p>Direct Line quote (£890) and the full MoneySuperMarket comparison will save to your Vault under Vehicles. Dad gets a tiny notification that you\u2019ve accepted \u2014 nothing else.</p>' +
+    '<div class="sheet-next"><b>Why this matters</b>Having the comparison on file means when this time next year rolls round, s\u2019LiFe can re-run it with current prices \u2014 you\u2019ll have a reference point instead of starting from zero.</div>', 
+    [
+      {label: 'Accept both', primary: true, fn: () => {
+        closeSheet();
+        toast('Saved to your Vault');
+      }},
+      {label: 'Just the quote', primary: false, fn: () => {
+        closeSheet();
+        toast('Direct Line quote saved');
+      }}
+    ]);
+}
+function acceptOne(which){
+  var msgs = {
+    ni: 'NI number saved to Vault',
+    vac: 'Vaccination record saved to Health',
+    quote: 'Direct Line quote saved to Vault',
+    compare: 'Comparison saved to Vault'
+  };
+  toast(msgs[which] || 'Saved to Vault');
+}
+
+// ─── Reset (for demo) ────────────────────────────────────────────────
+function resetAll(){
+  openSheet('Demo helper', 'Reset all unlocks?',
+    '<p>Clears every life-event flag so every "Coming soon" node on your path returns to locked. Useful for re-running the demo. Nothing else is affected.</p>',
+    [
+      {label: 'Reset now', primary: true, fn: () => {
+        LIFE_EVENTS.forEach(k => lifeState[k] = false);
+        saveLifeState();
+        // Reset node DOM classes
+        var resetNodes = {
+          nodeHoliday:  {cls:'future', label:'Coming soon'},
+          nodePartner:  {cls:'future', label:"When it's time"},
+          nodeProperty: {cls:'faded',  label:'Someday'}
+        };
+        Object.keys(resetNodes).forEach(id => {
+          var n = document.getElementById(id);
+          if(!n) return;
+          n.className = 'node ' + resetNodes[id].cls;
+          var lbl = n.querySelector('.node-label');
+          if(lbl) lbl.textContent = resetNodes[id].label;
+        });
+        closeSheet();
+        toast('Unlocks reset — demo ready');
+      }},
+      {label: 'Cancel', primary: false, fn: closeSheet}
+    ]);
+}
+
+// ─── Long-press on "Your path" header to reset ──────────────────────
+document.addEventListener('DOMContentLoaded', function(){
+  var pressTimer = null, pressedEl = null, fired = false;
+  var HOLD_MS = 900;
+
+  function clearPress(){
+    if(pressTimer){ clearTimeout(pressTimer); pressTimer = null; }
+    if(pressedEl){ pressedEl.style.transition = 'opacity .2s'; pressedEl.style.opacity = ''; pressedEl = null; }
+  }
+  function startPress(el){
+    fired = false;
+    pressedEl = el;
+    el.style.transition = 'opacity .6s';
+    el.style.opacity = '.55';
+    pressTimer = setTimeout(() => { fired = true; clearPress(); resetAll(); }, HOLD_MS);
+  }
+
+  var target = document.querySelector('.lifepath-header h2');
+  if(target){
+    target.style.cursor = 'pointer';
+    target.title = 'Demo: long-press to reset';
+    target.addEventListener('mousedown', () => startPress(target));
+    target.addEventListener('touchstart', () => startPress(target), {passive:true});
+  }
+  ['mouseup','mouseleave','touchend','touchcancel','scroll'].forEach(evt => {
+    document.addEventListener(evt, clearPress, evt === 'scroll' ? {passive:true} : false);
+  });
+  document.addEventListener('click', e => {
+    if(fired){ e.stopPropagation(); e.preventDefault(); fired = false; }
+  }, true);
+});
+
+// ─── Tiny nicety: live-update the time pips ────────────────────────
+function updateClock(){
+  var now = new Date();
+  var hh = String(now.getHours()).padStart(2,'0');
+  var mm = String(now.getMinutes()).padStart(2,'0');
+  document.querySelectorAll('.statusbar .pip:not(.live)').forEach(p => {
+    if(/^\d{2}:\d{2}$/.test(p.textContent.trim())) p.textContent = hh + ':' + mm;
+  });
+}
+updateClock();
+setInterval(updateClock, 30000);
+
+// ─── Daily trivia / puzzle — rotates by date, one per day ──────────
+const TRIVIA = [
+  {
+    q: "You're 19 and on a Level 4 apprenticeship. What's the minimum hourly wage your employer must pay?",
+    opts: ['£6.40', '£7.55', '£8.20', 'Same as NLW'],
+    correct: 0,
+    foot: '<b>£6.40/hour</b> is the apprentice minimum (applies in year 1 of any apprenticeship, and to all apprentices under 19). From year 2 onwards and if you\u2019re 19+, you move to the age-appropriate National Minimum Wage — so worth knowing when your pay rise kicks in.'
+  },
+  {
+    q: 'If your first payslip shows 32% deducted, what\'s most likely happened?',
+    opts: ['Nothing, that\'s normal', 'Emergency tax code', 'Pension enrolled', 'NI mistake'],
+    correct: 1,
+    foot: 'An <b>emergency tax code</b> (often 0T or BR) is common for first jobs. HMRC corrects it once your P45 data catches up — usually within 2–3 payslips. Anything overpaid comes back.'
+  },
+  {
+    q: 'How long does your tenancy deposit have to be protected after you pay it?',
+    opts: ['7 days', '14 days', '30 days', '60 days'],
+    correct: 2,
+    foot: 'Your landlord has <b>30 days</b> to protect your deposit in a government scheme (TDS, DPS or mydeposits) and tell you which one. If they don\'t, you can claim up to 3× the deposit back.'
+  },
+  {
+    q: 'First holiday abroad since turning 18 — how long must your passport be valid on entry to the EU?',
+    opts: ['1 month', '3 months', '6 months', '1 year'],
+    correct: 2,
+    foot: 'EU rules require <b>at least 3 months</b> validity past your return date, and the passport must be under 10 years old on entry. Airlines will refuse boarding if either fails.'
+  },
+  {
+    q: 'Your 16–25 Railcard saves what share off most off-peak fares?',
+    opts: ['20%', '1/3 (33%)', '50%', '25%'],
+    correct: 1,
+    foot: 'A <b>third off</b> most off-peak rail fares, and 60% off for kids you\'re travelling with. You can use it until the day you turn 26 — and renew up to a month early.'
+  },
+  {
+    q: 'Auto-enrolment pension — what\'s the minimum total percentage of your salary going in (you + employer)?',
+    opts: ['3%', '5%', '8%', '12%'],
+    correct: 2,
+    foot: '<b>8% total</b> by law — at least 3% from your employer, typically 5% from you (including tax relief). You can opt out, but you\'d be walking past free money from your employer.'
+  },
+  {
+    q: "What's the 'LISA' bonus the government adds to a Lifetime ISA each year?",
+    opts: ['10%', '15%', '20%', '25%'],
+    correct: 3,
+    foot: '<b>25% bonus</b> — pay in up to £4,000/year and the government adds £1,000. Must be used for a first home (up to £450k) or left until age 60, or there\'s a withdrawal penalty.'
+  }
+];
+(function renderTrivia(){
+  var card = document.getElementById('triviaCard');
+  if(!card) return;
+  var today = new Date();
+  var dayIdx = Math.floor((today - new Date(today.getFullYear(),0,0)) / 86400000);
+  var t = TRIVIA[dayIdx % TRIVIA.length];
+  var dateEl = document.getElementById('triviaDate');
+  if(dateEl){
+    dateEl.textContent = today.toLocaleDateString('en-GB', {weekday:'short', day:'numeric', month:'short'});
+  }
+  document.getElementById('triviaQ').textContent = t.q;
+  var optsEl = document.getElementById('triviaOpts');
+  optsEl.innerHTML = '';
+  var answered = false;
+  t.opts.forEach(function(opt, i){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'trivia-opt';
+    b.textContent = opt;
+    b.addEventListener('click', function(e){
+      e.stopPropagation();
+      if(answered) return;
+      answered = true;
+      var isCorrect = (i === t.correct);
+      b.classList.add(isCorrect ? 'correct' : 'wrong');
+      if(!isCorrect){
+        optsEl.children[t.correct].classList.add('correct');
+      }
+      Array.from(optsEl.children).forEach(function(ch, j){
+        if(j !== i && j !== t.correct) ch.classList.add('dim');
+      });
+      var foot = document.getElementById('triviaFoot');
+      foot.innerHTML = t.foot;
+      foot.style.display = 'block';
+    });
+    optsEl.appendChild(b);
+  });
+})();
+
+</script>
+</body>
+</html>
