@@ -63,6 +63,100 @@ h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;}
 .btn-green:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(95,156,53,.38);filter:brightness(1.06);}
 .btn-green:active{transform:translateY(0);}
 
+/* ── s'LiFe demo accent buttons — soft palette match to each persona ──── */
+.btn-slife{border:1px solid transparent;}
+.btn-slife-f{
+  background:linear-gradient(180deg,#fff6f1 0%,#ffe8dd 100%);
+  color:#c8432a;
+  border-color:rgba(255,106,77,.28);
+}
+.btn-slife-f:hover{
+  transform:translateY(-2px);
+  background:linear-gradient(180deg,#fff1e8 0%,#ffdcc8 100%);
+  box-shadow:0 8px 18px rgba(255,106,77,.18);
+}
+.btn-slife-m{
+  background:linear-gradient(180deg,#f1f5ff 0%,#dee7ff 100%);
+  color:#1c4cc9;
+  border-color:rgba(47,110,243,.28);
+}
+.btn-slife-m:hover{
+  transform:translateY(-2px);
+  background:linear-gradient(180deg,#e8efff 0%,#c9d9ff 100%);
+  box-shadow:0 8px 18px rgba(47,110,243,.20);
+}
+
+/* ── Multi-generational bridge (sits between cream and dark sections) ──── */
+.section-multigen{
+  padding:44px 0 48px;
+  background:
+    linear-gradient(90deg,
+      rgba(255,106,77,.10) 0%,
+      rgba(255,106,77,.04) 22%,
+      rgba(250,246,238,.55) 48%,
+      rgba(47,110,243,.05) 78%,
+      rgba(47,110,243,.12) 100%);
+  border-top:1px solid rgba(35,40,79,.06);
+  border-bottom:1px solid rgba(35,40,79,.06);
+  position:relative;
+}
+.section-multigen::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(ellipse 60% 40% at 12% 50%, rgba(255,106,77,.06), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 88% 50%, rgba(47,110,243,.07), transparent 70%);
+  pointer-events:none;
+}
+.multigen-inner{
+  position:relative;
+  text-align:center;
+  max-width:640px;
+  margin:0 auto;
+  padding:0 24px;
+}
+.multigen-eyebrow{
+  display:inline-block;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--navy);
+  background:rgba(255,253,248,.72);
+  border:1px solid rgba(35,40,79,.10);
+  border-radius:999px;
+  padding:6px 14px;
+  margin-bottom:18px;
+}
+.multigen-head{
+  font-family:'Playfair Display',Georgia,serif;
+  font-weight:700;
+  font-size:clamp(22px,2.8vw,30px);
+  line-height:1.12;
+  letter-spacing:-.02em;
+  color:var(--navy);
+  margin:0 0 10px;
+}
+.multigen-head em{
+  font-style:italic;
+  font-weight:600;
+  background:linear-gradient(90deg,#c8432a 0%,#1c4cc9 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.multigen-body{
+  font-size:14px;
+  line-height:1.6;
+  color:var(--muted);
+  margin:0 auto;
+  max-width:48ch;
+}
+@media(max-width:640px){
+  .section-multigen{padding:32px 0 36px;}
+}
+
 /* Hero */
 .hero{padding:56px 0 48px;}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;}
@@ -277,6 +371,21 @@ h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;}
 .popup-bird .icon-bird{height:44px;width:auto;animation:birdBob 3s ease-in-out infinite;}
 .popup-bird .icon-bird svg{height:100%;width:auto;}
 
+/* Keyboard focus — visible without disturbing mouse users */
+button:focus{outline:none;}
+a:focus-visible,button:focus-visible,.btn-gold:focus-visible,.btn-ghost:focus-visible,.btn-navy:focus-visible,.btn-green:focus-visible,.pop-submit:focus-visible,.sh-nx:focus-visible,.r-ln:focus-visible,.r-reg:focus-visible,.sh-bk:focus-visible,.int-btn:focus-visible,.opt:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(95,156,53,.32),0 0 0 5px rgba(35,40,79,.08);}
+.int-btn.sel:focus-visible,.opt.sel:focus-visible{box-shadow:0 0 0 3px rgba(95,156,53,.32),0 0 0 5px rgba(95,156,53,.14);}
+.pop-consent input:focus-visible{outline:2px solid var(--green2);outline-offset:2px;}
+
+/* Disabled submit — clearer non-interactive state */
+.pop-submit:disabled,.pop-submit[disabled]{opacity:.7;cursor:progress;transform:none;filter:none;}
+
+/* Reduced motion — honour user preference across all transitions */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important;}
+  .fade{opacity:1;transform:none;}
+}
+
 </style>
 </head>
 <body>
@@ -288,6 +397,8 @@ h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;}
   <div class="nav-acts">
     <button type="button" class="btn-green" onclick="openPopup()">Register your interest — it's free</button>
     <button type="button" class="btn-navy" onclick="openPrototype()">Open prototype →</button>
+    <button type="button" class="btn-ghost btn-slife btn-slife-f" onclick="openSLifeF()">s'LiFe demo — Maya</button>
+    <button type="button" class="btn-ghost btn-slife btn-slife-m" onclick="openSLifeM()">s'LiFe demo — Josh</button>
   </div>
 </nav>
 
@@ -425,6 +536,14 @@ h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;}
       </div>
       <div class="hero-acts" style="margin-top:18px"><button type="button" class="btn-gold" onclick="openPopup()">Open interest popup</button></div>
     </div>
+  </div>
+</section>
+
+<section class="section-multigen">
+  <div class="multigen-inner fade">
+    <span class="multigen-eyebrow">Across generations</span>
+    <h2 class="multigen-head">One household, <em>held across generations</em>.</h2>
+    <p class="multigen-body">MyS<span class="saife-a">A</span>iFe isn&rsquo;t just for the person who pays &mdash; it quietly holds what matters for the people who rely on you, and the people you rely on, through clear and consented bridges between generations.</p>
   </div>
 </section>
 
@@ -575,7 +694,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;}
       <div class="sh-nav"><button type="button" class="sh-bk" onclick="go(0)">← Back</button><button type="button" class="sh-nx" onclick="go(2)">Continue →</button></div>
     </div>
     <div class="stp" id="s2">
-      <div class="sh-ic">💭</div><div class="sh-q">What worries you most?</div><div class="sh-sb">No wrong answers — this helps MySAiFe understand what matters most to you. Select any that apply (up to 3).</div>
+      <div class="sh-ic">💭</div><div class="sh-q">What worries you most?</div><div class="sh-sb">No wrong answers — this helps MySAiFe understand what matters most to you.</div>
       <div class="opts">
         <button type="button" class="opt" onclick="pick(this,2,'chaos')"><span class="oi">🌀</span>Things feel too scattered</button>
         <button type="button" class="opt" onclick="pick(this,2,'burden')"><span class="oi">🤍</span>Burden on loved ones</button>
@@ -585,7 +704,7 @@ h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;}
       <div class="sh-nav"><button type="button" class="sh-bk" onclick="go(1)">← Back</button><button type="button" class="sh-nx" onclick="go(3)">Continue →</button></div>
     </div>
     <div class="stp" id="s3">
-      <div class="sh-ic">📊</div><div class="sh-q">How organised does it feel today?</div><div class="sh-sb">This helps frame whether MyS<span class="saife-a">A</span>iFe should feel like reassurance or rescue. Select any that apply (up to 3).</div>
+      <div class="sh-ic">📊</div><div class="sh-q">How organised does it feel today?</div><div class="sh-sb">This helps frame whether MyS<span class="saife-a">A</span>iFe should feel like reassurance or rescue.</div>
       <div class="opts">
         <button type="button" class="opt" onclick="pick(this,3,'sorted')"><span class="oi">✅</span>Mostly sorted</button>
         <button type="button" class="opt" onclick="pick(this,3,'some gaps')"><span class="oi">🟡</span>Some gaps</button>
@@ -632,10 +751,11 @@ function openLegal(){document.getElementById('legalOverlay').classList.add('open
 function closeLegal(){document.getElementById('legalOverlay').classList.remove('open');document.body.style.overflow='';}
 function legalBc(e){if(e.target.id==='legalOverlay')closeLegal();}
 async function submitPopup(){
+  const submitBtn=document.getElementById('popSubmitBtn');
+  if(submitBtn && submitBtn.disabled) return;
   const first=document.getElementById('popFirst').value.trim();
   const email=document.getElementById('popEmail').value.trim();
   const consent=document.getElementById('popConsent').checked;
-  const submitBtn=document.getElementById('popSubmitBtn');
   if(!first){alert('Please enter your first name.');return;}
   if(!email||!email.includes('@')){alert('Please enter a valid email address.');return;}
   if(!selectedInterest){alert('Please select what you are interested in.');return;}
@@ -697,33 +817,17 @@ Please reply personally with next steps.`);
   }
 }
 const A={};
-const MAX_QUIZ_SELECTIONS = 3;
 function openSheet(){show(0);document.getElementById('qOverlay').classList.add('open');document.body.style.overflow='hidden';}
 function closeSheet(){document.getElementById('qOverlay').classList.remove('open');document.body.style.overflow='';}
 function qBc(e){if(e.target.id==='qOverlay')closeSheet();}
 function show(n){document.querySelectorAll('.stp').forEach((s,i)=>s.classList.toggle('on',i===n));document.querySelectorAll('.pd').forEach((d,i)=>{d.classList.toggle('done',i<n);d.classList.toggle('cur',i===n);});}
-function pick(btn,step,val){
-  const group=btn.closest('.opts');
-  if(!group) return;
-  const current=Array.isArray(A[step]) ? A[step].slice() : [];
-  const idx=current.indexOf(val);
-  if(idx>=0){
-    current.splice(idx,1);
-    btn.classList.remove('sel');
-    A[step]=current;
-    return;
-  }
-  if(current.length>=MAX_QUIZ_SELECTIONS) return;
-  current.push(val);
-  btn.classList.add('sel');
-  A[step]=current;
-}
+function pick(btn,step,val){btn.closest('.opts').querySelectorAll('.opt').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');A[step]=val;}
 function go(n){show(n);}
 function result(){
-  const who=(A[0]&&A[0][0])||'just me';
-  const focus=(A[1]&&A[1][0])||'documents';
-  const worry=(A[2]&&A[2][0])||'chaos';
-  const ready=(A[3]&&A[3][0])||'scattered';
+  const who=A[0]||'just me';
+  const focus=A[1]||'documents';
+  const worry=A[2]||'chaos';
+  const ready=A[3]||'scattered';
 
   const iconMap={
     'just me':'🙋',
@@ -800,6 +904,8 @@ function result(){
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePopup();closeSheet();}});
 
 function openPrototype(){ window.open('https://app.mysaife.co.uk/prototype.html','_blank'); }
+function openSLifeF(){ window.open('https://app.mysaife.co.uk/slife-maya.html','_blank'); }
+function openSLifeM(){ window.open('https://app.mysaife.co.uk/slife-josh.html','_blank'); }
 </script>
 <script>
 // Scroll reveal
