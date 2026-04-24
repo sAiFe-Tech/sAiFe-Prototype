@@ -1034,7 +1034,7 @@ document.addEventListener('DOMContentLoaded', function () {
     <p>Capture wishes, preferences and practical guidance so your family are not left guessing in difficult moments.</p>
   </div>
 
-  <div class="breadth-card">
+  <div class="breadth-card tappable" onclick="show('agentHub')">
     <div class="section-pill" style="background:#fff3df;color:#a87618;"><span class="brand-inline-lockup">sAiFe Agent<span class="inline-bird-mark" aria-hidden="true"></span></span></div>
     <h3>Prompted, not pushed</h3>
     <p>Surface reminders, missing details and sensible next steps without filing or sharing anything automatically.</p>
@@ -1144,6 +1144,14 @@ document.addEventListener('DOMContentLoaded', function () {
 <div class="topbar"><button class="soft" onclick="show('home')" style="opacity:0.85;">← Home</button><div class="pill">Dashboard</div></div>
 <h2>What needs attention now</h2>
 <p class="sub">Your weekly command centre: this week, soon, and anything important to keep in mind.</p>
+
+<div class="agent-banner tappable" onclick="show('agentHub')" style="margin-top:0;">
+<div>
+<b><span class="brand-inline-lockup">sAiFe Agent<span class="inline-bird-mark" aria-hidden="true"></span></span> noticed 3 things this week</b>
+<span>A duplicate Vodafone account · 17 records that could be tidied into the 2025/26 tax pack · your MOT bundle is ready</span>
+</div>
+<span class="mini-pill">Open →</span>
+</div>
 <div class="week-strip">
   <div class="week-bucket urgent">
     <h3>This week</h3>
@@ -1193,7 +1201,7 @@ document.addEventListener('DOMContentLoaded', function () {
   <div class="section-pill">Trust</div>
   <p style="margin:0;color:var(--navy);font-size:14px;line-height:1.55;font-weight:700;">Your information isn’t just stored — it’s structured so your family can act on it when it matters.</p>
 </div>
-<div class="card" style="margin-top:12px;background:linear-gradient(180deg,#fffdf8 0%,#f8f1e6 100%);border:1px solid rgba(184,150,58,.22);">
+<div class="card tappable" onclick="show('agentHub')" style="margin-top:12px;background:linear-gradient(180deg,#fffdf8 0%,#f8f1e6 100%);border:1px solid rgba(184,150,58,.22);">
   <div class="section-pill" style="background:#fff3df;color:#a87618;"><span class="brand-inline-lockup">sAiFe Agent<span class="inline-bird-mark" aria-hidden="true"></span></span></div>
   <h3 style="margin:0 0 6px;">Worth reviewing</h3>
   <p style="margin:0;color:var(--muted);font-size:14px;line-height:1.5;">Potential savings spotted across utilities and mobile, and one continuity note worth tightening in Vault.</p>
@@ -1287,6 +1295,16 @@ document.addEventListener('DOMContentLoaded', function () {
   <div class="card" onclick="openSchoolingMode()"><h3>Schooling check</h3><p>Term dates, holidays, inset days, parents’ evenings and school events gathered in one calm family view.</p></div>
   <div class="card" onclick="show('emergency')"><h3>Emergency contacts &amp; response</h3><p>Trusted contacts, immediate actions and the right information for difficult moments.</p></div>
   <div class="card" onclick="show('featuremap')"><h3>How the People layer grows</h3><p>See how continuity, trusted access and family planning naturally unlock as the basics are completed.</p></div>
+</div>
+
+<div class="card tappable" onclick="show('agentHub')" style="margin-top:12px;background:linear-gradient(180deg,#fffdf8 0%,#f8f1e6 100%);border:1px solid rgba(184,150,58,.22);">
+<div class="section-pill" style="background:#fff3df;color:#a87618;"><span class="brand-inline-lockup">sAiFe Agent<span class="inline-bird-mark" aria-hidden="true"></span></span> · Gentle check-in</div>
+<h3 style="margin:0 0 6px;">Maya&apos;s passport expires in September — want me to draft the renewal pack?</h3>
+<p style="margin:0;color:var(--muted);font-size:14px;line-height:1.5;">HMPO takes up to 10 weeks at the moment. Starting now gives breathing room. I can pull her last photo, your current address proof and the old passport reference into one place.</p>
+<div class="mini-actions" style="margin-top:12px;">
+<button class="primary" onclick="event.stopPropagation();toast('Renewal pack drafted — ready to review')" style="flex:1 1 0;">Draft the pack</button>
+<button class="secondary" onclick="event.stopPropagation();show('agentHub')" style="flex:1 1 0;">See all prompts</button>
+</div>
 </div>
 <div class="tabbar">
 <button class="tab" onclick="show('home')"><span class="tab-icon">🏠</span>Home</button>
@@ -1607,6 +1625,16 @@ document.addEventListener('DOMContentLoaded', function () {
 <p style="font-size:13px; margin:0;">MySaiFe does not recommend mortgage products, rates or lenders. Figures here reflect what you have stored. Always confirm with your broker or lender before acting.</p>
 </div>
 
+<div class="card tappable" onclick="show('agentHub')" style="margin-top:12px;background:linear-gradient(180deg,#fffdf8 0%,#f8f1e6 100%);border:1px solid rgba(184,150,58,.22);">
+<div class="section-pill" style="background:#fff3df;color:#a87618;"><span class="brand-inline-lockup">sAiFe Agent<span class="inline-bird-mark" aria-hidden="true"></span></span> · Suggestion</div>
+<h3 style="margin:0 0 6px;">Six months feels like a good time to start comparing</h3>
+<p style="margin:0;color:var(--muted);font-size:14px;line-height:1.5;">Your fix ends 14 July 2026. I can prepare the pack Helen Chen (your broker) would want to see — balance, overpayment history, protection policy. Nothing is sent without your go-ahead.</p>
+<div class="mini-actions" style="margin-top:12px;">
+<button class="primary" onclick="event.stopPropagation();toast('Broker pack prepared for Helen Chen')" style="flex:1 1 0;">Prepare the pack</button>
+<button class="secondary" onclick="event.stopPropagation();show('agentHub')" style="flex:1 1 0;">See all prompts</button>
+</div>
+</div>
+
 <div class="stack">
 <button class="primary" onclick="show('emergency')">Send to emergency view</button>
 <button class="secondary" onclick="show('property')">Back to property</button>
@@ -1762,6 +1790,16 @@ document.addEventListener('DOMContentLoaded', function () {
 <p style="margin:0;color:var(--muted);font-size:14px;line-height:1.5;">This feature should not appear too early. It is more helpful when the user already trusts the product and has completed the basics. Then it feels like added clarity, not extra work.</p>
 <div class="inline-actions" style="margin-top:12px;"><button class="primary" onclick="show('taxreadiness')">Open tax readiness</button><button class="secondary" onclick="show('featuremap')">See full roadmap</button></div>
 </div>
+
+<div class="card tappable" onclick="show('agentHub')" style="margin-top:12px;background:linear-gradient(180deg,#fffdf8 0%,#f8f1e6 100%);border:1px solid rgba(184,150,58,.22);">
+<div class="section-pill" style="background:#fff3df;color:#a87618;"><span class="brand-inline-lockup">sAiFe Agent<span class="inline-bird-mark" aria-hidden="true"></span></span> · In the background</div>
+<h3 style="margin:0 0 6px;">I&apos;ve noticed 17 records that could be tidied into your tax pack</h3>
+<p style="margin:0;color:var(--muted);font-size:14px;line-height:1.5;">14 expense receipts, 2 rental statements and a pension summary. I can group them and have them ready for Priya whenever you are.</p>
+<div class="mini-actions" style="margin-top:12px;">
+<button class="primary" onclick="event.stopPropagation();toast('17 records filed under 2025/26 tax pack')" style="flex:1 1 0;">Yes, tidy them</button>
+<button class="secondary" onclick="event.stopPropagation();show('agentHub')" style="flex:1 1 0;">See all prompts</button>
+</div>
+</div>
 <div class="tabbar">
 <button class="tab" onclick="show('home')"><span class="tab-icon">🏠</span>Home</button>
 <button class="tab" onclick="show('dashboard')"><span class="tab-icon">📊</span>Dash</button>
@@ -1851,6 +1889,16 @@ document.addEventListener('DOMContentLoaded', function () {
     <button class="primary" onclick="openTravelMode()" style="width:100%;">Before you go</button>
   </div>
   <button class="secondary" style="background:rgba(255,253,248,0.94);font-weight:800;">+ Add a vehicle</button>
+</div>
+
+<div class="card tappable" onclick="show('agentHub')" style="margin-top:12px;background:linear-gradient(180deg,#fffdf8 0%,#f8f1e6 100%);border:1px solid rgba(184,150,58,.22);">
+<div class="section-pill" style="background:#fff3df;color:#a87618;"><span class="brand-inline-lockup">sAiFe Agent<span class="inline-bird-mark" aria-hidden="true"></span></span> · Preparing</div>
+<h3 style="margin:0 0 6px;">MOT Monday — your bundle is ready</h3>
+<p style="margin:0;color:var(--muted);font-size:14px;line-height:1.5;">V5C, last year&apos;s advisories and service history gathered into one place. If the garage asks for anything, it&apos;ll be a tap away.</p>
+<div class="mini-actions" style="margin-top:12px;">
+<button class="primary" onclick="event.stopPropagation();toast('MOT bundle opened')" style="flex:1 1 0;">Open the bundle</button>
+<button class="secondary" onclick="event.stopPropagation();show('agentHub')" style="flex:1 1 0;">See all prompts</button>
+</div>
 </div>
 <div class="tabbar">
 <button class="tab active" onclick="show('home')"><span class="tab-icon">🏠</span>Home</button>
@@ -2423,6 +2471,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <div class="record-line"><div class="label">Members</div><div class="value">3 of 6 used</div></div>
 </div>
 <button class="secondary" onclick="toast('Managing subscription…')" style="width:100%;margin-top:4px;padding:13px;">Manage subscription</button>
+<button class="secondary" onclick="show('agentHub')" style="width:100%;margin-top:10px;padding:13px;">Open sAiFe Agent activity</button>
 <button class="secondary" onclick="show('featuremap')" style="width:100%;margin-top:10px;padding:13px;">View future feature map</button>
 <div class="tabbar">
 <button class="tab" onclick="show('home')"><span class="tab-icon">🏠</span>Home</button>
@@ -2652,6 +2701,130 @@ document.addEventListener('DOMContentLoaded', function () {
 </div>
 </section>
 <!-- ─── End onboarding click-through ──────────────────────────────────────── -->
+
+<section class="screen bg-family" id="agentHub">
+<div class="status"><div class="localtime"></div><div class="status-right"><button class="global-chip" onclick="toggleGlobalMenu()">UK · EN</button><div class="dots"><span></span><span></span><span></span></div></div></div>
+<div class="topbar"><button class="soft" onclick="show('dashboard')">← Dashboard</button><div class="pill">sAiFe Agent</div></div>
+
+<div class="hero" style="padding:20px 18px;">
+<h1 style="font-size:24px;">What I noticed this week</h1>
+<p style="margin-top:10px;">A quiet background tidy. Nothing urgent — just small things worth a glance, grouped so you can act on them or leave them.</p>
+<div class="hero-subcard">
+<b>How I work</b>
+<span>I only look at what you&apos;ve stored. I suggest, never act on my own. Everything here can be turned off in Settings.</span>
+</div>
+</div>
+
+<div class="metric-row" style="margin-top:14px;">
+<div class="metric-pill"><b>7</b><span>noticed this week</span></div>
+<div class="metric-pill"><b>4</b><span>awaiting a nudge</span></div>
+<div class="metric-pill"><b>3</b><span>tidied already</span></div>
+</div>
+
+<div class="card" style="margin-top:12px;">
+<div class="section-pill" style="background:#fff3df;color:#a87618;"><span class="brand-inline-lockup">sAiFe Agent<span class="inline-bird-mark" aria-hidden="true"></span></span> · Spotted</div>
+<h3 style="margin:0 0 6px;">Two Vodafone accounts on your records</h3>
+<p style="margin:0 0 12px;color:var(--muted);font-size:14px;line-height:1.5;">One is Maya&apos;s £22/mo contract. The other looks like an old account from 2021 with no activity. Would you like me to flag it for closure or keep it archived?</p>
+<div class="mini-actions">
+<button class="primary" onclick="toast('Marked for closure review')" style="flex:1 1 0;">Mark for closure</button>
+<button class="secondary" onclick="toast('Archived quietly')" style="flex:1 1 0;">Just archive it</button>
+</div>
+</div>
+
+<div class="card" style="margin-top:12px;">
+<div class="section-pill" style="background:#edf5e7;color:#4f8f2e;"><span class="brand-inline-lockup">sAiFe Agent<span class="inline-bird-mark" aria-hidden="true"></span></span> · Tidying</div>
+<h3 style="margin:0 0 6px;">Group these into your 2025/26 tax pack?</h3>
+<p style="margin:0 0 12px;color:var(--muted);font-size:14px;line-height:1.5;">I&apos;ve found 14 receipts, 2 rental statements and a pension summary that look like they belong together. I can label them and file them under the tax pack, ready for Priya when you&apos;re ready.</p>
+<div class="progress-list" style="margin:0 0 12px;">
+<div class="progress-item"><div><strong>14 expense receipts</strong><div class="label">Repairs, letting agent fees, certificates</div></div><span class="tag greentag">Found</span></div>
+<div class="progress-item"><div><strong>2 rental statements</strong><div class="label">Flat 4 Belmont · 14a Grange Rd</div></div><span class="tag greentag">Found</span></div>
+<div class="progress-item"><div><strong>1 pension summary</strong><div class="label">Aviva Workplace · 2025/26</div></div><span class="tag greentag">Found</span></div>
+</div>
+<div class="mini-actions">
+<button class="primary" onclick="toast('17 records filed under 2025/26 tax pack')" style="flex:1 1 0;">Yes, tidy them</button>
+<button class="secondary" onclick="toast('Left where they are')" style="flex:1 1 0;">Not now</button>
+</div>
+</div>
+
+<div class="card" style="margin-top:12px;">
+<div class="section-pill" style="background:#fdeceb;color:#b64e44;"><span class="brand-inline-lockup">sAiFe Agent<span class="inline-bird-mark" aria-hidden="true"></span></span> · Preparing</div>
+<h3 style="margin:0 0 6px;">MOT due Monday — I&apos;ve pulled your records</h3>
+<p style="margin:0 0 12px;color:var(--muted);font-size:14px;line-height:1.5;">Your Range Rover Sport MOT is booked for Monday 18 May. I&apos;ve gathered the V5C, last year&apos;s advisories and service history into one place in case the garage asks.</p>
+<div class="record-line"><div class="label">Garage</div><div class="value">Premier Service Centre, Bath</div></div>
+<div class="record-line"><div class="label">Booking reference</div><div class="value">PSC-2026-0514</div></div>
+<div class="record-line"><div class="label">Last year&apos;s advisories</div><div class="value">Rear brake pads — monitor</div></div>
+<div class="mini-actions" style="margin-top:12px;">
+<button class="primary" onclick="toast('Records bundled and ready to share')" style="flex:1 1 0;">Open the bundle</button>
+<button class="secondary" onclick="toast('Noted — will quietly keep an eye')" style="flex:1 1 0;">Thanks, got it</button>
+</div>
+</div>
+
+<div class="card" style="margin-top:12px;">
+<div class="section-pill" style="background:#f0f3f9;color:#5e7193;"><span class="brand-inline-lockup">sAiFe Agent<span class="inline-bird-mark" aria-hidden="true"></span></span> · Check-in</div>
+<h3 style="margin:0 0 6px;">Your will hasn&apos;t been updated in 22 months</h3>
+<p style="margin:0 0 12px;color:var(--muted);font-size:14px;line-height:1.5;">Last updated March 2024. Nothing wrong with that — but if Maya or Josh&apos;s circumstances have changed, or if your executors are still right, a quick review is sensible. I can prepare a summary of what&apos;s currently in there to share with Hughes &amp; Co.</p>
+<div class="mini-actions">
+<button class="primary" onclick="toast('Summary drafted for Hughes &amp; Co')" style="flex:1 1 0;">Prepare the summary</button>
+<button class="secondary" onclick="toast('Will nudge again in 6 months')" style="flex:1 1 0;">Remind me later</button>
+</div>
+</div>
+
+<div class="card" style="margin-top:12px;">
+<div class="section-pill" style="background:#f0f3f9;color:#5e7193;"><span class="brand-inline-lockup">sAiFe Agent<span class="inline-bird-mark" aria-hidden="true"></span></span> · Suggestion</div>
+<h3 style="margin:0 0 6px;">Your fixed rate ends in 8 months</h3>
+<p style="margin:0 0 12px;color:var(--muted);font-size:14px;line-height:1.5;">Lloyds 5-year fix ends 14 July 2026. Six months ahead feels like a good time to start comparing. Want me to prepare the pack Helen Chen (your broker) would want to see?</p>
+<div class="mini-actions">
+<button class="primary" onclick="toast('Broker pack prepared for Helen Chen')" style="flex:1 1 0;">Yes, prepare it</button>
+<button class="secondary" onclick="toast('Will check in a month')" style="flex:1 1 0;">Not yet</button>
+</div>
+</div>
+
+<div class="card" style="margin-top:12px;">
+<div class="section-pill" style="background:#edf5e7;color:#4f8f2e;"><span class="brand-inline-lockup">sAiFe Agent<span class="inline-bird-mark" aria-hidden="true"></span></span> · Learning</div>
+<h3 style="margin:0 0 6px;">Here&apos;s what&apos;s still missing</h3>
+<p style="margin:0 0 12px;color:var(--muted);font-size:14px;line-height:1.5;">Based on what you&apos;ve filed so far, these are the common next pieces a household typically adds. Nothing urgent — just so you can see the shape.</p>
+<div class="progress-list" style="margin:0;">
+<div class="progress-item"><div><strong>Dental records for Josh</strong><div class="label">Maya&apos;s dentist is noted · Josh&apos;s not yet</div></div><span class="tag ambertag">Small gap</span></div>
+<div class="progress-item"><div><strong>Secondary emergency contact</strong><div class="label">Sarah is primary · a second named person is usually added</div></div><span class="tag ambertag">Small gap</span></div>
+<div class="progress-item"><div><strong>Digital legacy plan</strong><div class="label">Password vault recovery route not yet linked</div></div><span class="tag ambertag">Small gap</span></div>
+</div>
+</div>
+
+<div class="card" style="margin-top:12px;">
+<div class="section-pill">Already tidied this week</div>
+<h3 style="margin:0 0 6px;">Three small things, done quietly</h3>
+<div class="progress-list" style="margin:0;">
+<div class="progress-item"><div><strong>Grouped buildings insurance documents</strong><div class="label">Schedule, certificate and renewal letter now linked to the mortgage record</div></div><span class="tag greentag">Done</span></div>
+<div class="progress-item"><div><strong>Flagged the Grange Rd mortgage interest statement as late</strong><div class="label">Usually arrives in early April · I&apos;ll watch for it</div></div><span class="tag greentag">Watching</span></div>
+<div class="progress-item"><div><strong>Updated the direct-debit list</strong><div class="label">HSBC joint account · 7 outgoing now mapped to the Services hub</div></div><span class="tag greentag">Mapped</span></div>
+</div>
+</div>
+
+<div class="card onboard-focus" style="margin-top:12px;">
+<div class="section-pill">Agent controls</div>
+<h3 style="margin:0 0 6px;">Turn categories on or off</h3>
+<p style="margin:0 0 10px;color:var(--muted);font-size:14px;line-height:1.5;">I&apos;ll only look at what you let me. Everything here is private to your household.</p>
+<div class="toggle-row"><div><strong>Spotted duplicates</strong><p class="sub" style="margin:2px 0 0; font-size:12px;">Accounts or records that look like the same thing</p></div><label class="toggle"><input checked="" type="checkbox" onchange="toast('Spotted duplicates '+( this.checked?'on':'off'))"/><div class="toggle-track"></div></label></div>
+<div class="toggle-row"><div><strong>Tidying offers</strong><p class="sub" style="margin:2px 0 0; font-size:12px;">Grouping, filing, labelling into packs</p></div><label class="toggle"><input checked="" type="checkbox" onchange="toast('Tidying offers '+( this.checked?'on':'off'))"/><div class="toggle-track"></div></label></div>
+<div class="toggle-row"><div><strong>Preparing for events</strong><p class="sub" style="margin:2px 0 0; font-size:12px;">Renewals, MOTs, deadlines — I&apos;ll gather what you need ahead of time</p></div><label class="toggle"><input checked="" type="checkbox" onchange="toast('Event preparation '+( this.checked?'on':'off'))"/><div class="toggle-track"></div></label></div>
+<div class="toggle-row"><div><strong>Gentle check-ins</strong><p class="sub" style="margin:2px 0 0; font-size:12px;">Things you may want to revisit — will, beneficiaries, contacts</p></div><label class="toggle"><input checked="" type="checkbox" onchange="toast('Check-ins '+( this.checked?'on':'off'))"/><div class="toggle-track"></div></label></div>
+<div class="toggle-row"><div><strong>Learning moments</strong><p class="sub" style="margin:2px 0 0; font-size:12px;">Gentle prompts about common next pieces</p></div><label class="toggle"><input checked="" type="checkbox" onchange="toast('Learning moments '+( this.checked?'on':'off'))"/><div class="toggle-track"></div></label></div>
+</div>
+
+<div class="notice" style="margin-top:12px;">
+<div class="section-pill">What I never do</div>
+<p style="font-size:13px; margin:0;">I never share records without your confirmation. I never message anyone on your behalf. I never act on financial, legal or medical matters autonomously. I don&apos;t guess — if I&apos;m not sure, I say so.</p>
+</div>
+
+<div class="tabbar">
+<button class="tab" onclick="show('home')"><span class="tab-icon">🏠</span>Home</button>
+<button class="tab" onclick="show('dashboard')"><span class="tab-icon">📊</span>Dash</button>
+<button class="tab" onclick="show('moneyhub')"><span class="tab-icon">💷</span>Money</button>
+<button class="tab" onclick="show('emergency')"><span class="tab-icon">👥</span>Family</button>
+<button class="tab" onclick="show('settings')"><span class="tab-icon">⚙️</span>More</button>
+</div>
+
+</section>
 
 <div class="sheet" id="sheet">
 <div class="sheet-handle"></div>
