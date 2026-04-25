@@ -1152,6 +1152,22 @@ document.addEventListener('DOMContentLoaded', function () {
 </div>
 <span class="mini-pill">Open →</span>
 </div>
+
+<div class="card" id="dashFirstRecord" style="display:none;margin-top:12px;background:linear-gradient(180deg,#fffdf8 0%,#f8f1e6 100%);border:1px solid rgba(95,156,53,.22);">
+<div class="g-row" style="align-items:flex-start;">
+<div style="flex:1; min-width:0;">
+<div class="section-pill" style="background:#edf5e7;color:var(--green-ink);">Your record · added today</div>
+<h3 id="dashFirstRecordName" style="margin:0 0 4px;">—</h3>
+<p id="dashFirstRecordMeta" style="margin:0 0 6px;color:var(--muted);font-size:13.5px;">—</p>
+<p id="dashFirstRecordNote" style="margin:0;color:var(--navy);font-size:14px;line-height:1.5;font-weight:600;"></p>
+</div>
+<span class="tag greentag" style="flex:0 0 auto;">First record</span>
+</div>
+<div class="mini-actions" style="margin-top:12px;">
+<button class="primary" onclick="event.stopPropagation();toast('Edit opened')" style="flex:1 1 0;">Edit details</button>
+<button class="secondary" onclick="event.stopPropagation();toast('Add a second record')" style="flex:1 1 0;">Add another</button>
+</div>
+</div>
 <div class="week-strip">
   <div class="week-bucket urgent">
     <h3>This week</h3>
@@ -2321,7 +2337,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <div class="card onboard-focus" style="margin-top:12px;">
 <div class="section-pill">What the family actually receives</div>
 <p style="margin:0 0 10px;color:var(--muted);font-size:14px;line-height:1.55;">When released, the family pack arrives as a calm, printable single document with the first three calls on page one, the will and policies on page two, and the practical notes on page three. No app install required for the recipient.</p>
-<div class="inline-actions"><button class="primary" onclick="toast('Family pack preview generated')">Preview the pack</button><button class="secondary" onclick="toast('Shared with Sarah as emergency contact')">Share with Sarah</button></div>
+<div class="inline-actions"><button class="primary" onclick="show('familyPackPreview')">Preview the pack</button><button class="secondary" onclick="toast('Shared with Sarah as emergency contact')">Share with Sarah</button></div>
 </div>
 <div class="tabbar">
 <button class="tab" onclick="show('home')"><span class="tab-icon">🏠</span>Home</button>
@@ -2566,7 +2582,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <!-- ─── Onboarding click-through (uses existing CSS classes only) ─────────── -->
 <section class="screen bg-family" id="onboardWelcome">
 <div class="status"><div class="localtime"></div><div class="status-right"><button class="global-chip" onclick="toggleGlobalMenu()">UK · EN</button><div class="dots"><span></span><span></span><span></span></div></div></div>
-<div class="topbar"><button class="soft" onclick="show('home')">← Back</button><div class="pill">Step 1 of 4</div></div>
+<div class="topbar"><button class="soft" onclick="show('home')">← Back</button><div class="pill">Step 1 of 5</div></div>
 <div class="onboard-hero">
 <div class="pill">Welcome</div>
 <h2 class="onboard-title">Let's set up your MySAiFe</h2>
@@ -2588,7 +2604,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <section class="screen bg-family" id="onboardDetails">
 <div class="status"><div class="localtime"></div><div class="status-right"><button class="global-chip" onclick="toggleGlobalMenu()">UK · EN</button><div class="dots"><span></span><span></span><span></span></div></div></div>
-<div class="topbar"><button class="soft" onclick="show('onboardWelcome')">← Back</button><div class="pill">Step 2 of 4</div></div>
+<div class="topbar"><button class="soft" onclick="show('onboardWelcome')">← Back</button><div class="pill">Step 2 of 5</div></div>
 <div class="onboard-hero">
 <h2 class="onboard-title">A little about you</h2>
 <p class="onboard-copy">Just enough to personalise dates, currency and reminders.</p>
@@ -2634,7 +2650,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <section class="screen bg-family" id="onboardHousehold">
 <div class="status"><div class="localtime"></div><div class="status-right"><button class="global-chip" onclick="toggleGlobalMenu()">UK · EN</button><div class="dots"><span></span><span></span><span></span></div></div></div>
-<div class="topbar"><button class="soft" onclick="show('onboardDetails')">← Back</button><div class="pill">Step 3 of 4</div></div>
+<div class="topbar"><button class="soft" onclick="show('onboardDetails')">← Back</button><div class="pill">Step 3 of 5</div></div>
 <div class="onboard-hero">
 <h2 class="onboard-title">Who is in your household?</h2>
 <p class="onboard-copy">Pick the closest match. You can add, remove or change this anytime in People.</p>
@@ -2656,7 +2672,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 <section class="screen bg-family" id="onboardFocus">
 <div class="status"><div class="localtime"></div><div class="status-right"><button class="global-chip" onclick="toggleGlobalMenu()">UK · EN</button><div class="dots"><span></span><span></span><span></span></div></div></div>
-<div class="topbar"><button class="soft" onclick="show('onboardHousehold')">← Back</button><div class="pill">Step 4 of 4</div></div>
+<div class="topbar"><button class="soft" onclick="show('onboardHousehold')">← Back</button><div class="pill">Step 4 of 5</div></div>
 <div class="onboard-hero">
 <h2 class="onboard-title">Where would you like to start?</h2>
 <p class="onboard-copy">MySAiFe will guide you gently from here. Pick whatever feels most useful first — you'll unlock the rest as you go.</p>
@@ -2664,21 +2680,71 @@ document.addEventListener('DOMContentLoaded', function () {
 <div class="card onboard-card">
 <div class="section-pill">Your first focus</div>
 <div class="tile-grid" style="margin-top:10px;">
-<button class="selection-tile" onclick="pickTile(this)">Home &amp; household</button>
-<button class="selection-tile" onclick="pickTile(this)">Money &amp; records</button>
-<button class="selection-tile" onclick="pickTile(this)">People &amp; contacts</button>
-<button class="selection-tile" onclick="pickTile(this)">Emergency essentials</button>
-<button class="selection-tile wide" onclick="pickTile(this)">Not sure yet — guide me</button>
+<button class="selection-tile" onclick="pickTile(this);rememberFocus('home')">Home &amp; household</button>
+<button class="selection-tile" onclick="pickTile(this);rememberFocus('money')">Money &amp; records</button>
+<button class="selection-tile" onclick="pickTile(this);rememberFocus('people')">People &amp; contacts</button>
+<button class="selection-tile" onclick="pickTile(this);rememberFocus('emergency')">Emergency essentials</button>
+<button class="selection-tile wide" onclick="pickTile(this);rememberFocus('any')">Not sure yet — guide me</button>
 </div>
 </div>
 <div class="stack">
-<button class="primary" onclick="show('onboardComplete')">Finish setup →</button>
+<button class="primary" onclick="show('onboardFirstRecord')">Continue →</button>
+</div>
+</section>
+
+<section class="screen bg-family" id="onboardFirstRecord">
+<div class="status"><div class="localtime"></div><div class="status-right"><button class="global-chip" onclick="toggleGlobalMenu()">UK · EN</button><div class="dots"><span></span><span></span><span></span></div></div></div>
+<div class="topbar"><button class="soft" onclick="show('onboardFocus')">← Back</button><div class="pill">Step 5 of 5</div></div>
+<div class="onboard-hero">
+<h2 class="onboard-title">Add one thing you want to keep an eye on.</h2>
+<p class="onboard-copy">A car, a mortgage, a school, a pet, an account — anything you&apos;d like the household layer to remember. Three short questions. You can edit it later.</p>
+</div>
+<div class="card onboard-card">
+<div class="section-pill" id="firstRecordCategoryPill">Your first record</div>
+<div class="onboard-fields">
+<div class="onboard-row">
+<label class="onboard-label" for="firRecKind">What kind of thing is it?</label>
+<select class="onboard-select" id="firRecKind">
+<option value="vehicle">Vehicle</option>
+<option value="property">Home or property</option>
+<option value="account">Bank or financial account</option>
+<option value="policy">Insurance policy</option>
+<option value="document">Important document</option>
+<option value="contact">Person or contact</option>
+<option value="other">Something else</option>
+</select>
+</div>
+<div class="onboard-row">
+<label class="onboard-label" for="firRecName">Give it a name you&apos;ll recognise</label>
+<input class="onboard-input" id="firRecName" type="text" placeholder="e.g. Audi A3 · Our cottage · Sarah&apos;s mum" autocomplete="off">
+</div>
+<div class="onboard-row">
+<label class="onboard-label" for="firRecWhen">When does it next matter?</label>
+<input class="onboard-input" id="firRecWhen" type="text" placeholder="e.g. MOT in October · Renewal next July · Reviewed yearly" autocomplete="off">
+</div>
+<div class="onboard-row">
+<label class="onboard-label" for="firRecNote">Anything important worth remembering?</label>
+<input class="onboard-input" id="firRecNote" type="text" placeholder="e.g. Policy number stored in glovebox · Held jointly with Sarah" autocomplete="off">
+</div>
+</div>
+<p class="onboard-guidance" style="margin:14px 0 0;">Nothing is shared. Only you can see this until you choose otherwise.</p>
+</div>
+<div class="stack">
+<button class="primary" onclick="saveFirstRecord();show('onboardComplete')">Save and finish →</button>
+<a class="secondary-link" href="#" onclick="show('onboardComplete');return false;">I&apos;ll add one later</a>
 </div>
 </section>
 
 <section class="screen bg-family" id="onboardComplete">
 <div class="status"><div class="localtime"></div><div class="status-right"><button class="global-chip" onclick="toggleGlobalMenu()">UK · EN</button><div class="dots"><span></span><span></span><span></span></div></div></div>
 <div class="topbar"><button class="soft" onclick="show('home')">← Home</button><div class="pill">All set</div></div>
+<div class="card onboard-focus" id="firstRecordEcho" style="display:none;margin-bottom:14px;">
+<div class="section-pill">Your first record</div>
+<h3 id="firstRecordEchoName" style="margin:0 0 4px;color:var(--navy);">—</h3>
+<p id="firstRecordEchoMeta" style="margin:0 0 6px;color:var(--muted);font-size:13.5px;">—</p>
+<p id="firstRecordEchoNote" style="margin:0;color:var(--navy);font-size:14px;line-height:1.5;font-weight:600;">—</p>
+<p style="margin:10px 0 0;color:var(--green-ink);font-size:13px;font-weight:800;">→ Now visible at the top of your dashboard.</p>
+</div>
 <div class="hero" style="margin-top:6px;">
 <h1>You've taken your first step to clarity and peace of mind.</h1>
 <p>Your MySAiFe is ready. From here, we'll guide you gently — one small step at a time — until your household feels calm, organised and prepared.</p>
@@ -2821,6 +2887,166 @@ document.addEventListener('DOMContentLoaded', function () {
 <button class="tab" onclick="show('dashboard')"><span class="tab-icon">📊</span>Dash</button>
 <button class="tab" onclick="show('moneyhub')"><span class="tab-icon">💷</span>Money</button>
 <button class="tab" onclick="show('emergency')"><span class="tab-icon">👥</span>Family</button>
+<button class="tab" onclick="show('settings')"><span class="tab-icon">⚙️</span>More</button>
+</div>
+
+</section>
+
+<section class="screen" id="familyPackPreview">
+<div class="status"><div class="localtime"></div><div class="status-right"><button class="global-chip" onclick="toggleGlobalMenu()">UK · EN</button><div class="dots"><span></span><span></span><span></span></div></div></div>
+<div class="topbar"><button class="soft" onclick="show('familyplan')">← Family plan</button><div class="pill" style="background:#fff3df;color:#a87618;">Preview · v12</div></div>
+
+<div class="onboard-hero" style="margin-bottom:14px;">
+<h2 class="onboard-title" style="font-size:24px;">What the family receives</h2>
+<p class="onboard-copy">A calm, printable document. Three pages. No app needed by the recipient. Released only when you choose, to the person you choose.</p>
+</div>
+
+<!-- Page 1 — First three calls -->
+<div class="card" style="background:#fffdf8;border:1px solid #e6dcc8;padding:22px 20px;box-shadow:0 4px 18px rgba(35,40,79,.10);">
+<div style="display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:10px;border-bottom:1px solid #e6dcc8;margin-bottom:14px;">
+<div>
+<div style="font-size:10px;font-weight:800;letter-spacing:.14em;color:#a87618;text-transform:uppercase;">MySAiFe · Family continuity pack</div>
+<div style="font-size:18px;font-weight:800;color:var(--navy);margin-top:4px;letter-spacing:-.01em;">The first three calls</div>
+</div>
+<div style="font-size:10px;font-weight:700;color:var(--muted);text-align:right;line-height:1.4;">Page 1 of 3<br>Matthew &amp; Sarah&apos;s household</div>
+</div>
+<p style="margin:0 0 14px;color:var(--navy);font-size:14px;line-height:1.55;">If something has happened, this is the page to start with. The names below are listed in the order Matthew has chosen to be contacted. Take the calls one at a time — there is no rush.</p>
+
+<div style="margin-top:16px;padding:14px 16px;background:#fff;border:1px solid #ead8a3;border-radius:14px;">
+<div style="font-size:11px;font-weight:800;letter-spacing:.08em;color:#a87618;text-transform:uppercase;margin-bottom:4px;">First call</div>
+<div style="font-size:20px;font-weight:800;color:var(--navy);line-height:1.15;">Sarah Wright</div>
+<div style="margin-top:2px;color:var(--muted);font-size:13px;">Spouse · primary household contact</div>
+<div style="margin-top:10px;font-variant-numeric:tabular-nums;font-size:18px;font-weight:800;color:var(--navy);">07700 900 142</div>
+<div style="margin-top:6px;color:var(--muted);font-size:12.5px;line-height:1.5;">Sarah holds the joint HSBC account, the home safe combination, and a copy of the will. She can take the next steps from here.</div>
+</div>
+
+<div style="margin-top:10px;padding:14px 16px;background:#fff;border:1px solid #e6e9f2;border-radius:14px;">
+<div style="font-size:11px;font-weight:800;letter-spacing:.08em;color:#5e7193;text-transform:uppercase;margin-bottom:4px;">Second call</div>
+<div style="font-size:18px;font-weight:800;color:var(--navy);line-height:1.15;">Hughes &amp; Co Solicitors</div>
+<div style="margin-top:2px;color:var(--muted);font-size:13px;">David Hughes · executor &amp; will keeper</div>
+<div style="margin-top:10px;font-variant-numeric:tabular-nums;font-size:17px;font-weight:800;color:var(--navy);">020 7946 0310</div>
+<div style="margin-top:6px;color:var(--muted);font-size:12.5px;line-height:1.5;">Holds the original will and Lasting Power of Attorney. Has acted for the household for nine years.</div>
+</div>
+
+<div style="margin-top:10px;padding:14px 16px;background:#fff;border:1px solid #e6e9f2;border-radius:14px;">
+<div style="font-size:11px;font-weight:800;letter-spacing:.08em;color:#5e7193;text-transform:uppercase;margin-bottom:4px;">Third call</div>
+<div style="font-size:18px;font-weight:800;color:var(--navy);line-height:1.15;">Parkside Practice</div>
+<div style="margin-top:2px;color:var(--muted);font-size:13px;">Family GP · Dr Henderson</div>
+<div style="margin-top:10px;font-variant-numeric:tabular-nums;font-size:17px;font-weight:800;color:var(--navy);">01225 421 987</div>
+<div style="margin-top:6px;color:var(--muted);font-size:12.5px;line-height:1.5;">Holds the family medical records. Maya and Josh are registered here.</div>
+</div>
+
+<div style="margin-top:14px;padding:12px 14px;background:#fdeceb;border:1px solid rgba(216,110,98,.30);border-radius:12px;">
+<div style="font-size:11px;font-weight:800;letter-spacing:.08em;color:#b64e44;text-transform:uppercase;margin-bottom:4px;">If out of hours</div>
+<div style="color:var(--navy);font-size:14px;font-weight:700;">NHS 111 for medical guidance · 999 for emergencies</div>
+</div>
+
+<p style="margin:18px 0 0;color:var(--muted);font-size:11.5px;line-height:1.5;font-style:italic;">Please do not feel you must work down the list quickly. Matthew chose this order so that one trusted person could take over from the others.</p>
+</div>
+
+<!-- Page 2 — Will, estate, policies -->
+<div class="card" style="margin-top:14px;background:#fffdf8;border:1px solid #e6dcc8;padding:22px 20px;box-shadow:0 4px 18px rgba(35,40,79,.10);">
+<div style="display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:10px;border-bottom:1px solid #e6dcc8;margin-bottom:14px;">
+<div>
+<div style="font-size:10px;font-weight:800;letter-spacing:.14em;color:#a87618;text-transform:uppercase;">MySAiFe · Family continuity pack</div>
+<div style="font-size:18px;font-weight:800;color:var(--navy);margin-top:4px;letter-spacing:-.01em;">Will, estate and policies</div>
+</div>
+<div style="font-size:10px;font-weight:700;color:var(--muted);text-align:right;line-height:1.4;">Page 2 of 3<br>Matthew &amp; Sarah&apos;s household</div>
+</div>
+<p style="margin:0 0 14px;color:var(--navy);font-size:14px;line-height:1.55;">A summary of where the legal documents live and which policies to reference. Hughes &amp; Co will guide the executors through the rest.</p>
+
+<div style="margin:0 0 4px;font-size:13px;font-weight:800;letter-spacing:.06em;color:#a87618;text-transform:uppercase;">The will</div>
+<div class="record-line"><div class="label">Original location</div><div class="value">With Hughes &amp; Co · ref WL/MW-2024</div></div>
+<div class="record-line"><div class="label">Copy location</div><div class="value">Home safe · combination held by Sarah</div></div>
+<div class="record-line"><div class="label">Last updated</div><div class="value">March 2024</div></div>
+<div class="record-line"><div class="label">Executors</div><div class="value">Sarah (spouse) · David Hughes (solicitor)</div></div>
+<div class="record-line"><div class="label">Lasting Power of Attorney</div><div class="value">Registered · Sarah named as attorney</div></div>
+
+<div style="margin:18px 0 4px;font-size:13px;font-weight:800;letter-spacing:.06em;color:#a87618;text-transform:uppercase;">Life &amp; protection policies</div>
+<div class="record-line"><div class="label">Aviva life cover</div><div class="value">£250,000 · policy AV-2018-44A · beneficiaries via expression of wish</div></div>
+<div class="record-line"><div class="label">L&amp;G mortgage cover</div><div class="value">£250,000 · linked to Lloyds mortgage · expires with mortgage 2046</div></div>
+<div class="record-line"><div class="label">Death-in-service</div><div class="value">Foreland Ltd HR · 4× salary · contact Maria Cole</div></div>
+
+<div style="margin:18px 0 4px;font-size:13px;font-weight:800;letter-spacing:.06em;color:#a87618;text-transform:uppercase;">Pensions</div>
+<div class="record-line"><div class="label">Aviva Workplace Pension</div><div class="value">≈ £85,000 · expression of wish updated Feb 2026</div></div>
+<div class="record-line"><div class="label">Beneficiaries</div><div class="value">Sarah 70% · Maya 15% in trust to 25 · Josh 15% in trust to 25</div></div>
+<div class="record-line"><div class="label">Older workplace pots</div><div class="value">2 pots flagged for consolidation · details in Vault</div></div>
+<div class="record-line"><div class="label">State pension</div><div class="value">28/35 qualifying years · forecast available via gov.uk</div></div>
+
+<div style="margin:18px 0 4px;font-size:13px;font-weight:800;letter-spacing:.06em;color:#a87618;text-transform:uppercase;">Property &amp; mortgage</div>
+<div class="record-line"><div class="label">Mortgage</div><div class="value">Lloyds · balance £242,180 · fix ends 14 July 2026</div></div>
+<div class="record-line"><div class="label">Direct debit</div><div class="value">From HSBC joint account · 28th of month</div></div>
+<div class="record-line"><div class="label">Buildings insurance</div><div class="value">Aviva · renews 12 October 2026</div></div>
+<div class="record-line"><div class="label">Title deeds</div><div class="value">Held at Hughes &amp; Co</div></div>
+</div>
+
+<!-- Page 3 — Practical notes -->
+<div class="card" style="margin-top:14px;background:#fffdf8;border:1px solid #e6dcc8;padding:22px 20px;box-shadow:0 4px 18px rgba(35,40,79,.10);">
+<div style="display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:10px;border-bottom:1px solid #e6dcc8;margin-bottom:14px;">
+<div>
+<div style="font-size:10px;font-weight:800;letter-spacing:.14em;color:#a87618;text-transform:uppercase;">MySAiFe · Family continuity pack</div>
+<div style="font-size:18px;font-weight:800;color:var(--navy);margin-top:4px;letter-spacing:-.01em;">Practical notes</div>
+</div>
+<div style="font-size:10px;font-weight:700;color:var(--muted);text-align:right;line-height:1.4;">Page 3 of 3<br>Matthew &amp; Sarah&apos;s household</div>
+</div>
+<p style="margin:0 0 14px;color:var(--navy);font-size:14px;line-height:1.55;">The smaller things that keep a household running. None of these are urgent — they are here so nobody has to guess.</p>
+
+<div style="margin:0 0 4px;font-size:13px;font-weight:800;letter-spacing:.06em;color:#a87618;text-transform:uppercase;">The children</div>
+<div class="record-line"><div class="label">Maya</div><div class="value">Year 7 at St Mark&apos;s Secondary · passport renewal due Sept 2026</div></div>
+<div class="record-line"><div class="label">Josh</div><div class="value">Year 4 at Parkside Primary · school office 01225 419 220</div></div>
+<div class="record-line"><div class="label">School-run rota</div><div class="value">Held with Sarah and a neighbour, Helen Boyd · 07700 900 318</div></div>
+<div class="record-line"><div class="label">After-school cover</div><div class="value">Helen Boyd · grandmother as backup (Mary, 01225 419 884)</div></div>
+
+<div style="margin:18px 0 4px;font-size:13px;font-weight:800;letter-spacing:.06em;color:#a87618;text-transform:uppercase;">The pets</div>
+<div class="record-line"><div class="label">Cats</div><div class="value">Monty &amp; Pickle · microchip refs in Vault</div></div>
+<div class="record-line"><div class="label">Vet</div><div class="value">Bath Veterinary Group · 01225 444 100</div></div>
+<div class="record-line"><div class="label">Food</div><div class="value">Applaws · ordered monthly via Pets at Home subscription</div></div>
+
+<div style="margin:18px 0 4px;font-size:13px;font-weight:800;letter-spacing:.06em;color:#a87618;text-transform:uppercase;">Money &amp; bills</div>
+<div class="record-line"><div class="label">Joint account</div><div class="value">HSBC · all household direct debits run from here</div></div>
+<div class="record-line"><div class="label">Direct debits</div><div class="value">7 outgoing · full list in MySAiFe Services hub</div></div>
+<div class="record-line"><div class="label">Energy</div><div class="value">Octopus Agile · account 2249107 · smart meter</div></div>
+<div class="record-line"><div class="label">Council tax</div><div class="value">Wiltshire band E · paid in 10 instalments</div></div>
+
+<div style="margin:18px 0 4px;font-size:13px;font-weight:800;letter-spacing:.06em;color:#a87618;text-transform:uppercase;">Funeral wishes</div>
+<div class="record-line"><div class="label">Type</div><div class="value">Cremation preferred · humanist celebrant</div></div>
+<div class="record-line"><div class="label">Tone</div><div class="value">Quiet, family only</div></div>
+<div class="record-line"><div class="label">Director</div><div class="value">Co-op Funeralcare, Trowbridge</div></div>
+<div class="record-line"><div class="label">Music</div><div class="value">Clair de Lune · Sigur Rós, Hoppípolla</div></div>
+<div class="record-line"><div class="label">Donations</div><div class="value">In lieu of flowers, to British Heart Foundation</div></div>
+<div class="record-line"><div class="label">Scatter</div><div class="value">Tywi Valley, Carmarthenshire</div></div>
+
+<div style="margin-top:20px;padding-top:14px;border-top:1px solid #e6dcc8;font-size:11px;color:var(--muted);line-height:1.6;text-align:center;">
+Generated by MySAiFe · Pack version 12 · 24 April 2026<br>
+Released to <strong style="color:var(--navy);">Sarah Wright</strong> as primary household contact · Hughes &amp; Co notified
+</div>
+</div>
+
+<!-- Footer actions -->
+<div class="card" style="margin-top:14px;background:linear-gradient(180deg,#fffdf8 0%,#f8f1e6 100%);border:1px solid rgba(212,175,55,.45);">
+<div class="section-pill">Sharing</div>
+<h3 style="margin:0 0 6px;">This pack is private until you choose to share it</h3>
+<p style="margin:0 0 12px;color:var(--muted);font-size:14px;line-height:1.5;">It can be released to one named person now (so they can keep a copy in case it&apos;s ever needed) or held back until a defined trigger — for example, MySAiFe receiving confirmation through your trusted contacts.</p>
+<div class="mini-actions">
+<button class="primary" onclick="toast('Shared with Sarah · Hughes &amp; Co notified')" style="flex:1 1 0;">Share with Sarah now</button>
+<button class="secondary" onclick="toast('Pack will be held until release is triggered')" style="flex:1 1 0;">Hold for later</button>
+</div>
+<div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
+<button class="secondary" onclick="toast('Download started · MySAiFe-FamilyPack-v12.pdf')" style="flex:1 1 0;background:#fff;">Download as PDF</button>
+<button class="secondary" onclick="toast('Print preview opened')" style="flex:1 1 0;background:#fff;">Print</button>
+</div>
+</div>
+
+<div class="notice" style="margin-top:12px;">
+<div class="section-pill">A note on tone</div>
+<p style="font-size:13px; margin:0;">This pack is written to be read once, calmly, in a difficult moment. It does not include legal language, urgency or instruction. The names, numbers and references on these pages are intended to give the family a starting point — not a checklist.</p>
+</div>
+
+<div class="tabbar">
+<button class="tab" onclick="show('home')"><span class="tab-icon">🏠</span>Home</button>
+<button class="tab" onclick="show('dashboard')"><span class="tab-icon">📊</span>Dash</button>
+<button class="tab" onclick="show('moneyhub')"><span class="tab-icon">💷</span>Money</button>
+<button class="tab active" onclick="show('emergency')"><span class="tab-icon">👥</span>Family</button>
 <button class="tab" onclick="show('settings')"><span class="tab-icon">⚙️</span>More</button>
 </div>
 
@@ -3062,7 +3288,7 @@ function openTaxPack(){
 }
 function openFamilyPlan(){
   openSheet('Family continuity pack','Clear, controlled and private','This pack brings together funeral wishes, who to call first, key policy references, will location and immediate household guidance for trusted family access.',[
-    {label:'Preview trusted access', primary:true, fn:function(){ closeSheet(); show('emergency'); }},
+    {label:'See the document', primary:true, fn:function(){ closeSheet(); show('familyPackPreview'); }},
     {label:'Mark as reviewed', primary:false, fn:function(){ closeSheet(); toast('Family continuity pack marked reviewed'); }}
   ]);
 }
@@ -3130,5 +3356,121 @@ function pickTile(btn) {
 </script>
 
 
+<script>
+// ── Personalised first-record state ──────────────────────────────────────
+// Stores the user's first captured record between screens and across reload
+// during user testing. Pure additive — no existing logic touched.
+
+(function () {
+  var KEY = 'mysaife.firstRecord';
+
+  function readState() {
+    try {
+      var raw = localStorage.getItem(KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) { return null; }
+  }
+
+  function writeState(obj) {
+    try { localStorage.setItem(KEY, JSON.stringify(obj)); } catch (e) {}
+  }
+
+  // Called from Step 4 of 5 when a focus tile is tapped
+  window.rememberFocus = function (focusKey) {
+    var state = readState() || {};
+    state.focus = focusKey;
+    writeState(state);
+    // Pre-select the matching kind on Step 5 if user advances
+    var kindMap = {
+      home: 'property', money: 'account', people: 'contact',
+      emergency: 'document', any: 'vehicle'
+    };
+    var sel = document.getElementById('firRecKind');
+    if (sel && kindMap[focusKey]) sel.value = kindMap[focusKey];
+  };
+
+  // Called from Step 5 of 5 on "Save and finish"
+  window.saveFirstRecord = function () {
+    var name = (document.getElementById('firRecName')   || {}).value || '';
+    var when = (document.getElementById('firRecWhen')   || {}).value || '';
+    var note = (document.getElementById('firRecNote')   || {}).value || '';
+    var kind = (document.getElementById('firRecKind')   || {}).value || 'other';
+    if (!name.trim() && !when.trim() && !note.trim()) return; // nothing entered
+    var state = readState() || {};
+    state.firstRecord = {
+      name: name.trim() || 'Untitled record',
+      when: when.trim(),
+      note: note.trim(),
+      kind: kind,
+      addedAt: new Date().toISOString()
+    };
+    writeState(state);
+  };
+
+  // Render helpers — populate the placeholders if state exists
+  function renderEchoCard() {
+    var state = readState();
+    var card = document.getElementById('firstRecordEcho');
+    if (!card) return;
+    if (!state || !state.firstRecord) { card.style.display = 'none'; return; }
+    card.style.display = 'block';
+    var r = state.firstRecord;
+    var nameEl = document.getElementById('firstRecordEchoName');
+    var metaEl = document.getElementById('firstRecordEchoMeta');
+    var noteEl = document.getElementById('firstRecordEchoNote');
+    if (nameEl) nameEl.textContent = r.name;
+    if (metaEl) metaEl.textContent = r.when ? ('When it next matters · ' + r.when) : 'Saved to your dashboard';
+    if (noteEl) noteEl.textContent = r.note ? ('"' + r.note + '"') : '';
+  }
+
+  function renderDashboardCard() {
+    var state = readState();
+    var card = document.getElementById('dashFirstRecord');
+    if (!card) return;
+    if (!state || !state.firstRecord) { card.style.display = 'none'; return; }
+    card.style.display = 'block';
+    var r = state.firstRecord;
+    var kindLabels = {
+      vehicle: 'Vehicle',
+      property: 'Home or property',
+      account: 'Bank or financial account',
+      policy: 'Insurance policy',
+      document: 'Important document',
+      contact: 'Person or contact',
+      other: 'Record'
+    };
+    var nameEl = document.getElementById('dashFirstRecordName');
+    var metaEl = document.getElementById('dashFirstRecordMeta');
+    var noteEl = document.getElementById('dashFirstRecordNote');
+    if (nameEl) nameEl.textContent = r.name;
+    if (metaEl) {
+      var meta = (kindLabels[r.kind] || 'Record');
+      if (r.when) meta += ' · ' + r.when;
+      metaEl.textContent = meta;
+    }
+    if (noteEl) noteEl.textContent = r.note ? ('"' + r.note + '"') : '';
+  }
+
+  // Hook into the existing show() function without replacing it.
+  // We wrap it so renderers run after every screen change.
+  if (typeof window.show === 'function') {
+    var originalShow = window.show;
+    window.show = function (id) {
+      var result = originalShow.apply(this, arguments);
+      try {
+        if (id === 'onboardComplete') renderEchoCard();
+        if (id === 'dashboard')       renderDashboardCard();
+      } catch (e) { /* render errors are non-fatal */ }
+      return result;
+    };
+  }
+
+  // Also render on initial load in case the app boots straight to dashboard
+  document.addEventListener('DOMContentLoaded', function () {
+    renderEchoCard();
+    renderDashboardCard();
+  });
+})();
+</script>
 </body>
 </html>
