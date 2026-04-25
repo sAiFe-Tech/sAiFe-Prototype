@@ -1120,10 +1120,10 @@ document.addEventListener('DOMContentLoaded', function () {
 <div class="section-pill">Pricing</div>
 <div class="pricing-title">One household. Two plans.</div>
 <div class="pricing-grid">
-<div class="price-card"><div class="price-top"><div class="price-name">For you</div><div class="price-tag">£6.99/mo</div></div><p><strong>1 person</strong><br>Personal records, reminders and trusted access.</p><div class="pricing-note">or £69/year</div></div>
-<div class="price-card"><div class="price-top"><div class="price-name">For your household</div><div class="price-tag">£15.99/mo</div></div><p><strong>Up to 5 people</strong><br>Shared visibility, continuity planning and broader family access.</p><div class="pricing-note">or £159/year</div></div>
+<div class="price-card tappable" onclick="show('pricing')" style="cursor:pointer;"><div class="price-top"><div class="price-name">For you</div><div class="price-tag">£6.99/mo</div></div><p><strong>1 person</strong><br>Personal records, reminders and trusted access.</p><div class="pricing-note">or £69/year</div></div>
+<div class="price-card tappable" onclick="show('pricing')" style="cursor:pointer;"><div class="price-top"><div class="price-name">For your household</div><div class="price-tag">£15.99/mo</div></div><p><strong>Up to 5 people</strong><br>Shared visibility, continuity planning and broader family access.</p><div class="pricing-note">or £159/year</div></div>
 </div>
-<div class="trial-note">Free to start — upgrade as your household grows</div>
+<div class="trial-note tappable" onclick="show('pricing')" style="cursor:pointer;text-decoration:underline;text-underline-offset:2px;">Free to start — upgrade as your household grows · Compare plans</div>
 </div>
 <div class="tabbar">
 <button class="tab active" onclick="show('home')"><span class="tab-icon">🏠</span>Home</button>
@@ -2486,7 +2486,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <div class="record-line"><div class="label">Next billing</div><div class="value">15 May 2026</div></div>
 <div class="record-line"><div class="label">Members</div><div class="value">3 of 6 used</div></div>
 </div>
-<button class="secondary" onclick="toast('Managing subscription…')" style="width:100%;margin-top:4px;padding:13px;">Manage subscription</button>
+<button class="secondary" onclick="show('pricing')" style="width:100%;margin-top:4px;padding:13px;">Manage subscription</button>
 <button class="secondary" onclick="show('agentHub')" style="width:100%;margin-top:10px;padding:13px;">Open sAiFe Agent activity</button>
 <button class="secondary" onclick="show('featuremap')" style="width:100%;margin-top:10px;padding:13px;">View future feature map</button>
 <div class="tabbar">
@@ -3052,6 +3052,110 @@ Released to <strong style="color:var(--navy);">Sarah Wright</strong> as primary 
 
 </section>
 
+<section class="screen" id="pricing">
+<div class="status"><div class="localtime"></div><div class="status-right"><button class="global-chip" onclick="toggleGlobalMenu()">UK · EN</button><div class="dots"><span></span><span></span><span></span></div></div></div>
+<div class="topbar"><button class="soft" onclick="show('home')">← Home</button><div class="pill">Pricing</div></div>
+
+<div class="onboard-hero">
+<h2 class="onboard-title">Which plan fits us?</h2>
+<p class="onboard-copy">Two plans. One household. Pick the closest match — you can move between them at any time.</p>
+</div>
+
+<div class="card onboard-card">
+<div class="section-pill">Tell me about your household</div>
+<div class="tile-grid" style="margin-top:10px;">
+<button class="selection-tile" onclick="pickPricingShape(this,'solo')">Just me</button>
+<button class="selection-tile" onclick="pickPricingShape(this,'couple')">Me &amp; partner</button>
+<button class="selection-tile wide" onclick="pickPricingShape(this,'family')">Whole household with kids or parents</button>
+</div>
+<p id="pricingHint" class="onboard-guidance" style="margin:14px 0 0;">Tap a household to see which plan is the most natural fit. Nothing is selected for you yet.</p>
+</div>
+
+<div class="pricing-grid" style="margin-top:14px;display:grid;grid-template-columns:1fr;gap:12px;">
+
+<div class="price-card tappable" id="planSolo" onclick="choosePlan('solo')" style="cursor:pointer;transition:transform .15s, box-shadow .15s, border-color .15s;">
+<div class="price-top">
+<div class="price-name">For you</div>
+<div class="price-tag">£6.99<span style="font-size:13px;font-weight:700;color:var(--muted);">/mo</span></div>
+</div>
+<p><strong>1 person</strong><br>Personal records, reminders and trusted access.</p>
+<div class="pricing-note">or £69/year — saves £14.88</div>
+</div>
+
+<div class="price-card tappable" id="planFamily" onclick="choosePlan('family')" style="cursor:pointer;transition:transform .15s, box-shadow .15s, border-color .15s;">
+<div class="price-top">
+<div class="price-name">For your household</div>
+<div class="price-tag">£15.99<span style="font-size:13px;font-weight:700;color:var(--muted);">/mo</span></div>
+</div>
+<p><strong>Up to 5 people</strong><br>Shared visibility, continuity planning and broader family access.</p>
+<div class="pricing-note">or £159/year — saves £32.88</div>
+</div>
+
+</div>
+
+<div class="card" style="margin-top:14px;">
+<div class="section-pill">What&apos;s included</div>
+<h3 style="margin:0 0 10px;">Side by side</h3>
+
+<div class="record-line"><div class="label">Personal records &amp; documents</div><div class="value" style="text-align:right;"><span style="color:var(--green-ink);">For you ✓</span><br><span style="color:var(--green-ink);">Household ✓</span></div></div>
+<div class="record-line"><div class="label">Reminders &amp; renewal alerts</div><div class="value" style="text-align:right;"><span style="color:var(--green-ink);">For you ✓</span><br><span style="color:var(--green-ink);">Household ✓</span></div></div>
+<div class="record-line"><div class="label">sAiFe Agent activity feed</div><div class="value" style="text-align:right;"><span style="color:var(--green-ink);">For you ✓</span><br><span style="color:var(--green-ink);">Household ✓</span></div></div>
+<div class="record-line"><div class="label">Trusted access for one named contact</div><div class="value" style="text-align:right;"><span style="color:var(--green-ink);">For you ✓</span><br><span style="color:var(--green-ink);">Household ✓</span></div></div>
+<div class="record-line"><div class="label">Family Pack release on agreed trigger</div><div class="value" style="text-align:right;"><span style="color:var(--green-ink);">For you ✓</span><br><span style="color:var(--green-ink);">Household ✓</span></div></div>
+<div class="record-line"><div class="label">Number of people in the layer</div><div class="value" style="text-align:right;">1<br>Up to 5</div></div>
+<div class="record-line"><div class="label">Shared visibility with partner</div><div class="value" style="text-align:right;"><span style="color:var(--muted);">—</span><br><span style="color:var(--green-ink);">Household ✓</span></div></div>
+<div class="record-line"><div class="label">Children&apos;s records (school, passports, GP)</div><div class="value" style="text-align:right;"><span style="color:var(--muted);">—</span><br><span style="color:var(--green-ink);">Household ✓</span></div></div>
+<div class="record-line"><div class="label">Ageing-parent records (vault for one parent)</div><div class="value" style="text-align:right;"><span style="color:var(--muted);">—</span><br><span style="color:var(--green-ink);">Household ✓</span></div></div>
+<div class="record-line"><div class="label">Per-person sharing controls</div><div class="value" style="text-align:right;"><span style="color:var(--muted);">—</span><br><span style="color:var(--green-ink);">Household ✓</span></div></div>
+<div class="record-line"><div class="label">Document storage</div><div class="value" style="text-align:right;">5 GB<br>25 GB shared</div></div>
+
+</div>
+
+<div class="card" style="margin-top:14px;">
+<div class="section-pill">Common questions</div>
+<h3 style="margin:0 0 10px;">The things people ask first</h3>
+
+<div class="progress-list" style="margin:0;">
+<div class="progress-item" style="display:block;"><strong style="color:var(--navy);">What if my mum doesn&apos;t have a smartphone?</strong><div class="label" style="margin-top:6px;">She doesn&apos;t need one. Records about her can sit on the household plan, kept by you. The Family Pack she might need is delivered as a calm, printable document — no app required.</div></div>
+<div class="progress-item" style="display:block;"><strong style="color:var(--navy);">Can I start solo and upgrade later?</strong><div class="label" style="margin-top:6px;">Yes. Everything you&apos;ve built on the £6.99 plan moves with you. Nothing has to be re-entered. The upgrade is one tap.</div></div>
+<div class="progress-item" style="display:block;"><strong style="color:var(--navy);">Can my partner edit too, or just see?</strong><div class="label" style="margin-top:6px;">On the household plan, both of you can edit — and you control which records they can see, edit, or release. The defaults are sensible; you can tighten them at any point.</div></div>
+<div class="progress-item" style="display:block;"><strong style="color:var(--navy);">What happens if I cancel?</strong><div class="label" style="margin-top:6px;">Your records are exported cleanly as PDFs and a structured JSON file before the account closes. Nothing is held hostage.</div></div>
+<div class="progress-item" style="display:block;"><strong style="color:var(--navy);">Is there a free trial?</strong><div class="label" style="margin-top:6px;">Yes — 30 days, no card needed to start. The Family Pack release feature is the only thing kept behind the paid plan.</div></div>
+<div class="progress-item" style="display:block;"><strong style="color:var(--navy);">Annual or monthly?</strong><div class="label" style="margin-top:6px;">Either. Annual saves around 14% on both plans. Switch from one to the other at any renewal.</div></div>
+<div class="progress-item" style="display:block;"><strong style="color:var(--navy);">More than five people in our household?</strong><div class="label" style="margin-top:6px;">Get in touch. We&apos;ll add a small per-person fee rather than push you onto something more complex than you need.</div></div>
+</div>
+</div>
+
+<div class="card onboard-focus" style="margin-top:14px;">
+<div class="section-pill">Reassurance</div>
+<h3 style="margin:0 0 6px;">No surprises</h3>
+<div class="progress-list" style="margin:10px 0 0;">
+<div class="progress-item"><div><strong>Cancel any time</strong><div class="label">Monthly plans cancel at the next billing date · annual plans refund pro-rata for the unused period</div></div><span class="tag greentag">Plain</span></div>
+<div class="progress-item"><div><strong>Your data is yours</strong><div class="label">Export to PDF and structured JSON whenever you want · we don&apos;t sell anything to anyone</div></div><span class="tag greentag">Promise</span></div>
+<div class="progress-item"><div><strong>UK-based, GDPR-compliant</strong><div class="label">Records stored in the UK · processed under UK GDPR · audited annually</div></div><span class="tag greentag">UK</span></div>
+<div class="progress-item"><div><strong>No ads, no tracking</strong><div class="label">Your records exist to help your household. They are never used to target advertising or train external models</div></div><span class="tag greentag">Quiet</span></div>
+</div>
+</div>
+
+<div class="stack">
+<button class="primary" id="pricingPrimary" onclick="toast('Free trial started — no card needed')">Start a 30-day free trial</button>
+<button class="secondary" onclick="toast('We&apos;ll send a quiet email with answers — no sales calls')">Talk it over with someone</button>
+</div>
+
+<div class="footer-note" style="margin-top:14px;">
+Prices shown in £ for households in the United Kingdom · VAT included where applicable
+</div>
+
+<div class="tabbar">
+<button class="tab" onclick="show('home')"><span class="tab-icon">🏠</span>Home</button>
+<button class="tab" onclick="show('dashboard')"><span class="tab-icon">📊</span>Dash</button>
+<button class="tab" onclick="show('moneyhub')"><span class="tab-icon">💷</span>Money</button>
+<button class="tab" onclick="show('emergency')"><span class="tab-icon">👥</span>Family</button>
+<button class="tab" onclick="show('settings')"><span class="tab-icon">⚙️</span>More</button>
+</div>
+
+</section>
+
 <div class="sheet" id="sheet">
 <div class="sheet-handle"></div>
 <h3 id="sheetTitle">Family continuity pack</h3>
@@ -3470,6 +3574,84 @@ function pickTile(btn) {
     renderEchoCard();
     renderDashboardCard();
   });
+})();
+</script>
+<script>
+// ── Pricing surface helpers ──────────────────────────────────────────────
+
+(function () {
+  // Apply highlight to the recommended plan based on household shape
+  window.pickPricingShape = function (btn, shape) {
+    // Toggle .active among the household tiles in the same grid
+    if (typeof pickTile === 'function') pickTile(btn);
+
+    // Decide which plan to highlight
+    var recommendation;
+    if (shape === 'solo')   recommendation = 'planSolo';
+    else if (shape === 'couple') recommendation = 'planFamily';
+    else if (shape === 'family') recommendation = 'planFamily';
+
+    var solo = document.getElementById('planSolo');
+    var fam  = document.getElementById('planFamily');
+    [solo, fam].forEach(function (el) {
+      if (!el) return;
+      el.style.borderColor = '';
+      el.style.boxShadow   = '';
+      el.style.transform   = '';
+    });
+    var picked = document.getElementById(recommendation);
+    if (picked) {
+      picked.style.borderColor = 'rgba(95,156,53,.45)';
+      picked.style.boxShadow   = '0 8px 22px rgba(95,156,53,.18)';
+      picked.style.transform   = 'translateY(-1px)';
+    }
+
+    // Update hint text
+    var hint = document.getElementById('pricingHint');
+    if (hint) {
+      var msg = {
+        solo:   'For one person, the £6.99 plan covers everything in a single layer. Highlighted below.',
+        couple: 'With a partner, the £15.99 household plan keeps you both visible to each other and able to share. Highlighted below.',
+        family: 'For a household with kids or ageing parents, the £15.99 plan is built for this — five people, per-person sharing, broader continuity. Highlighted below.'
+      }[shape] || '';
+      hint.textContent = msg;
+    }
+
+    // Update primary CTA text
+    var cta = document.getElementById('pricingPrimary');
+    if (cta) {
+      cta.textContent = recommendation === 'planSolo'
+        ? 'Start with For you · 30-day free trial'
+        : 'Start with For your household · 30-day free trial';
+    }
+  };
+
+  window.choosePlan = function (which) {
+    var label = which === 'solo' ? 'For you (£6.99/mo)' : 'For your household (£15.99/mo)';
+    if (typeof toast === 'function') toast('Selected: ' + label);
+    // Auto-update the CTA so the next tap is consistent
+    var cta = document.getElementById('pricingPrimary');
+    if (cta) {
+      cta.textContent = which === 'solo'
+        ? 'Start with For you · 30-day free trial'
+        : 'Start with For your household · 30-day free trial';
+    }
+    // Visual feedback
+    var solo = document.getElementById('planSolo');
+    var fam  = document.getElementById('planFamily');
+    [solo, fam].forEach(function (el) {
+      if (!el) return;
+      el.style.borderColor = '';
+      el.style.boxShadow   = '';
+      el.style.transform   = '';
+    });
+    var picked = document.getElementById(which === 'solo' ? 'planSolo' : 'planFamily');
+    if (picked) {
+      picked.style.borderColor = 'rgba(95,156,53,.45)';
+      picked.style.boxShadow   = '0 8px 22px rgba(95,156,53,.18)';
+      picked.style.transform   = 'translateY(-1px)';
+    }
+  };
 })();
 </script>
 </body>
