@@ -1304,13 +1304,14 @@ document.addEventListener('DOMContentLoaded', function () {
   <div class="progress-item"><div><strong style="display:block;color:var(--navy);">Primary household contacts</strong><span class="label">Partner, children and key relatives mapped clearly</span></div><span class="tag greentag">Added</span></div>
   <div class="progress-item"><div><strong style="display:block;color:var(--navy);">Maya</strong><span class="label">Passport renewal timing now visible from the dashboard and People layer</span></div><span class="tag ambertag">Soon</span></div>
   <div class="progress-item"><div><strong style="display:block;color:var(--navy);">Who can help first</strong><span class="label">GP, solicitor, trusted friend and insurer pathways</span></div><span class="tag ambertag">Review</span></div>
-  <div class="progress-item"><div><strong style="display:block;color:var(--navy);">Sharing boundaries</strong><span class="label">Define what each person should and should not see</span></div><span class="tag ambertag">Important</span></div>
+  <div class="progress-item tappable" onclick="show('access')" style="cursor:pointer;"><div><strong style="display:block;color:var(--navy);">Sharing boundaries</strong><span class="label">Define what each person should and should not see — tap to set permissions</span></div><span class="tag ambertag">Important</span></div>
 </div>
 <div class="stack">
   <div class="card" onclick="show('familyplan')"><h3>Family continuity</h3><p>Wishes, who to call first and practical continuity planning in the same calm language as the current prototype.</p></div>
   <div class="card" onclick="openSchoolingMode()"><h3>Schooling check</h3><p>Term dates, holidays, inset days, parents’ evenings and school events gathered in one calm family view.</p></div>
   <div class="card" onclick="show('emergency')"><h3>Emergency contacts &amp; response</h3><p>Trusted contacts, immediate actions and the right information for difficult moments.</p></div>
   <div class="card" onclick="show('featuremap')"><h3>How the People layer grows</h3><p>See how continuity, trusted access and family planning naturally unlock as the basics are completed.</p></div>
+  <div class="card" onclick="show('access')"><h3>Sharing &amp; access</h3><p>See exactly who can do what across your household, with view / edit / release controls and a clean revoke path.</p></div>
 </div>
 
 <div class="card tappable" onclick="show('agentHub')" style="margin-top:12px;background:linear-gradient(180deg,#fffdf8 0%,#f8f1e6 100%);border:1px solid rgba(184,150,58,.22);">
@@ -1467,23 +1468,196 @@ document.addEventListener('DOMContentLoaded', function () {
 <div class="status">
 <div class="localtime"></div>
 <div class="status-right">
-<button class="global-chip">UK · EN</button>
+<button class="global-chip" onclick="toggleGlobalMenu()">UK · EN</button>
 <div class="dots"><span></span><span></span><span></span></div>
 </div>
 </div>
-<div class="topbar"><button class="soft" onclick="show('dashboard')">← Dashboard</button><div class="pill">Permissions</div></div>
-<h2>Who can see this?</h2>
-<p class="sub">Access reflects user settings only and does not grant legal authority.</p>
-<div class="card">
-<div class="toggle-row"><div><strong>Me (owner)</strong><p class="sub" style="margin:2px 0 0; font-size:12px;">Full control</p></div><div class="toggle on"></div></div>
-<div class="toggle-row"><div><strong>John</strong><p class="sub" style="margin:2px 0 0; font-size:12px;">View and notes</p></div><div class="toggle on"></div></div>
-<div class="toggle-row"><div><strong>Sadie</strong><p class="sub" style="margin:2px 0 0; font-size:12px;">No access yet</p></div><div class="toggle"></div></div>
-<div class="toggle-row"><div><strong>Kerry</strong><p class="sub" style="margin:2px 0 0; font-size:12px;">No access yet</p></div><div class="toggle"></div></div><div class="toggle-row"><div><strong>Hugo</strong><p class="sub" style="margin:2px 0 0; font-size:12px;">No access yet</p></div><div class="toggle"></div></div>
+<div class="topbar"><button class="soft" onclick="show('peoplehub')">← People</button><div class="pill">Sharing &amp; access</div></div>
+
+<div class="onboard-hero">
+<h2 class="onboard-title">Who can see what</h2>
+<p class="onboard-copy">Set permissions per person and per record. Sharing is calm and reversible — change anything at any time, and every change is logged.</p>
 </div>
-<div class="notice">
-<h3 style="font-size:16px;">User responsibility</h3>
-<p style="font-size:13px; margin:0;">sAiFe does not verify the identity, entitlement or suitability of any person granted access. Users are responsible for the permissions they grant and the consequences of those settings.</p>
+
+<div class="card" style="margin-top:6px;">
+<div class="section-pill">Trusted people</div>
+<h3 style="margin:0 0 6px;">Four people currently have access</h3>
+<p style="margin:0 0 12px;color:var(--muted);font-size:14px;line-height:1.5;">Tap any name to see exactly what they can do. Nothing is shared by default — everything below has been explicitly granted.</p>
+
+<div class="progress-list" style="margin:0;">
+
+<div class="progress-item tappable" onclick="showAccessFor('sarah')" style="cursor:pointer;">
+<div style="display:flex;gap:12px;align-items:center;flex:1;min-width:0;">
+<div style="width:42px;height:42px;border-radius:50%;background:#F8EFE7;display:flex;align-items:center;justify-content:center;font-size:22px;line-height:1;flex:0 0 auto;">👩🏻</div>
+<div style="min-width:0;">
+<strong style="color:var(--navy);font-size:15px;">Sarah Wright</strong>
+<div class="label" style="font-size:12.5px;">Spouse · primary household contact · since March 2026</div>
 </div>
+</div>
+<span class="tag greentag" style="flex:0 0 auto;">42 of 47 · Can edit</span>
+</div>
+
+<div class="progress-item tappable" onclick="toast('David Hughes — view only · solicitor profile')" style="cursor:pointer;">
+<div style="display:flex;gap:12px;align-items:center;flex:1;min-width:0;">
+<div style="width:42px;height:42px;border-radius:50%;background:#EEF2FB;display:flex;align-items:center;justify-content:center;font-size:22px;line-height:1;flex:0 0 auto;">👨🏼</div>
+<div style="min-width:0;">
+<strong style="color:var(--navy);font-size:15px;">David Hughes</strong>
+<div class="label" style="font-size:12.5px;">Solicitor at Hughes &amp; Co · since March 2024</div>
+</div>
+</div>
+<span class="tag ambertag" style="flex:0 0 auto;">3 records · View</span>
+</div>
+
+<div class="progress-item tappable" onclick="toast('Priya Shah — tax pack only · accountant profile')" style="cursor:pointer;">
+<div style="display:flex;gap:12px;align-items:center;flex:1;min-width:0;">
+<div style="width:42px;height:42px;border-radius:50%;background:#EEF5E7;display:flex;align-items:center;justify-content:center;font-size:22px;line-height:1;flex:0 0 auto;">👩🏽</div>
+<div style="min-width:0;">
+<strong style="color:var(--navy);font-size:15px;">Priya Shah</strong>
+<div class="label" style="font-size:12.5px;">Accountant at Gateway Accounting · since March 2025</div>
+</div>
+</div>
+<span class="tag ambertag" style="flex:0 0 auto;">Tax pack only</span>
+</div>
+
+<div class="progress-item tappable" onclick="toast('Mary Wright — emergency-only release · ageing parent profile')" style="cursor:pointer;">
+<div style="display:flex;gap:12px;align-items:center;flex:1;min-width:0;">
+<div style="width:42px;height:42px;border-radius:50%;background:#F4F1FA;display:flex;align-items:center;justify-content:center;font-size:22px;line-height:1;flex:0 0 auto;">👵🏻</div>
+<div style="min-width:0;">
+<strong style="color:var(--navy);font-size:15px;">Mary Wright</strong>
+<div class="label" style="font-size:12.5px;">Matthew&rsquo;s mother · emergency-only release</div>
+</div>
+</div>
+<span class="tag" style="flex:0 0 auto;background:#f0f3f9;color:#5e7193;">On release</span>
+</div>
+
+</div>
+
+<button class="secondary" onclick="toast('Invite a new trusted person')" style="margin-top:14px;width:100%;">+ Invite someone you trust</button>
+</div>
+
+<!-- Worked example: granting Sarah access to the Aviva pension specifically -->
+<div class="card" id="sarahAccessCard" style="margin-top:12px;background:linear-gradient(180deg,#fffdf8 0%,#f8f1e6 100%);border:1px solid rgba(95,156,53,.18);">
+<div class="g-row" style="margin-bottom:10px;">
+<div>
+<div class="section-pill" style="background:#edf5e7;color:var(--green-ink);">Worked example</div>
+<h3 style="margin:6px 0 4px;">Granting Sarah access to the Aviva pension</h3>
+<p style="margin:0;color:var(--muted);font-size:13.5px;">Matthew Wright → Sarah Wright</p>
+</div>
+<span class="tag greentag" style="flex:0 0 auto;">Updated today</span>
+</div>
+
+<div style="margin-top:8px;font-size:13px;font-weight:800;letter-spacing:.06em;color:#a87618;text-transform:uppercase;">Permission level</div>
+<div class="tile-grid" style="margin-top:8px;grid-template-columns:1fr;">
+<button class="selection-tile" id="permView" onclick="setPermission('view')" style="text-align:left;padding:14px 16px;">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
+<div>
+<div style="font-size:15px;font-weight:800;">View only</div>
+<div style="font-size:12px;font-weight:600;color:var(--muted);margin-top:2px;">Sarah can see this record. She cannot change anything.</div>
+</div>
+<span style="font-size:18px;color:var(--muted);" id="permViewMark">○</span>
+</div>
+</button>
+<button class="selection-tile active" id="permEdit" onclick="setPermission('edit')" style="text-align:left;padding:14px 16px;">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
+<div>
+<div style="font-size:15px;font-weight:800;">Can edit</div>
+<div style="font-size:12px;font-weight:600;margin-top:2px;">Sarah can update fields and add notes. Edits appear in the timeline with her name.</div>
+</div>
+<span style="font-size:18px;color:var(--green-ink);" id="permEditMark">●</span>
+</div>
+</button>
+<button class="selection-tile" id="permRelease" onclick="setPermission('release')" style="text-align:left;padding:14px 16px;">
+<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;">
+<div>
+<div style="font-size:15px;font-weight:800;">Can release in emergency</div>
+<div style="font-size:12px;font-weight:600;color:var(--muted);margin-top:2px;">Sarah can hand this record to a third party (e.g. the financial adviser) only if a defined trigger fires.</div>
+</div>
+<span style="font-size:18px;color:var(--muted);" id="permReleaseMark">○</span>
+</div>
+</button>
+</div>
+
+<div style="margin-top:14px;font-size:13px;font-weight:800;letter-spacing:.06em;color:#a87618;text-transform:uppercase;">Notifications</div>
+<div class="toggle-row"><div><strong>Notify Sarah of changes</strong><p class="sub" style="margin:2px 0 0; font-size:12px;">She gets a quiet weekly summary of edits, not real-time alerts</p></div><label class="toggle"><input checked="" type="checkbox" onchange="toast('Sarah notifications '+(this.checked?'on':'off'))"/><div class="toggle-track"></div></label></div>
+<div class="toggle-row"><div><strong>Show Sarah&rsquo;s edits in your timeline</strong><p class="sub" style="margin:2px 0 0; font-size:12px;">Every change Sarah makes appears in your activity feed</p></div><label class="toggle"><input checked="" type="checkbox" onchange="toast('Timeline visibility '+(this.checked?'on':'off'))"/><div class="toggle-track"></div></label></div>
+<div class="toggle-row" style="border-bottom:none;"><div><strong>Two-step confirmation for sensitive edits</strong><p class="sub" style="margin:2px 0 0; font-size:12px;">Beneficiary changes require both of you to confirm</p></div><label class="toggle"><input checked="" type="checkbox" onchange="toast('Two-step confirmation '+(this.checked?'on':'off'))"/><div class="toggle-track"></div></label></div>
+</div>
+
+<!-- What Sarah sees -->
+<div class="card" style="margin-top:12px;">
+<div class="section-pill">Peek at Sarah&rsquo;s view</div>
+<h3 style="margin:0 0 6px;">What Sarah sees right now</h3>
+<p style="margin:0 0 12px;color:var(--muted);font-size:14px;line-height:1.5;">A simplified preview of how the Aviva pension record appears in Sarah&rsquo;s account, with her current "Can edit" permission.</p>
+
+<div style="background:#f8fbff;border:1px solid #d8e3f0;border-radius:14px;padding:14px 16px;">
+<div style="font-size:11px;font-weight:800;letter-spacing:.08em;color:#5e7193;text-transform:uppercase;margin-bottom:6px;">Aviva Workplace Pension · shared by Matthew</div>
+<div style="font-size:18px;font-weight:800;color:var(--navy);line-height:1.2;">£85,000 approx · annual statement March 2026</div>
+<div style="margin-top:10px;font-size:13px;color:var(--muted);line-height:1.5;">Beneficiaries: Sarah 70% · Maya 15% in trust to 25 · Josh 15% in trust to 25.</div>
+<div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;">
+<span class="tag greentag" style="font-size:11px;">Editable fields: contact, contributions, notes</span>
+<span class="tag" style="font-size:11px;background:#fff3df;color:#a87618;">Locked: beneficiaries (two-step)</span>
+</div>
+</div>
+
+<p style="margin:12px 0 0;color:var(--muted);font-size:12.5px;line-height:1.5;font-style:italic;">Sarah cannot release this record to the financial adviser unless you also grant "Can release in emergency". She also cannot see related records (older workplace pots) unless those are shared separately.</p>
+</div>
+
+<!-- Audit trail -->
+<div class="card" style="margin-top:12px;">
+<div class="section-pill">Recent permission changes</div>
+<h3 style="margin:0 0 10px;">A clear audit trail</h3>
+
+<div class="record-line"><div class="label">Today · 09:18</div><div class="value" style="text-align:right;">Sarah granted "Can edit" on Aviva pension<br><span style="color:var(--muted);font-weight:600;font-size:11.5px;">Was: View only</span></div></div>
+<div class="record-line"><div class="label">3 days ago · Wed 22 April</div><div class="value" style="text-align:right;">Sarah granted "View only" on emergency essentials<br><span style="color:var(--muted);font-weight:600;font-size:11.5px;">Initial sharing on first sign-in</span></div></div>
+<div class="record-line"><div class="label">8 April</div><div class="value" style="text-align:right;">Priya granted access to 2025/26 tax pack<br><span style="color:var(--muted);font-weight:600;font-size:11.5px;">Encrypted link · 7-day expiry</span></div></div>
+<div class="record-line"><div class="label">March · 22 days ago</div><div class="value" style="text-align:right;">David Hughes granted view-only on will reference<br><span style="color:var(--muted);font-weight:600;font-size:11.5px;">Locator only — full will held offline</span></div></div>
+
+<button class="secondary" onclick="show('timeline')" style="margin-top:12px;width:100%;">See full activity timeline →</button>
+</div>
+
+<!-- What changes between levels -->
+<div class="card onboard-focus" style="margin-top:12px;">
+<div class="section-pill">What each level actually changes</div>
+<h3 style="margin:0 0 6px;">In plain terms</h3>
+<p style="margin:0 0 12px;color:var(--muted);font-size:14px;line-height:1.5;">Three concrete differences, so you know what you are agreeing to before you tap.</p>
+
+<div class="progress-list" style="margin:0;">
+<div class="progress-item"><div><strong>View only</strong><div class="label">Sarah can read the record on her own dashboard. She cannot change a single field. The record cannot be passed on to anyone else under this permission.</div></div><span class="tag" style="background:#f0f3f9;color:#5e7193;">Read</span></div>
+<div class="progress-item"><div><strong>Can edit</strong><div class="label">Sarah can update fields, add notes, link documents. Sensitive fields (beneficiaries, account closure) still need two-step confirmation. All edits are timestamped and shown in your timeline.</div></div><span class="tag greentag">Read &amp; write</span></div>
+<div class="progress-item"><div><strong>Can release in emergency</strong><div class="label">Sarah can hand the record to a named third party (e.g. financial adviser, hospital) — but only if a defined trigger has fired (incapacity, death, your explicit pre-authorisation). Otherwise the record stays inside the household.</div></div><span class="tag" style="background:#fdeceb;color:#b64e44;">Conditional release</span></div>
+</div>
+</div>
+
+<!-- How to revoke -->
+<div class="card" style="margin-top:12px;">
+<div class="section-pill">Revoking access</div>
+<h3 style="margin:0 0 6px;">How to take it back cleanly</h3>
+<p style="margin:0 0 12px;color:var(--muted);font-size:14px;line-height:1.5;">Sharing is fully reversible. Revoking access removes Sarah&rsquo;s view of this record immediately and clears any cached copies on her device within 24 hours.</p>
+
+<div class="record-line"><div class="label">Effect on Sarah</div><div class="value" style="text-align:right;">Record disappears from her dashboard immediately</div></div>
+<div class="record-line"><div class="label">Cached copies</div><div class="value" style="text-align:right;">Cleared from her devices within 24 hours</div></div>
+<div class="record-line"><div class="label">Past edits</div><div class="value" style="text-align:right;">Her edits stay in your timeline (named &amp; timestamped)</div></div>
+<div class="record-line"><div class="label">Restoration</div><div class="value" style="text-align:right;">Re-granting access restores it instantly · no re-entry</div></div>
+
+<div class="mini-actions" style="margin-top:14px;">
+<button class="secondary" onclick="toast('Sarah&apos;s access to this record paused — she will see &quot;temporarily unavailable&quot;')" style="flex:1 1 0;">Pause access</button>
+<button class="secondary" onclick="toast('Revoke confirmation required — opens two-step')" style="flex:1 1 0;background:#fdeceb;color:#b64e44;border-color:rgba(216,110,98,.30);">Revoke entirely</button>
+</div>
+</div>
+
+<div class="notice" style="margin-top:12px;">
+<div class="section-pill">User responsibility</div>
+<p style="font-size:13px; margin:0;">sAiFe does not verify the identity, entitlement or legal authority of any person granted access. Sharing settings reflect your choices only — they do not grant power of attorney, executor authority, or any legal entitlement. For legal arrangements, speak to your solicitor.</p>
+</div>
+
+<div class="tabbar">
+<button class="tab" onclick="show('home')"><span class="tab-icon">🏠</span>Home</button>
+<button class="tab" onclick="show('dashboard')"><span class="tab-icon">📊</span>Dash</button>
+<button class="tab" onclick="show('moneyhub')"><span class="tab-icon">💷</span>Money</button>
+<button class="tab active" onclick="show('emergency')"><span class="tab-icon">👥</span>Family</button>
+<button class="tab" onclick="show('settings')"><span class="tab-icon">⚙️</span>More</button>
+</div>
+
 </section>
 <section class="screen" id="additem">
 <div class="status">
@@ -1959,7 +2133,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <div class="progress-item"><div><strong style="display:block;color:var(--navy);">Critical documents</strong><span class="label">Core pack prepared and ready</span></div><div style="display:flex;align-items:center;gap:10px;"><span class="tag greentag">81%</span><div class="gauge green" style="--p:81;width:54px;height:54px;"><span>81%</span></div></div></div>
 </div>
 <div class="stack">
-<div class="card tappable" onclick="openSheet('Trusted contacts','2 of 4 contacts set up','Nick Weaver (partner) — full access. Sarah Weaver (sister) — documents only. Add a solicitor or GP to complete this section.')"><h3>Trusted contacts</h3><p>2 people assigned with controlled access permissions.</p></div>
+<div class="card tappable" onclick="openSheet('Trusted contacts','2 of 4 contacts set up','Sarah Wright (partner) — full access. David Hughes (solicitor) — documents only. Add a GP and a secondary contact to complete this section.')"><h3>Trusted contacts</h3><p>2 people assigned with controlled access permissions.</p></div>
 <div class="card tappable" onclick="openSheet('Key instructions','No instructions written yet','Write a short note covering: where to find important documents, who to contact first, any special household instructions. Takes about 5 minutes.')"><h3>Key instructions</h3><p>Prepared household guidance and practical next steps.</p></div>
 <div class="card tappable" onclick="openSheet('Critical documents','7 documents selected for emergency release','Will, mortgage deed, insurance policies (3), passports (2). These will be shared with trusted contacts if emergency access is triggered.')"><h3>Critical documents</h3><p>Selected records ready for emergency release.</p></div>
 </div>
@@ -2063,8 +2237,8 @@ document.addEventListener('DOMContentLoaded', function () {
 </div>
 <div class="tag ambertag">Manage</div>
 </div>
-<div class="item tappable" onclick="openSheet('EE Mobile','Contract renewal 21 June · £35/mo','Nick — SIM-only. 24-month contract ends 21 June. MySaiFe Agent is checking for a better deal now.')"><div><div class="item-name">EE Mobile</div><div class="item-meta">Contract renewal 21 June</div></div><div class="tag greentag">88%</div></div>
-<div class="item tappable" onclick="openSheet('BT Broadband','Nick &amp; Anne · £44/mo','Full Fibre 100. Contract runs until March 2026. Router login and Wi-Fi password stored. Account number missing.')"><div><div class="item-name">BT Broadband</div><div class="item-meta">Nick &amp; Anne • £44/mo</div></div><div class="tag ambertag">63%</div></div>
+<div class="item tappable" onclick="openSheet('EE Mobile','Contract renewal 21 June · £35/mo','Matthew — SIM-only. 24-month contract ends 21 June. MySaiFe Agent is checking for a better deal now.')"><div><div class="item-name">EE Mobile</div><div class="item-meta">Contract renewal 21 June</div></div><div class="tag greentag">88%</div></div>
+<div class="item tappable" onclick="openSheet('BT Broadband','Matthew &amp; Sarah · £44/mo','Full Fibre 100. Contract runs until August 2026. Router login and Wi-Fi password stored. Account number missing.')"><div><div class="item-name">BT Broadband</div><div class="item-meta">Matthew &amp; Sarah • £44/mo</div></div><div class="tag ambertag">63%</div></div>
 <div class="item tappable" onclick="openSheet('Vodafone','Maya · £22/mo','Account number, password and contract end date are all missing. Tap to add details and unlock savings opportunities.')"><div><div class="item-name">Vodafone</div><div class="item-meta">Maya • £22/mo</div></div><div class="tag redtag">34%</div></div>
 </div>
 <div class="card lifestyle-card">
@@ -2488,6 +2662,8 @@ document.addEventListener('DOMContentLoaded', function () {
 </div>
 <button class="secondary" onclick="show('pricing')" style="width:100%;margin-top:4px;padding:13px;">Manage subscription</button>
 <button class="secondary" onclick="show('agentHub')" style="width:100%;margin-top:10px;padding:13px;">Open sAiFe Agent activity</button>
+<button class="secondary" onclick="show('timeline')" style="width:100%;margin-top:10px;padding:13px;">See activity timeline</button>
+<button class="secondary" onclick="show('access')" style="width:100%;margin-top:10px;padding:13px;">Sharing &amp; permissions</button>
 <button class="secondary" onclick="show('featuremap')" style="width:100%;margin-top:10px;padding:13px;">View future feature map</button>
 <div class="tabbar">
 <button class="tab" onclick="show('home')"><span class="tab-icon">🏠</span>Home</button>
@@ -3156,6 +3332,226 @@ Prices shown in £ for households in the United Kingdom · VAT included where ap
 
 </section>
 
+<section class="screen bg-timeline" id="timeline">
+<div class="status"><div class="localtime"></div><div class="status-right"><button class="global-chip" onclick="toggleGlobalMenu()">UK · EN</button><div class="dots"><span></span><span></span><span></span></div></div></div>
+<div class="topbar"><button class="soft" onclick="show('dashboard')">← Dashboard</button><div class="pill">Activity timeline</div></div>
+
+<div class="onboard-hero">
+<h2 class="onboard-title">Everything that has happened</h2>
+<p class="onboard-copy">A quiet record of what your MySaiFe has been doing — what you&rsquo;ve added, what the Agent has tidied, and what trusted people have seen. Nothing here is shared externally.</p>
+</div>
+
+<div class="metric-row" style="margin-top:14px;">
+<div class="metric-pill"><b>3</b><span>actions today</span></div>
+<div class="metric-pill"><b>5</b><span>this week</span></div>
+<div class="metric-pill"><b>18</b><span>last 30 days</span></div>
+</div>
+
+<div class="card" style="margin-top:12px;">
+<div class="g-row" style="margin-bottom:10px;">
+<div>
+<div class="section-pill" style="margin-bottom:0;">Today</div>
+<div style="font-size:12.5px;color:var(--muted);font-weight:700;margin-top:4px;">Friday 25 April 2026</div>
+</div>
+<span class="tag greentag">3 entries</span>
+</div>
+<div class="timeline-item tappable" style="cursor:pointer;" onclick="show('dashboard')">
+<div class="timeline-dot" style="background:var(--ok);"></div>
+<div style="flex:1;min-width:0;">
+<div style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:3px;">Your first record added</div>
+<div style="font-size:13px;color:var(--muted);line-height:1.45;">&ldquo;HSBC joint current account&rdquo; — saved during onboarding.</div>
+<div style="font-size:11px;color:var(--muted);font-weight:700;margin-top:6px;">Today · 09:14 · You</div>
+</div>
+</div>
+<div class="timeline-item tappable" style="cursor:pointer;" onclick="show('agentHub')">
+<div class="timeline-dot" style="background:var(--amber);"></div>
+<div style="flex:1;min-width:0;">
+<div style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:3px;">sAiFe Agent noticed a duplicate Vodafone account</div>
+<div style="font-size:13px;color:var(--muted);line-height:1.45;">Maya&rsquo;s £22/mo contract is active. A second Vodafone account from 2021 has had no activity. The Agent flagged it for review.</div>
+<div style="font-size:11px;color:var(--muted);font-weight:700;margin-top:6px;">Today · 08:37 · sAiFe Agent</div>
+</div>
+</div>
+<div class="timeline-item tappable" style="cursor:pointer;" onclick="show('settings')">
+<div class="timeline-dot" style="background:var(--navy-soft);"></div>
+<div style="flex:1;min-width:0;">
+<div style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:3px;">Settings: notification preferences updated</div>
+<div style="font-size:13px;color:var(--muted);line-height:1.45;">Expiry &amp; renewal reminders set to weekly. Agent insights kept on.</div>
+<div style="font-size:11px;color:var(--muted);font-weight:700;margin-top:6px;">Today · 08:21 · You</div>
+</div>
+</div>
+</div>
+<div class="card" style="margin-top:12px;">
+<div class="g-row" style="margin-bottom:10px;">
+<div>
+<div class="section-pill" style="margin-bottom:0;">This week</div>
+<div style="font-size:12.5px;color:var(--muted);font-weight:700;margin-top:4px;">Last 7 days</div>
+</div>
+<span class="tag greentag">5 entries</span>
+</div>
+<div class="timeline-item tappable" style="cursor:pointer;" onclick="show('peoplehub')">
+<div class="timeline-dot" style="background:var(--ok);"></div>
+<div style="flex:1;min-width:0;">
+<div style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:3px;">Sarah signed in for the first time</div>
+<div style="font-size:13px;color:var(--muted);line-height:1.45;">Joined the household as primary trusted contact. Granted view access to: emergency essentials, will reference, key contacts.</div>
+<div style="font-size:11px;color:var(--muted);font-weight:700;margin-top:6px;">3 days ago · Wed 22 April · Sarah Wright</div>
+</div>
+</div>
+<div class="timeline-item tappable" style="cursor:pointer;" onclick="show('vehicles')">
+<div class="timeline-dot" style="background:var(--amber);"></div>
+<div style="flex:1;min-width:0;">
+<div style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:3px;">MOT bundle prepared</div>
+<div style="font-size:13px;color:var(--muted);line-height:1.45;">V5C, last year&rsquo;s advisories and service history gathered into one place ahead of Monday&rsquo;s booking at Premier Service Centre, Bath.</div>
+<div style="font-size:11px;color:var(--muted);font-weight:700;margin-top:6px;">3 days ago · Wed 22 April · sAiFe Agent</div>
+</div>
+</div>
+<div class="timeline-item tappable" style="cursor:pointer;" onclick="show('mortgage')">
+<div class="timeline-dot" style="background:var(--ok);"></div>
+<div style="flex:1;min-width:0;">
+<div style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:3px;">Annual buildings insurance schedule linked</div>
+<div style="font-size:13px;color:var(--muted);line-height:1.45;">Aviva renewal documentation grouped with the mortgage record. Renews 12 October 2026.</div>
+<div style="font-size:11px;color:var(--muted);font-weight:700;margin-top:6px;">4 days ago · Tue 21 April · sAiFe Agent</div>
+</div>
+</div>
+<div class="timeline-item tappable" style="cursor:pointer;" onclick="show('peoplehub')">
+<div class="timeline-dot" style="background:var(--navy-soft);"></div>
+<div style="flex:1;min-width:0;">
+<div style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:3px;">School-run rota added</div>
+<div style="font-size:13px;color:var(--muted);line-height:1.45;">Helen Boyd noted as backup for Maya and Josh. Phone number stored in People hub.</div>
+<div style="font-size:11px;color:var(--muted);font-weight:700;margin-top:6px;">5 days ago · Mon 20 April · You</div>
+</div>
+</div>
+<div class="timeline-item tappable" style="cursor:pointer;" onclick="show('agentHub')">
+<div class="timeline-dot" style="background:var(--amber);"></div>
+<div style="flex:1;min-width:0;">
+<div style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:3px;">Will review nudge</div>
+<div style="font-size:13px;color:var(--muted);line-height:1.45;">The Agent flagged that the will hasn&rsquo;t been updated in 22 months. Last revision: March 2024.</div>
+<div style="font-size:11px;color:var(--muted);font-weight:700;margin-top:6px;">6 days ago · Sun 19 April · sAiFe Agent</div>
+</div>
+</div>
+</div>
+<div class="card" style="margin-top:12px;">
+<div class="g-row" style="margin-bottom:10px;">
+<div>
+<div class="section-pill" style="margin-bottom:0;">Earlier this month</div>
+<div style="font-size:12.5px;color:var(--muted);font-weight:700;margin-top:4px;">April 2026</div>
+</div>
+<span class="tag greentag">5 entries</span>
+</div>
+<div class="timeline-item tappable" style="cursor:pointer;" onclick="show('detail')">
+<div class="timeline-dot" style="background:var(--ok);"></div>
+<div style="flex:1;min-width:0;">
+<div style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:3px;">Aviva pension expression of wish updated</div>
+<div style="font-size:13px;color:var(--muted);line-height:1.45;">Beneficiaries set: Sarah 70%, Maya 15% in trust to 25, Josh 15% in trust to 25. Acknowledgement received from scheme.</div>
+<div style="font-size:11px;color:var(--muted);font-weight:700;margin-top:6px;">12 April · You + adviser</div>
+</div>
+</div>
+<div class="timeline-item tappable" style="cursor:pointer;" onclick="show('taxreadiness')">
+<div class="timeline-dot" style="background:var(--ok);"></div>
+<div style="flex:1;min-width:0;">
+<div style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:3px;">17 records grouped into 2025/26 tax pack</div>
+<div style="font-size:13px;color:var(--muted);line-height:1.45;">14 expense receipts, 2 rental statements and a pension summary. Pack ready to share with Priya at Gateway Accounting.</div>
+<div style="font-size:11px;color:var(--muted);font-weight:700;margin-top:6px;">8 April · sAiFe Agent</div>
+</div>
+</div>
+<div class="timeline-item tappable" style="cursor:pointer;" onclick="show('lifestyle')">
+<div class="timeline-dot" style="background:var(--navy-soft);"></div>
+<div style="flex:1;min-width:0;">
+<div style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:3px;">Lifestyle: subscriptions audit</div>
+<div style="font-size:13px;color:var(--muted);line-height:1.45;">9 active subscriptions checked. Spotify and Apple Music both running — flagged for review.</div>
+<div style="font-size:11px;color:var(--muted);font-weight:700;margin-top:6px;">5 April · sAiFe Agent</div>
+</div>
+</div>
+<div class="timeline-item tappable" style="cursor:pointer;" onclick="show('familyPackPreview')">
+<div class="timeline-dot" style="background:var(--ok);"></div>
+<div style="flex:1;min-width:0;">
+<div style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:3px;">Family Pack version 12 prepared</div>
+<div style="font-size:13px;color:var(--muted);line-height:1.45;">Three-page printable continuity pack ready for review. Held back until release is triggered.</div>
+<div style="font-size:11px;color:var(--muted);font-weight:700;margin-top:6px;">3 April · You</div>
+</div>
+</div>
+<div class="timeline-item tappable" style="cursor:pointer;" onclick="show('peoplehub')">
+<div class="timeline-dot" style="background:var(--amber);"></div>
+<div style="flex:1;min-width:0;">
+<div style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:3px;">Maya&rsquo;s passport renewal flagged</div>
+<div style="font-size:13px;color:var(--muted);line-height:1.45;">Expires September 2026. HMPO currently quoting up to 10 weeks. Agent will start a renewal pack on request.</div>
+<div style="font-size:11px;color:var(--muted);font-weight:700;margin-top:6px;">1 April · sAiFe Agent</div>
+</div>
+</div>
+</div>
+<div class="card" style="margin-top:12px;">
+<div class="g-row" style="margin-bottom:10px;">
+<div>
+<div class="section-pill" style="margin-bottom:0;">Earlier</div>
+<div style="font-size:12.5px;color:var(--muted);font-weight:700;margin-top:4px;">Since March 2026 — when MySaiFe was set up</div>
+</div>
+<span class="tag greentag">5 entries</span>
+</div>
+<div class="timeline-item tappable" style="cursor:pointer;" onclick="show('home')">
+<div class="timeline-dot" style="background:var(--navy-soft);"></div>
+<div style="flex:1;min-width:0;">
+<div style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:3px;">MySaiFe account created</div>
+<div style="font-size:13px;color:var(--muted);line-height:1.45;">Matthew Wright joined. UK · GMT · English. Onboarding completed in 6 minutes 12 seconds.</div>
+<div style="font-size:11px;color:var(--muted);font-weight:700;margin-top:6px;">March · 22 days ago · You</div>
+</div>
+</div>
+<div class="timeline-item tappable" style="cursor:pointer;" onclick="show('serviceshub')">
+<div class="timeline-dot" style="background:var(--navy-soft);"></div>
+<div style="flex:1;min-width:0;">
+<div style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:3px;">Hughes &amp; Co linked as solicitor</div>
+<div style="font-size:13px;color:var(--muted);line-height:1.45;">Will (ref WL/MW-2024) and Lasting Power of Attorney records pointed to David Hughes. Last contact: March 2024.</div>
+<div style="font-size:11px;color:var(--muted);font-weight:700;margin-top:6px;">March · 21 days ago · You</div>
+</div>
+</div>
+<div class="timeline-item tappable" style="cursor:pointer;" onclick="show('mortgage')">
+<div class="timeline-dot" style="background:var(--ok);"></div>
+<div style="flex:1;min-width:0;">
+<div style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:3px;">Lloyds mortgage record added</div>
+<div style="font-size:13px;color:var(--muted);line-height:1.45;">5-year fix · 4.29% · balance £242,180 · fix ends 14 July 2026. Direct debit from HSBC joint account.</div>
+<div style="font-size:11px;color:var(--muted);font-weight:700;margin-top:6px;">March · 21 days ago · You</div>
+</div>
+</div>
+<div class="timeline-item tappable" style="cursor:pointer;" onclick="show('familyplan')">
+<div class="timeline-dot" style="background:var(--ok);"></div>
+<div style="flex:1;min-width:0;">
+<div style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:3px;">Pets added to household</div>
+<div style="font-size:13px;color:var(--muted);line-height:1.45;">Monty &amp; Pickle (cats). Vet: Bath Veterinary Group. Microchip references stored.</div>
+<div style="font-size:11px;color:var(--muted);font-weight:700;margin-top:6px;">March · 20 days ago · You</div>
+</div>
+</div>
+<div class="timeline-item tappable" style="cursor:pointer;" onclick="show('mortgage')">
+<div class="timeline-dot" style="background:var(--navy-soft);"></div>
+<div style="flex:1;min-width:0;">
+<div style="font-size:14px;font-weight:800;color:var(--navy);margin-bottom:3px;">Helen Chen confirmed as mortgage broker</div>
+<div style="font-size:13px;color:var(--muted);line-height:1.45;">L&amp;C Mortgages. Next scheduled review: January 2027.</div>
+<div style="font-size:11px;color:var(--muted);font-weight:700;margin-top:6px;">March · 19 days ago · You</div>
+</div>
+</div>
+</div>
+
+<div class="card onboard-focus" style="margin-top:14px;">
+<div class="section-pill">How the timeline works</div>
+<p style="margin:0 0 10px;color:var(--muted);font-size:14px;line-height:1.55;">Every action is logged with who took it (you, a trusted contact, or the sAiFe Agent) and what it touched. You can filter, export or share the timeline at any point.</p>
+<div class="mini-actions">
+<button class="primary" onclick="toast('Timeline exported as PDF')" style="flex:1 1 0;">Export as PDF</button>
+<button class="secondary" onclick="toast('Filter options will go here')" style="flex:1 1 0;">Filter activity</button>
+</div>
+</div>
+
+<div class="notice" style="margin-top:12px;">
+<div class="section-pill">Privacy</div>
+<p style="font-size:13px; margin:0;">This timeline is private to your household. Trusted contacts only see entries that involve them. The sAiFe Agent only acts on records you have stored — and every action it takes appears here, named and timestamped, so nothing is hidden.</p>
+</div>
+
+<div class="tabbar">
+<button class="tab" onclick="show('home')"><span class="tab-icon">🏠</span>Home</button>
+<button class="tab active" onclick="show('dashboard')"><span class="tab-icon">📊</span>Dash</button>
+<button class="tab" onclick="show('moneyhub')"><span class="tab-icon">💷</span>Money</button>
+<button class="tab" onclick="show('emergency')"><span class="tab-icon">👥</span>Family</button>
+<button class="tab" onclick="show('settings')"><span class="tab-icon">⚙️</span>More</button>
+</div>
+
+</section>
+
 <div class="sheet" id="sheet">
 <div class="sheet-handle"></div>
 <h3 id="sheetTitle">Family continuity pack</h3>
@@ -3208,7 +3604,10 @@ document.addEventListener('click', function(e){
 <div id="alertCentre">
 <div class="alert-header">
 <h2>Alerts</h2>
+<div style="display:flex;gap:8px;align-items:center;">
+<button class="soft" onclick="closeAlertCentre();show('timeline')" style="font-size:12px;padding:8px 12px;">See full timeline →</button>
 <button class="soft" onclick="closeAlertCentre()">✕ Close</button>
+</div>
 </div>
 <div style="padding:0 0 16px;">
 <div style="padding:8px 16px 4px;font-size:11px;font-weight:800;color:var(--muted);letter-spacing:.08em;">URGENT</div>
@@ -3233,7 +3632,7 @@ document.addEventListener('click', function(e){
 <div class="alert-dot amber"></div>
 <div class="alert-item-body">
 <div class="alert-item-title">EE contract ends 21 June</div>
-<div class="alert-item-desc">Nick's mobile — SIM-only deal. 3 better deals identified. Check now to avoid auto-renewal.</div>
+<div class="alert-item-desc">Matthew's mobile — SIM-only deal. 3 better deals identified. Check now to avoid auto-renewal.</div>
 <div class="alert-item-date">📱  21 June 2026</div>
 </div>
 </div>
@@ -3254,7 +3653,7 @@ document.addEventListener('click', function(e){
 <div class="alert-item-date">💚  Tap to review</div>
 </div>
 </div>
-<div class="alert-item tappable" onclick="closeAlertCentre();openSheet('BT Broadband deal','Better deal available','Your BT Full Fibre 100 contract ends March 2026. Sky Ultrafast 150 is offering £29.99/month — saving £14/month vs your current deal. Your Agent has prepared a comparison.')">
+<div class="alert-item tappable" onclick="closeAlertCentre();openSheet('BT Broadband deal','Better deal available','Your BT Full Fibre 100 contract ends August 2026. Sky Ultrafast 150 is offering £29.99/month — saving £14/month vs your current deal. Your Agent has prepared a comparison.')">
 <div class="alert-dot green"></div>
 <div class="alert-item-body">
 <div class="alert-item-title">Better broadband deal available</div>
@@ -3650,6 +4049,45 @@ function pickTile(btn) {
       picked.style.borderColor = 'rgba(95,156,53,.45)';
       picked.style.boxShadow   = '0 8px 22px rgba(95,156,53,.18)';
       picked.style.transform   = 'translateY(-1px)';
+    }
+  };
+})();
+</script>
+<script>
+// ── Sharing & access helpers ────────────────────────────────────────────
+(function () {
+  // Switch the highlighted permission level on the worked example
+  window.setPermission = function (level) {
+    var levels = ['view', 'edit', 'release'];
+    levels.forEach(function (k) {
+      var btn  = document.getElementById('perm' + k.charAt(0).toUpperCase() + k.slice(1));
+      var mark = document.getElementById('perm' + k.charAt(0).toUpperCase() + k.slice(1) + 'Mark');
+      if (!btn) return;
+      if (k === level) {
+        btn.classList.add('active');
+        if (mark) { mark.textContent = '●'; mark.style.color = 'var(--green-ink)'; }
+      } else {
+        btn.classList.remove('active');
+        if (mark) { mark.textContent = '○'; mark.style.color = 'var(--muted)'; }
+      }
+    });
+    var labels = {
+      view:    'Sarah set to View only on Aviva pension',
+      edit:    'Sarah set to Can edit on Aviva pension',
+      release: 'Sarah set to Can release in emergency on Aviva pension'
+    };
+    if (typeof toast === 'function') toast(labels[level] || 'Permission updated');
+  };
+
+  // Tapping a person opens a per-person view — for the worked example we
+  // scroll to Sarah's card, since that's the one we've built out
+  window.showAccessFor = function (who) {
+    if (who === 'sarah') {
+      var card = document.getElementById('sarahAccessCard');
+      if (card && card.scrollIntoView) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (typeof toast === 'function') toast('Showing Sarah\'s access');
+      }
     }
   };
 })();
