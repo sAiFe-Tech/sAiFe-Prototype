@@ -1118,12 +1118,13 @@ document.addEventListener('DOMContentLoaded', function () {
 </div>
 <div class="pricing-panel" style="margin-top:14px;">
 <div class="section-pill">Pricing</div>
-<div class="pricing-title">One household. Two plans.</div>
+<div class="pricing-title">One household. Three plans.</div>
 <div class="pricing-grid">
 <div class="price-card tappable" onclick="show('pricing')" style="cursor:pointer;"><div class="price-top"><div class="price-name">For you</div><div class="price-tag">£6.99/mo</div></div><p><strong>1 person</strong><br>Personal records, reminders and trusted access.</p><div class="pricing-note">or £69/year</div></div>
-<div class="price-card tappable" onclick="show('pricing')" style="cursor:pointer;"><div class="price-top"><div class="price-name">For your household</div><div class="price-tag">£15.99/mo</div></div><p><strong>Up to 5 people</strong><br>Shared visibility, continuity planning and broader family access.</p><div class="pricing-note">or £159/year</div></div>
+<div class="price-card tappable" onclick="show('pricing')" style="cursor:pointer;"><div class="price-top"><div class="price-name">For your household</div><div class="price-tag">£15.99/mo</div></div><p><strong>5 people total</strong><br>Members and trusted contacts — count however you mix them.</p><div class="pricing-note">or £159/year</div></div>
+<div class="price-card tappable" onclick="show('pricing')" style="cursor:pointer;"><div class="price-top"><div class="price-name">For your whole life</div><div class="price-tag">£24.99/mo</div></div><p><strong>Unlimited people</strong><br>Advanced sharing, formal release triggers, adviser handoff, more storage.</p><div class="pricing-note">or £249/year</div></div>
 </div>
-<div class="trial-note tappable" onclick="show('pricing')" style="cursor:pointer;text-decoration:underline;text-underline-offset:2px;">Free to start — upgrade as your household grows · Compare plans</div>
+<div class="trial-note tappable" onclick="show('pricing')" style="cursor:pointer;text-decoration:underline;text-underline-offset:2px;">Free to start — upgrade as your household grows · Compare plans &amp; add-ons</div>
 </div>
 <div class="tabbar">
 <button class="tab active" onclick="show('home')"><span class="tab-icon">🏠</span>Home</button>
@@ -1376,6 +1377,150 @@ document.addEventListener('DOMContentLoaded', function () {
   <div class="card" onclick="show('featuremap')"><h3>Growth layers</h3><p>See how tax readiness, services and family continuity all connect back to the same protected household platform.</p></div>
   <div class="card" onclick="show('taxreadiness')"><h3>Document-led readiness</h3><p>Where protected records support year-end preparation, advisers and practical continuity without changing the core brand language.</p></div>
 </div>
+
+<!-- Populated Vault contents -->
+<div class="card" style="margin-top:12px;background:linear-gradient(180deg,#fffdf8 0%,#f8f1e6 100%);border:1px solid rgba(184,150,58,.22);">
+<div class="section-pill" style="background:#fff3df;color:#a87618;">What&rsquo;s locked behind this layer</div>
+<h3 style="margin:0 0 6px;">The household&rsquo;s most sensitive records</h3>
+<p style="margin:0 0 10px;color:var(--muted);font-size:14px;line-height:1.55;">The Vault holds the records that should not move easily. Each one has its own access rules, its own release trigger, and its own audit history. Nothing here leaves the household without your explicit confirmation or a defined trigger.</p>
+<div class="record-line"><div class="label">Total items in Vault</div><div class="value">14 records · 9 documents</div></div>
+<div class="record-line"><div class="label">Most-recent review</div><div class="value">Today · Aviva pension beneficiaries</div></div>
+<div class="record-line"><div class="label">Encryption</div><div class="value">AES-256 at rest · UK-based storage</div></div>
+<div class="record-line"><div class="label">Audit retention</div><div class="value">Every access logged for 7 years</div></div>
+</div>
+
+<div class="card" style="margin-top:12px;">
+<div class="section-pill">Vault contents</div>
+<h3 style="margin:0 0 6px;">Seven categories · 14 items</h3>
+<p style="margin:0 0 12px;color:var(--muted);font-size:14px;line-height:1.5;">Each category has its own access rules. Tap to see the items inside.</p>
+
+<div class="progress-list" style="margin:0;">
+
+<div class="progress-item tappable" onclick="toast('Will &amp; estate · 3 items · last reviewed March 2024')" style="cursor:pointer;">
+<div style="flex:1;min-width:0;">
+<strong style="color:var(--navy);">Will &amp; estate</strong>
+<div class="label" style="font-size:12.5px;">Will reference · executors · Lasting Power of Attorney</div>
+<div style="margin-top:6px;font-size:11px;color:var(--muted);font-weight:700;">3 items · Hughes &amp; Co holds originals · Sarah view-only</div>
+</div>
+<span class="tag greentag" style="flex:0 0 auto;">3 items</span>
+</div>
+
+<div class="progress-item tappable" onclick="show('familyPackPreview')" style="cursor:pointer;">
+<div style="flex:1;min-width:0;">
+<strong style="color:var(--navy);">Wishes</strong>
+<div class="label" style="font-size:12.5px;">Funeral, ceremony, music, donations, scatter location</div>
+<div style="margin-top:6px;font-size:11px;color:var(--muted);font-weight:700;">2 items · Released only with Family Pack</div>
+</div>
+<span class="tag greentag" style="flex:0 0 auto;">2 items</span>
+</div>
+
+<div class="progress-item tappable" onclick="show('mortgage')" style="cursor:pointer;">
+<div style="flex:1;min-width:0;">
+<strong style="color:var(--navy);">Property documents</strong>
+<div class="label" style="font-size:12.5px;">Title deeds, mortgage offer, buildings insurance schedule</div>
+<div style="margin-top:6px;font-size:11px;color:var(--muted);font-weight:700;">3 items · Sarah can edit · David Hughes view-only</div>
+</div>
+<span class="tag greentag" style="flex:0 0 auto;">3 items</span>
+</div>
+
+<div class="progress-item tappable" onclick="toast('Identity records · 2 of 4 complete · Maya passport renewal due')" style="cursor:pointer;">
+<div style="flex:1;min-width:0;">
+<strong style="color:var(--navy);">Identity</strong>
+<div class="label" style="font-size:12.5px;">Passports, birth certificates, NHS numbers</div>
+<div style="margin-top:6px;font-size:11px;color:var(--muted);font-weight:700;">2 of 4 complete · Maya passport renewal due Sept 2026</div>
+</div>
+<span class="tag ambertag" style="flex:0 0 auto;">2 of 4</span>
+</div>
+
+<div class="progress-item tappable" onclick="show('detail')" style="cursor:pointer;">
+<div style="flex:1;min-width:0;">
+<strong style="color:var(--navy);">Financial protection</strong>
+<div class="label" style="font-size:12.5px;">Life policies, mortgage cover, pension expression of wish</div>
+<div style="margin-top:6px;font-size:11px;color:var(--muted);font-weight:700;">3 items · Sarah view-only · adviser on release</div>
+</div>
+<span class="tag greentag" style="flex:0 0 auto;">3 items</span>
+</div>
+
+<div class="progress-item tappable" onclick="toast('Digital legacy · password vault recovery not yet linked')" style="cursor:pointer;">
+<div style="flex:1;min-width:0;">
+<strong style="color:var(--navy);">Digital legacy</strong>
+<div class="label" style="font-size:12.5px;">Password vault recovery, photo libraries, domain renewals</div>
+<div style="margin-top:6px;font-size:11px;color:var(--muted);font-weight:700;">1 of 3 linked · Recovery route still to set up</div>
+</div>
+<span class="tag ambertag" style="flex:0 0 auto;">1 of 3</span>
+</div>
+
+<div class="progress-item tappable" onclick="show('access')" style="cursor:pointer;">
+<div style="flex:1;min-width:0;">
+<strong style="color:var(--navy);">Trusted contacts</strong>
+<div class="label" style="font-size:12.5px;">Sarah · David Hughes · Priya Shah · Mary Wright</div>
+<div style="margin-top:6px;font-size:11px;color:var(--muted);font-weight:700;">4 contacts · sharing &amp; access settings live</div>
+</div>
+<span class="tag greentag" style="flex:0 0 auto;">4 people</span>
+</div>
+
+</div>
+</div>
+
+<!-- Items list -->
+<div class="card" style="margin-top:12px;">
+<div class="section-pill">All items</div>
+<h3 style="margin:0 0 6px;">The 14 records currently in your Vault</h3>
+<p style="margin:0 0 12px;color:var(--muted);font-size:14px;line-height:1.5;">Tap any item to open it. Each shows its access rules, who can see it, and what would happen on release.</p>
+
+<div style="margin:0 0 6px;font-size:11px;font-weight:800;letter-spacing:.08em;color:#a87618;text-transform:uppercase;">Will &amp; estate · 3</div>
+<div class="record-line tappable" onclick="show('vaultItem')" style="cursor:pointer;"><div class="label">Last will &amp; testament</div><div class="value">Hughes &amp; Co · ref WL/MW-2024 →</div></div>
+<div class="record-line tappable" onclick="show('vaultItem')" style="cursor:pointer;"><div class="label">Lasting Power of Attorney</div><div class="value">Registered · Sarah as attorney →</div></div>
+<div class="record-line tappable" onclick="show('vaultItem')" style="cursor:pointer;"><div class="label">Executor instructions</div><div class="value">Sarah &amp; David Hughes · 2024 →</div></div>
+
+<div style="margin:14px 0 6px;font-size:11px;font-weight:800;letter-spacing:.08em;color:#a87618;text-transform:uppercase;">Wishes · 2</div>
+<div class="record-line tappable" onclick="show('familyPackPreview')" style="cursor:pointer;"><div class="label">Funeral &amp; ceremony preferences</div><div class="value">Cremation · Co-op Trowbridge →</div></div>
+<div class="record-line tappable" onclick="show('familyPackPreview')" style="cursor:pointer;"><div class="label">Donations &amp; scatter wishes</div><div class="value">BHF · Tywi Valley →</div></div>
+
+<div style="margin:14px 0 6px;font-size:11px;font-weight:800;letter-spacing:.08em;color:#a87618;text-transform:uppercase;">Property documents · 3</div>
+<div class="record-line tappable" onclick="show('mortgage')" style="cursor:pointer;"><div class="label">Title deeds reference</div><div class="value">Held at Hughes &amp; Co →</div></div>
+<div class="record-line tappable" onclick="show('mortgage')" style="cursor:pointer;"><div class="label">Mortgage offer (2021)</div><div class="value">Lloyds · 14 pages →</div></div>
+<div class="record-line tappable" onclick="show('mortgage')" style="cursor:pointer;"><div class="label">Buildings insurance schedule</div><div class="value">Aviva · renews 12 Oct 2026 →</div></div>
+
+<div style="margin:14px 0 6px;font-size:11px;font-weight:800;letter-spacing:.08em;color:#a87618;text-transform:uppercase;">Identity · 2 of 4</div>
+<div class="record-line tappable" onclick="toast('Matthew passport · in date until 2031')" style="cursor:pointer;"><div class="label">Matthew passport</div><div class="value">In date · expires 2031 →</div></div>
+<div class="record-line tappable" onclick="toast('Maya passport · expires Sept 2026 · renewal pack ready')" style="cursor:pointer;"><div class="label">Maya passport</div><div class="value"><span style="color:#a87618;">Expires Sept 2026</span> →</div></div>
+
+<div style="margin:14px 0 6px;font-size:11px;font-weight:800;letter-spacing:.08em;color:#a87618;text-transform:uppercase;">Financial protection · 3</div>
+<div class="record-line tappable" onclick="show('detail')" style="cursor:pointer;"><div class="label">Aviva pension · expression of wish</div><div class="value">Updated Feb 2026 →</div></div>
+<div class="record-line tappable" onclick="show('detail')" style="cursor:pointer;"><div class="label">Aviva life cover £250k</div><div class="value">Policy AV-2018-44A →</div></div>
+<div class="record-line tappable" onclick="show('detail')" style="cursor:pointer;"><div class="label">L&amp;G mortgage cover £250k</div><div class="value">Linked to Lloyds mortgage →</div></div>
+
+<div style="margin:14px 0 6px;font-size:11px;font-weight:800;letter-spacing:.08em;color:#a87618;text-transform:uppercase;">Digital legacy · 1 of 3</div>
+<div class="record-line tappable" onclick="toast('Photo library reference linked · iCloud account on file')" style="cursor:pointer;"><div class="label">Photo library reference</div><div class="value">iCloud account on file →</div></div>
+<div class="record-line tappable" onclick="toast('Password vault recovery route not yet linked · Agent will draft the setup steps')" style="cursor:pointer;"><div class="label">Password vault recovery</div><div class="value"><span style="color:#a87618;">Not yet linked</span> →</div></div>
+<div class="record-line tappable" onclick="toast('Domain &amp; subscription renewals · 2 domains tracked')" style="cursor:pointer;"><div class="label">Domain renewals</div><div class="value">2 domains · annual →</div></div>
+
+</div>
+
+<!-- Recent vault activity -->
+<div class="card" style="margin-top:12px;">
+<div class="section-pill">Recent Vault activity</div>
+<h3 style="margin:0 0 6px;">What has touched the Vault</h3>
+<div class="record-line"><div class="label">Today · 09:18</div><div class="value">Aviva pension beneficiaries reviewed by you</div></div>
+<div class="record-line"><div class="label">3 days ago</div><div class="value">Buildings insurance schedule linked to mortgage</div></div>
+<div class="record-line"><div class="label">12 April</div><div class="value">Aviva expression of wish acknowledged by scheme</div></div>
+<div class="record-line"><div class="label">3 April</div><div class="value">Family Pack version 12 prepared</div></div>
+<button class="secondary" onclick="show('timeline')" style="margin-top:12px;width:100%;">See full activity timeline →</button>
+</div>
+
+<!-- How release works -->
+<div class="card onboard-focus" style="margin-top:12px;">
+<div class="section-pill">How a release actually works</div>
+<h3 style="margin:0 0 6px;">In plain terms</h3>
+<p style="margin:0 0 12px;color:var(--muted);font-size:14px;line-height:1.55;">A release is when a Vault item is handed to a third party — your solicitor, your spouse, your adviser, the hospital. Three things must be true.</p>
+<div class="progress-list" style="margin:0;">
+<div class="progress-item"><div><strong>Trigger fired</strong><div class="label">A defined trigger has occurred — your explicit confirmation, an emergency contact request, or a pre-agreed condition (incapacity, death).</div></div><span class="tag" style="background:#fdeceb;color:#b64e44;">Trigger</span></div>
+<div class="progress-item"><div><strong>Recipient confirmed</strong><div class="label">The recipient is one of the named people on the record. Anyone else gets nothing.</div></div><span class="tag ambertag">Recipient</span></div>
+<div class="progress-item"><div><strong>Logged for 7 years</strong><div class="label">The release event is recorded in your timeline and remains visible to the household for seven years.</div></div><span class="tag greentag">Audit</span></div>
+</div>
+</div>
+
 <div class="tabbar">
 <button class="tab" onclick="show('home')"><span class="tab-icon">🏠</span>Home</button>
 <button class="tab" onclick="show('dashboard')"><span class="tab-icon">📊</span>Dash</button>
@@ -3234,7 +3379,7 @@ Released to <strong style="color:var(--navy);">Sarah Wright</strong> as primary 
 
 <div class="onboard-hero">
 <h2 class="onboard-title">Which plan fits us?</h2>
-<p class="onboard-copy">Two plans. One household. Pick the closest match — you can move between them at any time.</p>
+<p class="onboard-copy">Three plans. One household. Pick the closest match — you can move between them at any time.</p>
 </div>
 
 <div class="card onboard-card">
@@ -3244,6 +3389,18 @@ Released to <strong style="color:var(--navy);">Sarah Wright</strong> as primary 
 <button class="selection-tile" onclick="pickPricingShape(this,'couple')">Me &amp; partner</button>
 <button class="selection-tile wide" onclick="pickPricingShape(this,'family')">Whole household with kids or parents</button>
 </div>
+
+<div id="pricingTrustedQuestion" style="display:none;margin-top:14px;padding-top:14px;border-top:1px solid rgba(35,40,79,.08);">
+<div style="font-size:12px;font-weight:800;letter-spacing:.06em;color:var(--muted);text-transform:uppercase;margin-bottom:8px;">And how many trusted contacts?</div>
+<div style="font-size:12.5px;color:var(--muted);line-height:1.5;margin-bottom:10px;">People you&rsquo;d give some level of access to — partner, solicitor, accountant, parent, adult child. Trusted contacts count toward the people limit on the Household plan.</div>
+<div class="tile-grid" style="grid-template-columns:1fr 1fr;gap:8px;">
+<button class="selection-tile" onclick="pickTrustedCount(this,'none')" style="font-size:14px;padding:12px 8px;">None yet</button>
+<button class="selection-tile" onclick="pickTrustedCount(this,'few')" style="font-size:14px;padding:12px 8px;">Up to 3</button>
+<button class="selection-tile" onclick="pickTrustedCount(this,'mid')" style="font-size:14px;padding:12px 8px;">4 or 5</button>
+<button class="selection-tile" onclick="pickTrustedCount(this,'many')" style="font-size:14px;padding:12px 8px;">6 or more</button>
+</div>
+</div>
+
 <p id="pricingHint" class="onboard-guidance" style="margin:14px 0 0;">Tap a household to see which plan is the most natural fit. Nothing is selected for you yet.</p>
 </div>
 
@@ -3254,7 +3411,7 @@ Released to <strong style="color:var(--navy);">Sarah Wright</strong> as primary 
 <div class="price-name">For you</div>
 <div class="price-tag">£6.99<span style="font-size:13px;font-weight:700;color:var(--muted);">/mo</span></div>
 </div>
-<p><strong>1 person</strong><br>Personal records, reminders and trusted access.</p>
+<p><strong>1 person</strong><br>Personal records, reminders and trusted access for one named contact.</p>
 <div class="pricing-note">or £69/year — saves £14.88</div>
 </div>
 
@@ -3263,28 +3420,91 @@ Released to <strong style="color:var(--navy);">Sarah Wright</strong> as primary 
 <div class="price-name">For your household</div>
 <div class="price-tag">£15.99<span style="font-size:13px;font-weight:700;color:var(--muted);">/mo</span></div>
 </div>
-<p><strong>Up to 5 people</strong><br>Shared visibility, continuity planning and broader family access.</p>
+<p><strong>5 people total</strong><br>Mix of household members and trusted contacts — your choice. Shared visibility, continuity planning and broader family access.</p>
 <div class="pricing-note">or £159/year — saves £32.88</div>
+<div style="margin-top:10px;padding:10px 12px;background:rgba(35,40,79,.04);border-radius:10px;font-size:12px;color:var(--muted);line-height:1.5;">
+<strong style="color:var(--navy);">What counts as a person?</strong> Anyone given access to your records — that includes you and your partner if they edit, plus solicitor, accountant, parents, adult children. The five-person limit is total, not per-role.
+</div>
+</div>
+
+<div class="price-card tappable" id="planWholeLife" onclick="choosePlan('wholelife')" style="cursor:pointer;transition:transform .15s, box-shadow .15s, border-color .15s;">
+<div class="price-top">
+<div>
+<div class="price-name">For your whole life</div>
+<div style="font-size:11px;font-weight:800;letter-spacing:.06em;color:#a87618;text-transform:uppercase;margin-top:3px;">Most complete</div>
+</div>
+<div class="price-tag">£24.99<span style="font-size:13px;font-weight:700;color:var(--muted);">/mo</span></div>
+</div>
+<p><strong>Unlimited people</strong><br>Everything in Household, plus advanced sharing rules, formal release triggers, adviser handoff, multi-year archive and concierge setup.</p>
+<div class="pricing-note">or £249/year — saves £50.88</div>
 </div>
 
 </div>
 
 <div class="card" style="margin-top:14px;">
 <div class="section-pill">What&apos;s included</div>
-<h3 style="margin:0 0 10px;">Side by side</h3>
+<h3 style="margin:0 0 4px;">Three plans, grouped by what they add</h3>
+<p style="margin:0 0 14px;color:var(--muted);font-size:13px;">Each tier inherits everything from the one below, plus the items in its section.</p>
 
-<div class="record-line"><div class="label">Personal records &amp; documents</div><div class="value" style="text-align:right;"><span style="color:var(--green-ink);">For you ✓</span><br><span style="color:var(--green-ink);">Household ✓</span></div></div>
-<div class="record-line"><div class="label">Reminders &amp; renewal alerts</div><div class="value" style="text-align:right;"><span style="color:var(--green-ink);">For you ✓</span><br><span style="color:var(--green-ink);">Household ✓</span></div></div>
-<div class="record-line"><div class="label">sAiFe Agent activity feed</div><div class="value" style="text-align:right;"><span style="color:var(--green-ink);">For you ✓</span><br><span style="color:var(--green-ink);">Household ✓</span></div></div>
-<div class="record-line"><div class="label">Trusted access for one named contact</div><div class="value" style="text-align:right;"><span style="color:var(--green-ink);">For you ✓</span><br><span style="color:var(--green-ink);">Household ✓</span></div></div>
-<div class="record-line"><div class="label">Family Pack release on agreed trigger</div><div class="value" style="text-align:right;"><span style="color:var(--green-ink);">For you ✓</span><br><span style="color:var(--green-ink);">Household ✓</span></div></div>
-<div class="record-line"><div class="label">Number of people in the layer</div><div class="value" style="text-align:right;">1<br>Up to 5</div></div>
-<div class="record-line"><div class="label">Shared visibility with partner</div><div class="value" style="text-align:right;"><span style="color:var(--muted);">—</span><br><span style="color:var(--green-ink);">Household ✓</span></div></div>
-<div class="record-line"><div class="label">Children&apos;s records (school, passports, GP)</div><div class="value" style="text-align:right;"><span style="color:var(--muted);">—</span><br><span style="color:var(--green-ink);">Household ✓</span></div></div>
-<div class="record-line"><div class="label">Ageing-parent records (vault for one parent)</div><div class="value" style="text-align:right;"><span style="color:var(--muted);">—</span><br><span style="color:var(--green-ink);">Household ✓</span></div></div>
-<div class="record-line"><div class="label">Per-person sharing controls</div><div class="value" style="text-align:right;"><span style="color:var(--muted);">—</span><br><span style="color:var(--green-ink);">Household ✓</span></div></div>
-<div class="record-line"><div class="label">Document storage</div><div class="value" style="text-align:right;">5 GB<br>25 GB shared</div></div>
+<!-- Group 1: Everyone gets -->
+<div style="margin-bottom:6px;font-size:12px;font-weight:800;letter-spacing:.06em;color:#5e7193;text-transform:uppercase;">Everyone gets · all three tiers</div>
+<div class="record-line"><div class="label">Personal records &amp; documents</div><div class="value" style="color:var(--green-ink);">✓</div></div>
+<div class="record-line"><div class="label">Reminders &amp; renewal alerts</div><div class="value" style="color:var(--green-ink);">✓</div></div>
+<div class="record-line"><div class="label">sAiFe Agent activity feed</div><div class="value" style="color:var(--green-ink);">✓</div></div>
+<div class="record-line"><div class="label">Family Pack preview &amp; release on trigger</div><div class="value" style="color:var(--green-ink);">✓</div></div>
+<div class="record-line"><div class="label">Vault categories &amp; audit log</div><div class="value" style="color:var(--green-ink);">✓</div></div>
 
+<!-- Group 2: Household and above -->
+<div style="margin:18px 0 6px;font-size:12px;font-weight:800;letter-spacing:.06em;color:#5e7193;text-transform:uppercase;">Household &amp; above · adds</div>
+<div class="record-line"><div class="label">People in the layer</div><div class="value">5 total · any mix of members &amp; trusted contacts</div></div>
+<div class="record-line"><div class="label">Shared visibility with partner</div><div class="value" style="color:var(--green-ink);">✓ Both can edit</div></div>
+<div class="record-line"><div class="label">Children&rsquo;s records (school, passports, GP)</div><div class="value" style="color:var(--green-ink);">✓</div></div>
+<div class="record-line"><div class="label">Ageing-parent records (vault for one parent)</div><div class="value" style="color:var(--green-ink);">✓</div></div>
+<div class="record-line"><div class="label">Per-person sharing controls (View / Edit / Release)</div><div class="value" style="color:var(--green-ink);">✓</div></div>
+<div class="record-line"><div class="label">Document storage</div><div class="value">25 GB shared</div></div>
+
+<!-- Group 3: Whole life only -->
+<div style="margin:18px 0 6px;font-size:12px;font-weight:800;letter-spacing:.06em;color:#a87618;text-transform:uppercase;">Whole life only · adds</div>
+<div class="record-line"><div class="label">People in the layer</div><div class="value" style="color:#a87618;">Unlimited</div></div>
+<div class="record-line"><div class="label">Formal release triggers (incapacity, time-locked)</div><div class="value" style="color:#a87618;">✓</div></div>
+<div class="record-line"><div class="label">Adviser handoff (encrypted, expiring links to solicitor / accountant)</div><div class="value" style="color:#a87618;">✓</div></div>
+<div class="record-line"><div class="label">Multi-year tax pack archive (5+ years)</div><div class="value" style="color:#a87618;">✓</div></div>
+<div class="record-line"><div class="label">Advanced sharing rules (per-record per-person rules)</div><div class="value" style="color:#a87618;">✓</div></div>
+<div class="record-line"><div class="label">Concierge setup (a real human helps with the first 10 records)</div><div class="value" style="color:#a87618;">Once, on signup</div></div>
+<div class="record-line"><div class="label">Document storage</div><div class="value" style="color:#a87618;">100 GB shared</div></div>
+<div class="record-line"><div class="label">Priority support</div><div class="value" style="color:#a87618;">UK humans, &lt; 4 hours</div></div>
+
+</div>
+
+<div class="card" style="margin-top:14px;">
+<div class="section-pill">Add-ons available on any plan</div>
+<h3 style="margin:0 0 4px;">À la carte, when you need it</h3>
+<p style="margin:0 0 14px;color:var(--muted);font-size:13px;">Bolt these on to any tier. Nothing is bundled in by default — pay only for what you use.</p>
+
+<div class="progress-list" style="margin:0;">
+<div class="progress-item"><div><strong>Tax pack pro</strong><div class="label" style="font-size:12.5px;">Multi-year archive · accountant integration · pro-forma export for self-assessment</div></div><span class="tag" style="flex:0 0 auto;background:#fff3df;color:#a87618;">+£3.99/mo</span></div>
+<div class="progress-item"><div><strong>Document handover</strong><div class="label" style="font-size:12.5px;">Encrypted, expiring links direct to your solicitor or accountant — receipts logged in your timeline</div></div><span class="tag" style="flex:0 0 auto;background:#fff3df;color:#a87618;">+£2.99/mo</span></div>
+<div class="progress-item"><div><strong>Extended Vault storage</strong><div class="label" style="font-size:12.5px;">Add 25 GB per pack — for households with lots of scanned documents</div></div><span class="tag" style="flex:0 0 auto;background:#fff3df;color:#a87618;">+£1.99/mo</span></div>
+<div class="progress-item"><div><strong>Concierge setup</strong><div class="label" style="font-size:12.5px;">A real human walks you through your first 10 records on a video call · one-off · included on Whole life</div></div><span class="tag" style="flex:0 0 auto;background:#fff3df;color:#a87618;">£49 once</span></div>
+</div>
+
+<div style="margin-top:14px;padding:12px 14px;background:rgba(95,156,53,.08);border:1px solid rgba(95,156,53,.18);border-radius:12px;">
+<div style="font-size:11px;font-weight:800;letter-spacing:.06em;color:var(--green-ink);text-transform:uppercase;margin-bottom:4px;">Working it out · couple, no trusted contacts</div>
+<p style="margin:0 0 8px;color:var(--navy);font-size:13px;line-height:1.5;">Two people, no third party yet — partner just wants to be reachable if anything happens. Honest comparison:</p>
+<div style="background:#fff;border:1px solid rgba(35,40,79,.06);border-radius:10px;padding:10px 12px;margin-bottom:8px;">
+<div style="font-size:12px;font-weight:800;color:var(--navy);">Two For-You plans · £13.98/mo</div>
+<p style="margin:4px 0 0;color:var(--muted);font-size:12px;line-height:1.5;">Each of you keeps your own records separately. No shared visibility, no joint editing. If something happens to one of you, the other has to be invited as a trusted contact to see anything.</p>
+</div>
+<div style="background:#fff;border:1px solid rgba(95,156,53,.30);border-radius:10px;padding:10px 12px;">
+<div style="font-size:12px;font-weight:800;color:var(--navy);">One Household plan · £15.99/mo <span style="color:var(--green-ink);font-weight:700;">· £2.01/mo more, much more useful</span></div>
+<p style="margin:4px 0 0;color:var(--muted);font-size:12px;line-height:1.5;">Both of you can edit. Records you both care about (mortgage, kids, pets, holidays) sit in one shared layer. Three more spots open for trusted contacts when you need them — solicitor, accountant, parent.</p>
+</div>
+</div>
+
+<div style="margin-top:14px;padding:12px 14px;background:rgba(95,156,53,.08);border:1px solid rgba(95,156,53,.18);border-radius:12px;">
+<div style="font-size:11px;font-weight:800;letter-spacing:.06em;color:var(--green-ink);text-transform:uppercase;margin-bottom:4px;">Working it out · couple with 4 trusted contacts</div>
+<p style="margin:0;color:var(--navy);font-size:13px;line-height:1.5;">A couple with 4 trusted contacts — partner, solicitor, accountant, parent — would normally pick <strong>Household</strong> at £15.99/mo (5 people total). If you want a sixth, or want adviser handoff and formal release triggers, move to <strong>Whole life</strong> at £24.99/mo.</p>
+</div>
 </div>
 
 <div class="card" style="margin-top:14px;">
@@ -3298,7 +3518,8 @@ Released to <strong style="color:var(--navy);">Sarah Wright</strong> as primary 
 <div class="progress-item" style="display:block;"><strong style="color:var(--navy);">What happens if I cancel?</strong><div class="label" style="margin-top:6px;">Your records are exported cleanly as PDFs and a structured JSON file before the account closes. Nothing is held hostage.</div></div>
 <div class="progress-item" style="display:block;"><strong style="color:var(--navy);">Is there a free trial?</strong><div class="label" style="margin-top:6px;">Yes — 30 days, no card needed to start. The Family Pack release feature is the only thing kept behind the paid plan.</div></div>
 <div class="progress-item" style="display:block;"><strong style="color:var(--navy);">Annual or monthly?</strong><div class="label" style="margin-top:6px;">Either. Annual saves around 14% on both plans. Switch from one to the other at any renewal.</div></div>
-<div class="progress-item" style="display:block;"><strong style="color:var(--navy);">More than five people in our household?</strong><div class="label" style="margin-top:6px;">Get in touch. We&apos;ll add a small per-person fee rather than push you onto something more complex than you need.</div></div>
+<div class="progress-item" style="display:block;"><strong style="color:var(--navy);">It's just me and my partner — which plan?</strong><div class="label" style="margin-top:6px;">Most couples do best on <strong>Household</strong> at £15.99/mo. Two separate For-You plans cost £13.98/mo, but you'd have separate accounts with no shared visibility — each of you would have to invite the other as a trusted contact to see anything. The £2.01/mo difference buys joint editing, one shared layer, and 3 spare seats for a solicitor, accountant or parent later.</div></div>
+<div class="progress-item" style="display:block;"><strong style="color:var(--navy);">More than five people in our household?</strong><div class="label" style="margin-top:6px;">Move to <strong>For your whole life</strong> at £24.99/mo — unlimited people, plus the advanced sharing rules and formal release triggers that larger households tend to need. No per-person fees.</div></div>
 </div>
 </div>
 
@@ -3552,6 +3773,120 @@ Prices shown in £ for households in the United Kingdom · VAT included where ap
 
 </section>
 
+<section class="screen" id="vaultItem">
+<div class="status">
+<div class="localtime"></div>
+<div class="status-right">
+<button class="global-chip" onclick="toggleGlobalMenu()">UK · EN</button>
+<div class="dots"><span></span><span></span><span></span></div>
+</div>
+</div>
+<div class="topbar"><button class="soft" onclick="show('vaulthub')">← Vault</button><div class="pill">Vault item</div></div>
+
+<div class="card" style="margin-bottom:12px;">
+<div class="section-pill" style="background:#fff3df;color:#a87618;">Will &amp; estate · 1 of 3</div>
+<h2 style="margin:6px 0 6px;">Last will &amp; testament</h2>
+<p class="sub" style="margin:0;">A simple readable record showing where the original is held, who has access, and what happens on release.</p>
+<div class="record-line"><div class="label">Original location</div><div class="value">Hughes &amp; Co Solicitors · ref WL/MW-2024</div></div>
+<div class="record-line"><div class="label">Copy location</div><div class="value">Home safe · combination held by Sarah</div></div>
+<div class="record-line"><div class="label">Last updated</div><div class="value">March 2024</div></div>
+<div class="record-line"><div class="label">Document pages</div><div class="value">11 pages</div></div>
+<div class="record-line"><div class="label">Encryption</div><div class="value">AES-256 · UK storage</div></div>
+</div>
+
+<div class="card" style="margin-top:12px;">
+<div class="section-pill">Who can see this record</div>
+<h3 style="margin:0 0 10px;">Three people · two view-only · one on release</h3>
+
+<div class="progress-list" style="margin:0;">
+<div class="progress-item">
+<div style="display:flex;gap:12px;align-items:center;flex:1;min-width:0;">
+<div style="width:38px;height:38px;border-radius:50%;background:#F8EFE7;display:flex;align-items:center;justify-content:center;font-size:20px;line-height:1;flex:0 0 auto;">👩🏻</div>
+<div style="min-width:0;">
+<strong style="color:var(--navy);font-size:14px;">Sarah Wright</strong>
+<div class="label" style="font-size:12px;">Spouse · view-only on locator only</div>
+</div>
+</div>
+<span class="tag greentag" style="flex:0 0 auto;">View</span>
+</div>
+<div class="progress-item">
+<div style="display:flex;gap:12px;align-items:center;flex:1;min-width:0;">
+<div style="width:38px;height:38px;border-radius:50%;background:#EEF2FB;display:flex;align-items:center;justify-content:center;font-size:20px;line-height:1;flex:0 0 auto;">👨🏼</div>
+<div style="min-width:0;">
+<strong style="color:var(--navy);font-size:14px;">David Hughes</strong>
+<div class="label" style="font-size:12px;">Solicitor · holds original · view-only on copy</div>
+</div>
+</div>
+<span class="tag greentag" style="flex:0 0 auto;">View</span>
+</div>
+<div class="progress-item">
+<div style="display:flex;gap:12px;align-items:center;flex:1;min-width:0;">
+<div style="width:38px;height:38px;border-radius:50%;background:#F4F1FA;display:flex;align-items:center;justify-content:center;font-size:20px;line-height:1;flex:0 0 auto;">👵🏻</div>
+<div style="min-width:0;">
+<strong style="color:var(--navy);font-size:14px;">Mary Wright</strong>
+<div class="label" style="font-size:12px;">Matthew&rsquo;s mother · receives notice on release</div>
+</div>
+</div>
+<span class="tag" style="flex:0 0 auto;background:#f0f3f9;color:#5e7193;">On release</span>
+</div>
+</div>
+
+<button class="secondary" onclick="show('access')" style="margin-top:12px;width:100%;">Manage sharing &amp; access →</button>
+</div>
+
+<div class="card" style="margin-top:12px;">
+<div class="section-pill">What happens on release</div>
+<h3 style="margin:0 0 10px;">Three concrete steps</h3>
+<div class="progress-list" style="margin:0;">
+<div class="progress-item"><div><strong>Hughes &amp; Co notified</strong><div class="label">A signed letter goes to David Hughes confirming the release. Hughes &amp; Co already hold the original.</div></div><span class="tag ambertag">Step 1</span></div>
+<div class="progress-item"><div><strong>Sarah receives the locator</strong><div class="label">Sarah is sent the safe combination and the will&rsquo;s reference number. The original is then collected by her or by the executor.</div></div><span class="tag ambertag">Step 2</span></div>
+<div class="progress-item"><div><strong>Family Pack page 2 unlocked</strong><div class="label">The will reference becomes part of the printable Family Pack. The pack now includes the locator information that was previously private.</div></div><span class="tag greentag">Step 3</span></div>
+</div>
+</div>
+
+<div class="card" style="margin-top:12px;">
+<div class="section-pill">Linked records</div>
+<h3 style="margin:0 0 10px;">Other Vault items connected to this one</h3>
+<div class="record-line tappable" onclick="show('vaultItem')" style="cursor:pointer;"><div class="label">Lasting Power of Attorney</div><div class="value">Same solicitor · Sarah named →</div></div>
+<div class="record-line tappable" onclick="show('detail')" style="cursor:pointer;"><div class="label">Aviva pension expression of wish</div><div class="value">Beneficiaries align with will →</div></div>
+<div class="record-line tappable" onclick="show('detail')" style="cursor:pointer;"><div class="label">Aviva life cover £250k</div><div class="value">Policy referenced in will →</div></div>
+<div class="record-line tappable" onclick="show('familyPackPreview')" style="cursor:pointer;"><div class="label">Family continuity pack</div><div class="value">Page 2 references this will →</div></div>
+</div>
+
+<div class="card" style="margin-top:12px;">
+<div class="section-pill">Recent activity</div>
+<h3 style="margin:0 0 6px;">When this record was touched</h3>
+<div class="record-line"><div class="label">March · 22 days ago</div><div class="value">David Hughes granted view-only on locator</div></div>
+<div class="record-line"><div class="label">March 2024</div><div class="value">Will revised at Hughes &amp; Co · current version</div></div>
+<div class="record-line"><div class="label">November 2022</div><div class="value">Will originally drafted with Sarah present</div></div>
+<button class="secondary" onclick="show('timeline')" style="margin-top:12px;width:100%;">See full activity timeline →</button>
+</div>
+
+<div class="card onboard-focus" style="margin-top:12px;">
+<div class="section-pill">Reminder</div>
+<h3 style="margin:0 0 6px;">Last review was 22 months ago</h3>
+<p style="margin:0 0 10px;color:var(--muted);font-size:14px;line-height:1.55;">Wills typically benefit from a review every 2–3 years, or after life changes (a new home, a new job, a child reaching 18). Nothing is wrong with yours — but a quick review with David Hughes is sensible.</p>
+<div class="mini-actions">
+<button class="primary" onclick="toast('Review request drafted for Hughes &amp; Co')" style="flex:1 1 0;">Draft a review request</button>
+<button class="secondary" onclick="toast('Will check in 6 months')" style="flex:1 1 0;">Remind me later</button>
+</div>
+</div>
+
+<div class="notice" style="margin-top:12px;">
+<div class="section-pill">Not legal advice</div>
+<p style="font-size:13px; margin:0;">MySaiFe stores a reference to your will and notes about who holds it. It does not draft, witness, store the original, or interpret your will. For legal arrangements, speak to your solicitor.</p>
+</div>
+
+<div class="tabbar">
+<button class="tab" onclick="show('home')"><span class="tab-icon">🏠</span>Home</button>
+<button class="tab" onclick="show('dashboard')"><span class="tab-icon">📊</span>Dash</button>
+<button class="tab" onclick="show('moneyhub')"><span class="tab-icon">💷</span>Money</button>
+<button class="tab active" onclick="show('emergency')"><span class="tab-icon">👥</span>Family</button>
+<button class="tab" onclick="show('settings')"><span class="tab-icon">⚙️</span>More</button>
+</div>
+
+</section>
+
 <div class="sheet" id="sheet">
 <div class="sheet-handle"></div>
 <h3 id="sheetTitle">Family continuity pack</h3>
@@ -3752,9 +4087,9 @@ function openAddService() {
     'Keep everything in one place',
     'Track streaming, utilities, mobile contracts, insurance — anything you pay for regularly. Store login details securely and get reminded before renewals.',
     [
-      { label:'Streaming &amp; entertainment', primary:false, fn:function(){ closeSheet(); toast('Streaming section coming soon'); }},
-      { label:'Mobile &amp; broadband', primary:false, fn:function(){ closeSheet(); toast('Comms section coming soon'); }},
-      { label:'Utilities &amp; home services', primary:false, fn:function(){ closeSheet(); toast('Utilities section coming soon'); }},
+      { label:'Streaming & entertainment', primary:false, fn:function(){ closeSheet(); toast('Streaming section coming soon'); }},
+      { label:'Mobile & broadband', primary:false, fn:function(){ closeSheet(); toast('Comms section coming soon'); }},
+      { label:'Utilities & home services', primary:false, fn:function(){ closeSheet(); toast('Utilities section coming soon'); }},
       { label:'Other subscription', primary:true, fn:function(){ closeSheet(); toast('Adding new subscription…'); }}
     ]
   );
@@ -3979,77 +4314,130 @@ function pickTile(btn) {
 // ── Pricing surface helpers ──────────────────────────────────────────────
 
 (function () {
-  // Apply highlight to the recommended plan based on household shape
-  window.pickPricingShape = function (btn, shape) {
-    // Toggle .active among the household tiles in the same grid
-    if (typeof pickTile === 'function') pickTile(btn);
+  // Track current household shape so the trusted-count tile can refine
+  var currentShape = null;
 
-    // Decide which plan to highlight
-    var recommendation;
-    if (shape === 'solo')   recommendation = 'planSolo';
-    else if (shape === 'couple') recommendation = 'planFamily';
-    else if (shape === 'family') recommendation = 'planFamily';
-
-    var solo = document.getElementById('planSolo');
-    var fam  = document.getElementById('planFamily');
-    [solo, fam].forEach(function (el) {
+  function clearHighlights() {
+    ['planSolo', 'planFamily', 'planWholeLife'].forEach(function (id) {
+      var el = document.getElementById(id);
       if (!el) return;
       el.style.borderColor = '';
       el.style.boxShadow   = '';
       el.style.transform   = '';
     });
-    var picked = document.getElementById(recommendation);
+  }
+
+  function highlight(planId) {
+    clearHighlights();
+    var picked = document.getElementById(planId);
     if (picked) {
       picked.style.borderColor = 'rgba(95,156,53,.45)';
       picked.style.boxShadow   = '0 8px 22px rgba(95,156,53,.18)';
       picked.style.transform   = 'translateY(-1px)';
     }
+  }
 
-    // Update hint text
+  function setHint(text) {
     var hint = document.getElementById('pricingHint');
-    if (hint) {
-      var msg = {
-        solo:   'For one person, the £6.99 plan covers everything in a single layer. Highlighted below.',
-        couple: 'With a partner, the £15.99 household plan keeps you both visible to each other and able to share. Highlighted below.',
-        family: 'For a household with kids or ageing parents, the £15.99 plan is built for this — five people, per-person sharing, broader continuity. Highlighted below.'
-      }[shape] || '';
-      hint.textContent = msg;
+    if (hint) hint.textContent = text;
+  }
+
+  function setCTA(planId) {
+    var cta = document.getElementById('pricingPrimary');
+    if (!cta) return;
+    var label = {
+      planSolo:      'Start with For you · 30-day free trial',
+      planFamily:    'Start with For your household · 30-day free trial',
+      planWholeLife: 'Start with For your whole life · 30-day free trial'
+    }[planId];
+    cta.textContent = label || 'Start a 30-day free trial';
+  }
+
+  function showTrustedQuestion(show) {
+    var q = document.getElementById('pricingTrustedQuestion');
+    if (q) q.style.display = show ? 'block' : 'none';
+  }
+
+  // Apply highlight to the recommended plan based on household shape
+  window.pickPricingShape = function (btn, shape) {
+    if (typeof pickTile === 'function') pickTile(btn);
+    currentShape = shape;
+
+    // Solo and couple don't need the refining question
+    if (shape === 'solo') {
+      showTrustedQuestion(false);
+      highlight('planSolo');
+      setHint('For one person, the £6.99 plan covers everything in a single layer. Highlighted below.');
+      setCTA('planSolo');
+    } else if (shape === 'couple') {
+      showTrustedQuestion(true);
+      highlight('planFamily');
+      setHint('A couple plus a few trusted contacts fits comfortably in the £15.99 household plan (5 people total). Tell me how many trusted contacts you have to refine.');
+      setCTA('planFamily');
+    } else if (shape === 'family') {
+      showTrustedQuestion(true);
+      highlight('planFamily');
+      setHint('A whole household usually wants more than 5 people across members and trusted contacts. Tell me how many you have so I can recommend the right tier.');
+      setCTA('planFamily');
+    }
+  };
+
+  // Refining question: how many trusted contacts?
+  window.pickTrustedCount = function (btn, count) {
+    // Toggle .active within the trusted-count tile grid
+    if (btn) {
+      var grid = btn.closest('.tile-grid');
+      if (grid) {
+        grid.querySelectorAll('.selection-tile').forEach(function (t) { t.classList.remove('active'); });
+      }
+      btn.classList.add('active');
     }
 
-    // Update primary CTA text
-    var cta = document.getElementById('pricingPrimary');
-    if (cta) {
-      cta.textContent = recommendation === 'planSolo'
-        ? 'Start with For you · 30-day free trial'
-        : 'Start with For your household · 30-day free trial';
+    if (count === 'none') {
+      // Couple with no trusted contacts yet — recommend Household, but
+      // surface the math: two For-You plans cost £13.98, Household is £15.99
+      // for shared visibility and joint editing. £2.01 difference.
+      highlight('planFamily');
+      if (currentShape === 'couple') {
+        setHint('Just the two of you, no trusted contacts yet — Household at £15.99/mo is the natural fit. Two For-You plans would be £13.98/mo but with no shared visibility, no joint editing. Scroll down for the side-by-side comparison.');
+      } else if (currentShape === 'family') {
+        setHint('A whole household with no trusted contacts named yet — Household at £15.99/mo gives you 5 spots and full shared visibility. Add the trusted contacts as you go.');
+      } else {
+        setHint('No trusted contacts yet — Household at £15.99/mo is the natural fit. Add up to 3 more later as you need them.');
+      }
+      setCTA('planFamily');
+      return;
+    }
+
+    if (count === 'few') {
+      // Couple + up to 3 trusted = up to 5 people. Household tier fits.
+      highlight('planFamily');
+      setHint('Up to 3 trusted contacts plus you (and partner) fits inside 5 people total. The £15.99 household plan covers this. Highlighted below.');
+      setCTA('planFamily');
+    } else if (count === 'mid') {
+      // Couple + 4 or 5 trusted = 6 or 7 people. Whole life recommended.
+      highlight('planWholeLife');
+      setHint('4 or 5 trusted contacts plus you (and partner) takes you past 5 people total — that\'s when For your whole life makes sense. Unlimited people, plus formal release triggers and adviser handoff. Highlighted below.');
+      setCTA('planWholeLife');
+    } else if (count === 'many') {
+      // Definitely Whole life
+      highlight('planWholeLife');
+      setHint('6 or more trusted contacts means For your whole life is the right fit. Unlimited people, advanced sharing rules, and the more formal release machinery. Highlighted below.');
+      setCTA('planWholeLife');
     }
   };
 
   window.choosePlan = function (which) {
-    var label = which === 'solo' ? 'For you (£6.99/mo)' : 'For your household (£15.99/mo)';
-    if (typeof toast === 'function') toast('Selected: ' + label);
-    // Auto-update the CTA so the next tap is consistent
-    var cta = document.getElementById('pricingPrimary');
-    if (cta) {
-      cta.textContent = which === 'solo'
-        ? 'Start with For you · 30-day free trial'
-        : 'Start with For your household · 30-day free trial';
-    }
-    // Visual feedback
-    var solo = document.getElementById('planSolo');
-    var fam  = document.getElementById('planFamily');
-    [solo, fam].forEach(function (el) {
-      if (!el) return;
-      el.style.borderColor = '';
-      el.style.boxShadow   = '';
-      el.style.transform   = '';
-    });
-    var picked = document.getElementById(which === 'solo' ? 'planSolo' : 'planFamily');
-    if (picked) {
-      picked.style.borderColor = 'rgba(95,156,53,.45)';
-      picked.style.boxShadow   = '0 8px 22px rgba(95,156,53,.18)';
-      picked.style.transform   = 'translateY(-1px)';
-    }
+    var planMap = {
+      solo:      { id: 'planSolo',      name: 'For you',           price: '£6.99/mo' },
+      family:    { id: 'planFamily',    name: 'For your household', price: '£15.99/mo' },
+      wholelife: { id: 'planWholeLife', name: 'For your whole life', price: '£24.99/mo' }
+    };
+    var plan = planMap[which];
+    if (!plan) return;
+    if (typeof toast === 'function') toast('Selected: ' + plan.name + ' (' + plan.price + ')');
+    setCTA(plan.id);
+    highlight(plan.id);
   };
 })();
 </script>
